@@ -1,0 +1,73 @@
+/* ==========================================================================
+   DESIGN TOKENS — UI proměnné web manuálu
+   Barvy a písma značky se NEPÍŠÍ sem, ale do css/brand.css.
+   Tady se jen mapují na role v rozhraní (text, akcent, plochy, nadpisy).
+   ========================================================================== */
+
+:root {
+  /* --- Barvy rozhraní (napojené na brand.css) --- */
+  --c-bg:            #ffffff;
+  --c-surface:       var(--brand-neutral-light);
+  --c-surface-2:     #ebebeb;
+  --c-placeholder:   #e2e2e2;
+  --c-placeholder-2: #cfcfcf;
+  --c-border:        #d4d4d4;
+  --c-border-strong: #a3a3a3;
+  --c-text:          var(--brand-neutral-dark);
+  --c-text-muted:    #5c5c5c;
+  --c-text-subtle:   #8a8a8a;
+  --c-accent:        var(--brand-primary);      /* tlačítka, aktivní navigace, focus */
+  --c-on-accent:     var(--brand-on-primary);
+  --c-accent-soft:   color-mix(in srgb, var(--brand-primary) 12%, var(--c-bg));
+  --c-do:            #3d3d3d;   /* štítek „Správně“ — v reálném brandu např. zelená */
+  --c-dont:          #3d3d3d;   /* štítek „Nesprávně“ — v reálném brandu např. červená */
+
+  /* --- Typografie --- */
+  --font-sans:    var(--brand-font-body);
+  --font-heading: var(--brand-font-heading);
+  --font-mono: ui-monospace, "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+
+  --fs-xs:   0.8125rem; /* 13 */
+  --fs-sm:   1rem;      /* 16 */
+  --fs-base: 1.125rem;  /* 18 */
+  --fs-lg:   1.3125rem; /* 21 */
+  --fs-xl:   1.625rem;  /* 26 */
+  --fs-2xl:  2.375rem;  /* 38 */
+  --fs-3xl:  clamp(2.5rem, 1.7rem + 3.2vw, 4.25rem);
+
+  --lh-tight: 1.15;
+  --lh-base:  1.6;
+
+  --fw-regular: 400;
+  --fw-medium:  500;
+  --fw-bold:    700;
+
+  /* --- Spacing (4px základ) --- */
+  --sp-1: 0.25rem;
+  --sp-2: 0.5rem;
+  --sp-3: 0.75rem;
+  --sp-4: 1rem;
+  --sp-5: 1.5rem;
+  --sp-6: 2rem;
+  --sp-7: 3rem;
+  --sp-8: 4rem;
+  --sp-9: 6rem;
+
+  /* --- Tvary a stíny --- */
+  --radius-sm: 4px;
+  --radius:    8px;
+  --radius-lg: 12px;
+  --border-dashed: 1.5px dashed var(--c-border-strong);
+
+  /* --- Layout --- */
+  --sidebar-w:   280px;
+  --header-h:    64px;
+  --content-max: 1040px;
+  --gutter:      var(--sp-4);
+
+  --transition: 200ms ease;
+}
+
+@media (min-width: 768px) {
+  :root { --gutter: var(--sp-6); }
+}

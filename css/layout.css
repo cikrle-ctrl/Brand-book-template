@@ -1,0 +1,227 @@
+/* ==========================================================================
+   LAYOUT — header, sidebar, obsah, print
+   ========================================================================== */
+
+/* --- Header: logo vlevo, akce vpravo (všechny šířky) --- */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--sp-3);
+  height: var(--header-h);
+  padding: 0 var(--gutter);
+  background: var(--c-bg);
+  border-bottom: 1px solid var(--c-border);
+}
+
+.site-header__left {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-3);
+  min-width: 0;
+}
+
+.site-header__brand {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-2);
+  font-size: var(--fs-lg);
+  font-weight: var(--fw-bold);
+  white-space: nowrap;
+  text-decoration: none;
+}
+
+.site-header__actions {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-2);
+}
+
+.nav-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sp-2);
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  font: inherit;
+  font-size: var(--fs-sm);
+  color: var(--c-text);
+  background: var(--c-surface);
+  border: 1px solid var(--c-border);
+  border-radius: var(--radius);
+  cursor: pointer;
+}
+
+.nav-toggle .nav-toggle__close { display: none; }
+.nav-toggle[aria-expanded="true"] .nav-toggle__open  { display: none; }
+.nav-toggle[aria-expanded="true"] .nav-toggle__close { display: inline-block; }
+
+/* --- Sidebar: off-canvas na mobilu --- */
+.sidebar {
+  position: fixed;
+  inset: var(--header-h) auto 0 0;
+  z-index: 40;
+  width: min(var(--sidebar-w), 85vw);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding: var(--sp-5) var(--sp-4) var(--sp-7);
+  background: var(--c-bg);
+  border-right: 1px solid var(--c-border);
+  transform: translateX(-100%);
+  visibility: hidden;
+  transition: transform var(--transition), visibility var(--transition);
+}
+
+.sidebar.is-open {
+  transform: none;
+  visibility: visible;
+}
+
+.backdrop {
+  position: fixed;
+  inset: var(--header-h) 0 0 0;
+  z-index: 35;
+  background: rgb(0 0 0 / 0.35);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--transition);
+}
+.backdrop.is-visible { opacity: 1; pointer-events: auto; }
+
+body.nav-open { overflow: hidden; }
+
+/* --- Navigace --- */
+.toc,
+.toc ol {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.toc > li + li { margin-top: var(--sp-1); }
+
+.toc a {
+  display: flex;
+  gap: var(--sp-2);
+  padding: var(--sp-2) var(--sp-3);
+  font-size: var(--fs-sm);
+  color: var(--c-text-muted);
+  text-decoration: none;
+  border-radius: var(--radius-sm);
+  transition: background var(--transition), color var(--transition);
+}
+
+.toc a:hover { background: var(--c-surface); color: var(--c-text); }
+
+.toc__num {
+  flex: none;
+  min-width: 1.6em;
+  font-family: var(--font-mono);
+  font-size: var(--fs-xs);
+  line-height: 1.9;
+  color: var(--c-text-subtle);
+}
+
+.toc > li > a { font-weight: var(--fw-medium); color: var(--c-text); }
+
+.toc ol {
+  margin: var(--sp-1) 0 var(--sp-2) calc(var(--sp-3) + 1.6em);
+  border-left: 1px solid var(--c-border);
+}
+.toc ol a { padding-block: var(--sp-1); font-size: var(--fs-xs); }
+
+.toc a.is-active {
+  color: var(--c-accent);
+  background: var(--c-accent-soft);
+  font-weight: var(--fw-bold);
+}
+
+.sidebar__meta {
+  margin-top: var(--sp-6);
+  padding-top: var(--sp-4);
+  border-top: 1px solid var(--c-border);
+  font-size: var(--fs-xs);
+  color: var(--c-text-subtle);
+}
+
+/* --- Hlavní obsah --- */
+.main {
+  min-width: 0;
+  padding: var(--sp-6) var(--gutter) var(--sp-9);
+}
+
+.main > * {
+  max-width: var(--content-max);
+  margin-inline: auto;
+}
+
+.chapter {
+  padding-block: var(--sp-8) var(--sp-6);
+  border-top: 1px solid var(--c-border);
+}
+.chapter:first-of-type { border-top: 0; padding-top: var(--sp-5); }
+
+.chapter__header { margin-bottom: var(--sp-6); }
+
+.chapter__num {
+  display: block;
+  margin-bottom: var(--sp-2);
+  font-family: var(--font-mono);
+  font-size: var(--fs-sm);
+  color: var(--c-accent);
+}
+
+.subsection { padding-top: var(--sp-7); }
+.subsection:first-of-type { padding-top: 0; }
+.subsection > h3 + .ph-text,
+.subsection > .ph-heading + .ph-text { margin-top: var(--sp-2); }
+.subsection > * + * { margin-top: var(--sp-4); }
+
+.site-footer {
+  padding-top: var(--sp-6);
+  border-top: 1px solid var(--c-border);
+  font-size: var(--fs-sm);
+  color: var(--c-text-muted);
+}
+
+/* --- Desktop: sidebar sticky vlevo --- */
+@media (min-width: 1024px) {
+  .nav-toggle,
+  .backdrop { display: none; }
+
+  .shell {
+    display: grid;
+    grid-template-columns: var(--sidebar-w) minmax(0, 1fr);
+  }
+
+  .sidebar {
+    position: sticky;
+    inset: auto;
+    top: var(--header-h);
+    align-self: start;
+    width: auto;
+    height: calc(100vh - var(--header-h));
+    transform: none;
+    visibility: visible;
+    transition: none;
+  }
+
+  .main { padding-top: var(--sp-7); }
+
+  body.nav-open { overflow: auto; }
+}
+
+/* --- Print --- */
+@media print {
+  .site-header, .sidebar, .backdrop, .skip-link, .toast { display: none !important; }
+  .shell { display: block; }
+  .main { padding: 0; }
+  .chapter { break-before: page; border: 0; padding-top: 0; }
+  .chapter:first-of-type { break-before: auto; }
+  .ph, .card, .swatch, .do-dont__item { break-inside: avoid; }
+}

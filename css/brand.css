@@ -1,0 +1,57 @@
+/* ==========================================================================
+   BRAND — jediný soubor, který se vyplňuje pro konkrétního klienta.
+   Barvy a písma odsud se propíšou do celého web manuálu:
+   header, navigace, nadpisy, barevné vzorky, poměr barev, ukázky písma.
+   Výchozí hodnoty = šedý wireframe.
+   ========================================================================== */
+
+/* Brandové fonty: soubory dej do assets/fonts/ a odkomentuj.
+@font-face {
+  font-family: "Brand Heading";
+  src: url("../assets/fonts/brand-heading.woff2") format("woff2");
+  font-weight: 600;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Brand Body";
+  src: url("../assets/fonts/brand-body.woff2") format("woff2");
+  font-weight: 400;
+  font-display: swap;
+}
+*/
+
+:root {
+  /* --- Primární paleta --- */
+  --brand-primary:        #4a4a4a;  /* hlavní barva: tlačítka, aktivní navigace, akcenty */
+  --brand-on-primary:     #ffffff;  /* text na hlavní barvě (musí mít kontrast min. 4,5 : 1) */
+  --brand-primary-2:      #8a8a8a;  /* druhá primární barva */
+
+  /* --- Sekundární paleta --- */
+  --brand-secondary-1:    #b5b5b5;
+  --brand-secondary-2:    #d0d0d0;
+
+  /* --- Neutrální barvy --- */
+  --brand-neutral-dark:   #1a1a1a;  /* text */
+  --brand-neutral-light:  #f5f5f5;  /* plochy, pozadí bloků */
+
+  /* --- Typografie --- */
+  --brand-font-heading:   system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --brand-font-body:      system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --brand-heading-weight: 700;
+  --brand-heading-case:   none;     /* none | uppercase */
+}
+
+/* Příklad vyplnění (Nine Group) — odkomentuj a uvidíš, jak se web přebarví:
+:root {
+  --brand-primary:        #173a51;
+  --brand-on-primary:     #ffffff;
+  --brand-primary-2:      #c49344;
+  --brand-secondary-1:    #e0d5bb;
+  --brand-secondary-2:    #acbdc0;
+  --brand-neutral-dark:   #173a51;
+  --brand-neutral-light:  #f6f2e9;
+  --brand-font-heading:   "Enra Semi", system-ui, sans-serif;
+  --brand-font-body:      "Enra Semi", system-ui, sans-serif;
+  --brand-heading-weight: 600;
+}
+*/
