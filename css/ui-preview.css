@@ -1,0 +1,184 @@
+/* ==========================================================================
+   BRAND WEB PREVIEW — ukázkové UI značky (kapitola 09, web i PDF)
+   PRAVIDLO: vše uvnitř .ui se styluje VÝHRADNĚ tokeny --ui-* z css/brand.css.
+   Žádné ad hoc barvy, velikosti, rohy ani stíny. Když něco chybí,
+   přidej nejdřív token do brand.css a teprve pak ho použij tady.
+   ========================================================================== */
+
+.ui {
+  font-family: var(--ui-font-secondary);
+  font-size: var(--ui-p2-size);
+  line-height: var(--ui-p2-lh);
+  color: var(--ui-foreground);
+  background: var(--ui-background);
+}
+.ui *,
+.ui *::before,
+.ui *::after { box-sizing: border-box; }
+.ui :where(h1, h2, h3, h4, h5, h6, p, ul, figure) { margin: 0; }
+
+/* --- Typography scale: Display, H1–H6, P1–P3 --- */
+.ui-display, .ui-h1, .ui-h2, .ui-h3, .ui-h4, .ui-h5, .ui-h6 {
+  font-family: var(--ui-font-primary);
+  text-transform: var(--brand-heading-case);
+}
+.ui-display { font-size: var(--ui-display-size); line-height: var(--ui-display-lh); font-weight: var(--ui-display-weight); letter-spacing: var(--ui-display-tracking); }
+.ui-h1 { font-size: var(--ui-h1-size); line-height: var(--ui-h1-lh); font-weight: var(--ui-h1-weight); letter-spacing: var(--ui-h1-tracking); }
+.ui-h2 { font-size: var(--ui-h2-size); line-height: var(--ui-h2-lh); font-weight: var(--ui-h2-weight); letter-spacing: var(--ui-h2-tracking); }
+.ui-h3 { font-size: var(--ui-h3-size); line-height: var(--ui-h3-lh); font-weight: var(--ui-h3-weight); letter-spacing: var(--ui-h3-tracking); }
+.ui-h4 { font-size: var(--ui-h4-size); line-height: var(--ui-h4-lh); font-weight: var(--ui-h4-weight); letter-spacing: var(--ui-h4-tracking); }
+.ui-h5 { font-size: var(--ui-h5-size); line-height: var(--ui-h5-lh); font-weight: var(--ui-h5-weight); letter-spacing: var(--ui-h5-tracking); }
+.ui-h6 { font-size: var(--ui-h6-size); line-height: var(--ui-h6-lh); font-weight: var(--ui-h6-weight); letter-spacing: var(--ui-h6-tracking); }
+.ui-p1 { font-size: var(--ui-p1-size); line-height: var(--ui-p1-lh); font-weight: var(--ui-p1-weight); letter-spacing: var(--ui-p1-tracking); }
+.ui-p2 { font-size: var(--ui-p2-size); line-height: var(--ui-p2-lh); font-weight: var(--ui-p2-weight); letter-spacing: var(--ui-p2-tracking); }
+.ui-p3 { font-size: var(--ui-p3-size); line-height: var(--ui-p3-lh); font-weight: var(--ui-p3-weight); letter-spacing: var(--ui-p3-tracking); }
+.ui-muted-text { color: var(--ui-muted-foreground); }
+
+/* --- Tlačítka --- */
+.ui-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--ui-space);
+  min-height: calc(var(--ui-space) * 5.5);
+  padding: calc(var(--ui-space) * 1.25) calc(var(--ui-space) * 2.5);
+  font-family: var(--ui-font-secondary);
+  font-size: var(--ui-p2-size);
+  font-weight: 600;
+  line-height: 1.2;
+  text-decoration: none;
+  white-space: nowrap;
+  color: var(--ui-primary-foreground);
+  background: var(--ui-primary);
+  border: 1px solid var(--ui-primary);
+  border-radius: var(--ui-radius-button);
+  box-shadow: var(--ui-shadow-button);
+  cursor: pointer;
+  transition: background var(--ui-duration-fast) var(--ui-ease), color var(--ui-duration-fast) var(--ui-ease), border-color var(--ui-duration-fast) var(--ui-ease);
+}
+.ui-btn .icon { width: 1.1em; height: 1.1em; }
+.ui-btn:hover, .ui-btn.is-hover { background: var(--ui-primary-hover); border-color: var(--ui-primary-hover); }
+.ui-btn:focus-visible, .ui-btn.is-focus { outline: 2px solid var(--ui-ring); outline-offset: 2px; }
+.ui-btn:disabled, .ui-btn.is-disabled { opacity: 0.45; box-shadow: none; cursor: not-allowed; }
+
+.ui-btn--secondary { color: var(--ui-secondary-foreground); background: var(--ui-secondary); border-color: var(--ui-secondary); }
+.ui-btn--secondary:hover, .ui-btn--secondary.is-hover { background: var(--ui-muted); border-color: var(--ui-border); }
+.ui-btn--ghost { color: var(--ui-foreground); background: transparent; border-color: var(--ui-border); box-shadow: none; }
+.ui-btn--ghost:hover, .ui-btn--ghost.is-hover { background: var(--ui-muted); border-color: var(--ui-border); }
+.ui-btn--destructive { color: var(--ui-destructive-foreground); background: var(--ui-destructive); border-color: var(--ui-destructive); }
+.ui-btn--destructive:hover, .ui-btn--destructive.is-hover { background: var(--ui-destructive); border-color: var(--ui-destructive); opacity: 0.88; }
+.ui-btn--inverted { color: var(--ui-inverted); background: var(--ui-inverted-foreground); border-color: var(--ui-inverted-foreground); }
+.ui-link { color: var(--ui-primary); text-decoration: underline; text-underline-offset: 0.2em; }
+
+/* --- Formulář --- */
+.ui-field { display: grid; gap: calc(var(--ui-space) * 0.75); }
+.ui-label { font-size: var(--ui-p3-size); font-weight: 600; color: var(--ui-foreground); }
+.ui-input {
+  width: 100%;
+  min-height: calc(var(--ui-space) * 5.5);
+  padding: calc(var(--ui-space) * 1.25) calc(var(--ui-space) * 1.5);
+  font: inherit;
+  font-size: var(--ui-p2-size);
+  color: var(--ui-foreground);
+  background: var(--ui-background);
+  border: 1px solid var(--ui-border);
+  border-radius: var(--ui-radius-input);
+}
+.ui-input::placeholder { color: var(--ui-muted-foreground); }
+.ui-input:focus-visible, .ui-input.is-focus { outline: 2px solid var(--ui-ring); outline-offset: 1px; border-color: var(--ui-ring); }
+.ui-input.is-error { border-color: var(--ui-destructive); }
+.ui-help { font-size: var(--ui-p3-size); line-height: var(--ui-p3-lh); color: var(--ui-muted-foreground); }
+.ui-help.is-error { color: var(--ui-destructive); }
+
+/* --- Karta --- */
+.ui-card {
+  display: grid;
+  gap: calc(var(--ui-space) * 1.5);
+  align-content: start;
+  padding: calc(var(--ui-space) * 3);
+  color: var(--ui-foreground);
+  background: var(--ui-background);
+  border: 1px solid var(--ui-border);
+  border-radius: var(--ui-radius-card);
+  box-shadow: var(--ui-shadow-card);
+}
+.ui-card__media {
+  aspect-ratio: 16 / 9;
+  background: var(--ui-muted);
+  border-radius: var(--ui-radius-sm);
+}
+
+/* --- Hláška (stav) --- */
+.ui-alert {
+  display: flex;
+  gap: calc(var(--ui-space) * 1.5);
+  align-items: flex-start;
+  padding: calc(var(--ui-space) * 2);
+  font-size: var(--ui-p3-size);
+  line-height: var(--ui-p3-lh);
+  border-radius: var(--ui-radius-md);
+}
+.ui-alert .icon { width: 1.25em; height: 1.25em; margin-top: 0.1em; }
+.ui-alert strong { display: block; font-size: var(--ui-p2-size); }
+.ui-alert--success { color: var(--ui-success-foreground); background: var(--ui-success); }
+.ui-alert--destructive { color: var(--ui-destructive-foreground); background: var(--ui-destructive); }
+
+/* --- Web: navigace, hero, sekce --- */
+.ui-page { overflow: hidden; border: 1px solid var(--ui-border); border-radius: var(--ui-radius-md); }
+.ui-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: calc(var(--ui-space) * 2);
+  padding: calc(var(--ui-space) * 2) calc(var(--ui-space) * 3);
+  background: var(--ui-background);
+  border-bottom: 1px solid var(--ui-border);
+}
+.ui-nav__logo {
+  width: calc(var(--ui-space) * 14);
+  height: calc(var(--ui-space) * 3.5);
+  background: var(--ui-muted);
+  border-radius: var(--ui-radius-sm);
+}
+.ui-nav__links { display: flex; gap: calc(var(--ui-space) * 3); font-size: var(--ui-p3-size); color: var(--ui-muted-foreground); }
+.ui-hero {
+  display: grid;
+  gap: calc(var(--ui-space) * 3);
+  padding: calc(var(--ui-space) * 8) calc(var(--ui-space) * 3);
+  background: var(--ui-background);
+}
+.ui-hero__lead { max-width: 40ch; color: var(--ui-muted-foreground); }
+.ui-actions { display: flex; flex-wrap: wrap; gap: calc(var(--ui-space) * 1.5); }
+.ui-section { padding: calc(var(--ui-space) * 6) calc(var(--ui-space) * 3); }
+.ui-section--muted { background: var(--ui-muted); }
+.ui-section--inverted { color: var(--ui-inverted-foreground); background: var(--ui-inverted); }
+.ui-section--inverted .ui-muted-text { color: var(--ui-inverted-foreground); opacity: 0.75; }
+.ui-grid { display: grid; gap: calc(var(--ui-space) * 3); grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr)); }
+
+/* --- Modal (statická ukázka) --- */
+.ui-scrim {
+  display: grid;
+  place-items: center;
+  padding: calc(var(--ui-space) * 5) calc(var(--ui-space) * 3);
+  background: color-mix(in oklch, var(--ui-inverted) 55%, transparent);
+  border-radius: var(--ui-radius-md);
+}
+.ui-modal {
+  display: grid;
+  gap: calc(var(--ui-space) * 2);
+  width: min(100%, 30rem);
+  padding: calc(var(--ui-space) * 3);
+  color: var(--ui-foreground);
+  background: var(--ui-background);
+  border-radius: var(--ui-radius-modal);
+  box-shadow: var(--ui-shadow-modal);
+}
+
+@media (max-width: 599px) {
+  .ui-nav__links { display: none; }
+  .ui-hero { padding-block: calc(var(--ui-space) * 5); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ui-btn { transition: none; }
+}

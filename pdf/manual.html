@@ -4,9 +4,12 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Brand manuál — PDF šablona</title>
-  <!-- Stejné brandové barvy a písma jako web manuál -->
+  <meta name="brand-slug" content="znacka">
+  <!-- Stejné brandové barvy, písma a UI tokeny jako web manuál -->
   <link rel="stylesheet" href="../css/brand.css">
   <link rel="stylesheet" href="slides.css">
+  <link rel="stylesheet" href="../css/ui-preview.css">
+  <script src="../js/tokens.js" defer></script>
 </head>
 <body>
 
@@ -16,6 +19,9 @@
     <symbol id="i-x" viewBox="0 0 24 24"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></symbol>
     <symbol id="i-printer" viewBox="0 0 24 24"><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><path d="M6 9V3a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v6"/><rect x="6" y="14" width="12" height="8" rx="1"/></symbol>
     <symbol id="i-arrow-left" viewBox="0 0 24 24"><path d="m12 19-7-7 7-7"/><path d="M19 12H5"/></symbol>
+    <symbol id="i-arrow-right" viewBox="0 0 24 24"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></symbol>
+    <symbol id="i-circle-check" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></symbol>
+    <symbol id="i-circle-alert" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 8v4"/><path d="M12 16h.01"/></symbol>
   </svg>
 
   <!-- Lišta jen pro náhled na obrazovce; v PDF se nezobrazí -->
@@ -34,7 +40,7 @@
           <div class="ph cover__logo"><span class="ph__label"><span class="ph-tag">Logo</span>Inverzní (bílé) primární logo značky</span></div>
           <h1 class="cover__title">Brand manuál</h1>
         </div>
-        <div class="cover__foot"><span>Brand Guide · [Značka]</span><span>Verze [01.2026]</span></div>
+        <div class="cover__foot"><span>Brand Guide · [Značka]</span><span>Verze [1.0] · [měsíc rok]</span></div>
       </div>
     </section>
 
@@ -47,11 +53,11 @@
           <div style="display:grid; align-content:center; gap:1.2cqw; padding-left:3cqw">
             <h2 class="slide__sub">[Značka]</h2>
             <p class="ph-text ph-text--lg"><span class="ph-tag">Odstavec</span>Kdo jsme a co děláme: 3–5 vět o značce, jejím oboru a přínosu pro zákazníky.</p>
-            <p class="ph-text"><span class="ph-tag">Odstavec</span>Účel dokumentu: závazný rámec pro všechny komunikační výstupy, pro koho je určen (tým, agentury, tiskárny, partneři) a jak s ním pracovat.</p>
-            <p class="ph-text"><span class="ph-tag">Claim</span>#superclaim nebo hlavní claim značky</p>
+            <p class="ph-text"><span class="ph-tag">Odstavec</span>Účel dokumentu: závazný rámec pro všechny výstupy. Co je pevné (logo, barvy, písma) a kde je volnost (kompozice, výběr fotografií).</p>
+            <p class="ph-text"><span class="ph-tag">Claim</span>Hlavní claim značky</p>
           </div>
         </div>
-        <div class="foot"><h2 class="slide__title">Úvod</h2><p class="ph-text">Verze, datum vydání, autor a vlastník značky.</p></div>
+        <div class="foot"><h2 class="slide__title">Úvod</h2><p class="ph-text">Pro koho manuál je: marketing, produkt a vývoj, agentury, tiskárny, partneři, média.</p></div>
       </div>
     </section>
 
@@ -61,33 +67,60 @@
         <div class="runhead"><span>Brand Guide</span><span>[Značka]</span><span>Obsah</span></div>
         <div class="toc-cols">
           <div>
-            <h3>00 Úvod</h3><ul><li>Účel dokumentu</li><li>Verze a kontakt</li></ul>
-            <h3>01 Brand core</h3><ul><li>Poslání a vize</li><li>Hodnoty a pilíře</li><li>Essence a positioning</li><li>Osobnost a archetyp</li><li>Příběh značky</li></ul>
-            <h3>02 Verbální identita</h3><ul><li>Claim a tagline</li><li>Tone of voice</li><li>Gramatika, styl a slovník</li></ul>
+            <h3>00 Úvod</h3><ul><li>Co je nového, verze</li><li>Značka na jedné stránce</li></ul>
+            <h3>01 Strategie</h3><ul><li>Poslání, vize, hodnoty</li><li>Essence, positioning, slib</li><li>Cílové skupiny, konkurence</li><li>Osobnost a příběh</li></ul>
+            <h3>02 Verbální identita</h3><ul><li>Claim, hlas a tón</li><li>Messaging, boilerplate</li><li>UX writing, naming, slovník</li></ul>
+            <h3>03 Logo</h3><ul><li>Varianty, verze, zóna</li><li>Velikost, ikony, chyby</li></ul>
           </div>
           <div>
-            <h3>03 Logo</h3><ul><li>Primární logo</li><li>Varianty loga</li><li>Barevné verze</li><li>Ochranná zóna</li><li>Minimální velikost</li><li>Logo na pozadích</li><li>Nesprávné použití</li></ul>
-            <h3>04 Barvy</h3><ul><li>Primární paleta</li><li>Sekundární a neutrální paleta</li><li>Poměr a kontrast</li></ul>
+            <h3>04 Barvy</h3><ul><li>Paleta a škály</li><li>Stavové barvy, tmavý režim</li><li>Grafy, poměr, kontrast</li></ul>
+            <h3>05 Typografie</h3><ul><li>Písma a hierarchie</li><li>Řezy, náhradní písma, licence</li></ul>
+            <h3>06 Kompozice</h3><ul><li>Grid, spacing, zóny</li><li>Ukázková rozvržení</li></ul>
+            <h3>07 Vizuální jazyk</h3><ul><li>Fotografie, práva, AI</li><li>Ilustrace, ikony, maskot</li></ul>
           </div>
           <div>
-            <h3>05 Typografie</h3><ul><li>Primární písmo</li><li>Sekundární písmo</li><li>Hierarchie</li></ul>
-            <h3>06 Kompozice</h3><ul><li>Grid a okraje</li><li>Ukázková rozvržení</li></ul>
-            <h3>07 Obrazový styl</h3><ul><li>Fotografie</li><li>Ilustrace a ikony</li><li>Grafické prvky</li></ul>
-            <h3>08 Motion a zvuk</h3><ul><li>Principy pohybu</li></ul>
+            <h3>08 Motion, video a zvuk</h3><ul><li>Principy a tokeny</li><li>Logo v pohybu, video</li></ul>
+            <h3>09 Digitální produkt a UI</h3><ul><li>Typography scale</li><li>Sémantická paleta</li><li>Radius a elevation</li><li>Komponenty, Brand Web Preview</li></ul>
+            <h3>10 Aplikace a šablony</h3><ul><li>Tisk, digitál, sítě</li><li>Prezentace, dokumenty, galerie</li></ul>
           </div>
           <div>
-            <h3>09 Aplikace</h3><ul><li>Tiskoviny</li><li>E-mail a web</li><li>Sociální sítě</li><li>Prezentace</li></ul>
-            <h3>10 Architektura značky</h3><ul><li>Sub-brandy</li><li>Co-branding</li></ul>
-            <h3>11 Přehled a kontakt</h3><ul><li>Značka na jedné straně</li><li>Kontakt a ke stažení</li></ul>
+            <h3>11 Obaly, prostor a produkt</h3><ul><li>Obaly a řada</li><li>Materiály, udržitelnost</li><li>Prostor, senzorika, edice</li></ul>
+            <h3>12 Architektura a partneři</h3><ul><li>Sub-brandy, co-branding</li><li>Třetí strany, tiskový kit</li></ul>
+            <h3>13 Přístupnost</h3><ul><li>Minimální požadavky</li></ul>
+            <h3>14 Správa a ke stažení</h3><ul><li>Soubory a formáty</li><li>Právo, schvalování, kontakt</li></ul>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- ======================= 01 BRAND CORE ======================= -->
-    <section class="slide slide--primary" aria-label="Předěl 01 Brand core">
+    <section class="slide slide--light" aria-label="Co je nového a verze">
+      <div class="frame">
+        <div class="runhead"><span>Brand Guide</span><span>[Značka]</span><span>00 Úvod</span></div>
+        <div class="stage cols-2" style="align-content:start">
+          <div style="display:grid; gap:1cqw; align-content:start">
+            <span class="label">Co je nového</span>
+            <ul class="ph-list">
+              <li>[Změna] — koho se týká a co dělat jinak.</li>
+              <li>[Změna] — koho se týká a co dělat jinak.</li>
+              <li>[Změna] — koho se týká a co dělat jinak.</li>
+            </ul>
+          </div>
+          <table class="table">
+            <thead><tr><th>Verze</th><th>Datum</th><th>Změna</th></tr></thead>
+            <tbody>
+              <tr><td>[verze]</td><td>[datum]</td><td>Co se změnilo</td></tr>
+              <tr><td>[verze]</td><td>[datum]</td><td>První vydání manuálu</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="foot"><h2 class="slide__title">Co je nového</h2><p class="ph-text">Verze, datum, autor, vlastník značky a termín další revize.</p></div>
+      </div>
+    </section>
+
+    <!-- ======================= 01 STRATEGIE ======================= -->
+    <section class="slide slide--primary" aria-label="Předěl 01 Strategie">
       <div class="divider">
-        <h2 class="divider__title">Brand core</h2>
+        <h2 class="divider__title">Strategie</h2>
         <p class="ph-text divider__lead"><span class="ph-tag">Perex</span>Jednou větou: proč značka existuje a co ji pohání.</p>
         <svg class="divider__num" viewBox="0 0 1000 560" aria-hidden="true"><text x="1010" y="640" text-anchor="end">01</text></svg>
         <span class="divider__meta">Brand Guide · [Značka]</span>
@@ -96,7 +129,7 @@
 
     <section class="slide" aria-label="Poslání a vize">
       <div class="frame">
-        <div class="runhead"><span>Brand Guide</span><span>[Značka]</span><span>01 Brand core</span></div>
+        <div class="runhead"><span>Brand Guide</span><span>[Značka]</span><span>01 Strategie</span></div>
         <div class="stage cols-2 end">
           <div class="card"><span class="label">Poslání</span><p class="ph-text ph-text--lg"><span class="ph-tag">Text</span>Co značka dělá dnes, pro koho a proč. Max. 2 věty.</p></div>
           <div class="card"><span class="label">Vize</span><p class="ph-text ph-text--lg"><span class="ph-tag">Text</span>Kam značka směřuje za 5–10 let. Jedna ambiciózní věta.</p></div>
@@ -107,7 +140,7 @@
 
     <section class="slide" aria-label="Hodnoty a pilíře">
       <div class="frame">
-        <div class="runhead"><span>Brand Guide</span><span>[Značka]</span><span>01 Brand core</span></div>
+        <div class="runhead"><span>Brand Guide</span><span>[Značka]</span><span>01 Strategie</span></div>
         <div class="stage cols-4">
           <div class="cell cell--text-top"><h3>Hodnota 1</h3><div class="ph"><span class="ph__label">Ikona nebo fotka hodnoty + jedna věta, jak ji žijeme</span></div></div>
           <div class="cell cell--text-top"><h3>Hodnota 2</h3><div class="ph"><span class="ph__label">Ikona nebo fotka hodnoty + jedna věta, jak ji žijeme</span></div></div>
@@ -120,7 +153,7 @@
 
     <section class="slide" aria-label="Essence a positioning">
       <div class="frame">
-        <div class="runhead"><span>Brand Guide</span><span>[Značka]</span><span>01 Brand core</span></div>
+        <div class="runhead"><span>Brand Guide</span><span>[Značka]</span><span>01 Strategie</span></div>
         <div class="stage cols-2">
           <div class="circles" role="img" aria-label="Zlatý kruh: Proč, Jak, Co"><span>CO</span><span>JAK</span><span>PROČ</span></div>
           <div style="display:grid; align-content:center; gap:1.6cqw">
@@ -136,9 +169,55 @@
       </div>
     </section>
 
+    <section class="slide slide--light" aria-label="Slib a důkazy">
+      <div class="frame">
+        <div class="runhead"><span>Brand Guide</span><span>[Značka]</span><span>01 Strategie</span></div>
+        <div class="stage rows-2">
+          <p class="slide__sub" style="align-self:center; max-width:70%">[Slib značky: jedna věta, co zákazník od značky vždy dostane.]</p>
+          <div class="stage cols-3">
+            <div class="card"><span class="label">Důkaz 1</span><p class="ph-text">Fakt, číslo nebo certifikace, která slib dokládá.</p></div>
+            <div class="card"><span class="label">Důkaz 2</span><p class="ph-text">Proces, technologie nebo lidé, kteří slib zajišťují.</p></div>
+            <div class="card"><span class="label">Důkaz 3</span><p class="ph-text">Reference, recenze nebo ocenění.</p></div>
+          </div>
+        </div>
+        <div class="foot"><h2 class="slide__title">Slib a důkazy</h2><p class="ph-text">Hodnota pro zákazníka: funkční (co dostane), emoční (jak se cítí), aspirační (kým se stává).</p></div>
+      </div>
+    </section>
+
+    <section class="slide" aria-label="Cílové skupiny">
+      <div class="frame">
+        <div class="runhead"><span>Brand Guide</span><span>[Značka]</span><span>01 Strategie</span></div>
+        <div class="stage cols-3">
+          <div class="cell cell--text-top"><h3>[Persona 1]</h3><div class="ph"><span class="ph__label">Portrét + kdo je, potřeba, bariéra, kde nás potká, co jí říkáme</span></div></div>
+          <div class="cell cell--text-top"><h3>[Persona 2]</h3><div class="ph"><span class="ph__label">Portrét + kdo je, potřeba, bariéra, kde nás potká, co jí říkáme</span></div></div>
+          <div class="cell cell--text-top"><h3>[Persona 3]</h3><div class="ph"><span class="ph__label">Portrét + kdo je, potřeba, bariéra, kde nás potká, co jí říkáme</span></div></div>
+        </div>
+        <div class="foot"><h2 class="slide__title">Cílové skupiny</h2><p class="ph-text">2–4 persony na datech z výzkumu. U B2B rozliš, kdo rozhoduje, ovlivňuje a používá.</p></div>
+      </div>
+    </section>
+
+    <section class="slide" aria-label="Konkurence a odlišení">
+      <div class="frame">
+        <div class="runhead"><span>Brand Guide</span><span>[Značka]</span><span>01 Strategie</span></div>
+        <div class="stage cols-2">
+          <div class="ph"><span class="ph__label"><span class="ph-tag">Diagram</span>Poziční mapa: dvě osy důležité pro zákazníka, 5–8 konkurentů a naše pozice</span></div>
+          <div style="display:grid; align-content:center; gap:1.2cqw; padding-left:2cqw">
+            <span class="label">Klišé kategorie, kterým se vyhýbáme</span>
+            <ul class="ph-list">
+              <li><strong>Barvy:</strong> [např. modrá důvěryhodnost jako všichni].</li>
+              <li><strong>Obraz:</strong> [např. podání rukou, úsměvy u laptopu].</li>
+              <li><strong>Slova:</strong> [např. inovativní řešení na míru].</li>
+              <li><strong>Symboly:</strong> [např. žárovka, raketa, puzzle].</li>
+            </ul>
+          </div>
+        </div>
+        <div class="foot"><h2 class="slide__title">Konkurence a odlišení</h2><p class="ph-text">V čem jsme jiní než ostatní v kategorii a proč na tom zákazníkovi záleží.</p></div>
+      </div>
+    </section>
+
     <section class="slide slide--light" aria-label="Osobnost a archetyp">
       <div class="frame">
-        <div class="runhead"><span>Brand Guide</span><span>[Značka]</span><span>01 Brand core</span></div>
+        <div class="runhead"><span>Brand Guide</span><span>[Značka]</span><span>01 Strategie</span></div>
         <div class="stage cols-3 rows-2">
           <div class="ph"><span class="ph__label">Moodboard 1</span></div>
           <div class="ph"><span class="ph__label">Moodboard 2</span></div>
@@ -147,13 +226,13 @@
           <div class="ph"><span class="ph__label">Moodboard 5</span></div>
           <div class="ph"><span class="ph__label">Moodboard 6</span></div>
         </div>
-        <div class="foot"><h2 class="slide__title">Osobnost a archetyp</h2><p class="ph-text"><span class="ph-tag">Volitelné</span>Archetyp značky (např. Mudrc, Tvůrce, Nevinný), emoce, které vyvolává, a 3–5 přídavných jmen osobnosti.</p></div>
+        <div class="foot"><h2 class="slide__title">Osobnost a archetyp</h2><p class="ph-text"><span class="ph-tag">Volitelné</span>Primární a sekundární archetyp, emoce, které vyvolává, a 3–5 přídavných jmen osobnosti.</p></div>
       </div>
     </section>
 
     <section class="slide" aria-label="Příběh značky">
       <div class="frame">
-        <div class="runhead"><span>Brand Guide</span><span>[Značka]</span><span>01 Brand core</span></div>
+        <div class="runhead"><span>Brand Guide</span><span>[Značka]</span><span>01 Strategie</span></div>
         <div class="stage cols-2-1">
           <div class="ph"><span class="ph__label"><span class="ph-tag">Obrázek</span>Skica, symbol nebo archivní fotka, ze které značka / logo vzniklo</span></div>
           <p class="ph-text ph-text--lg" style="align-self:center"><span class="ph-tag">Odstavec</span>Příběh vzniku značky nebo jejího loga: odkud přišla inspirace a co symbolizuje. Max. 150 slov.</p>
@@ -166,7 +245,7 @@
     <section class="slide slide--secondary" aria-label="Předěl 02 Verbální identita">
       <div class="divider">
         <h2 class="divider__title">Verbální identita</h2>
-        <p class="ph-text divider__lead"><span class="ph-tag">Perex</span>Jak značka mluví: claim, tón a slova, která používáme.</p>
+        <p class="ph-text divider__lead"><span class="ph-tag">Perex</span>Jak značka mluví: claim, hlas, tón a slova, která používáme.</p>
         <svg class="divider__num" viewBox="0 0 1000 560" aria-hidden="true"><text x="1010" y="640" text-anchor="end">02</text></svg>
         <span class="divider__meta">Brand Guide · [Značka]</span>
       </div>
@@ -176,11 +255,11 @@
       <div class="frame">
         <div class="runhead"><span>Brand Guide</span><span>[Značka]</span><span>02 Verbální identita</span></div>
         <div class="stage center"><p class="cover__title" style="text-align:center">[Claim značky.]</p></div>
-        <div class="foot"><h2 class="slide__title">Claim</h2><p class="ph-text">Význam claimu, kdy se používá s logem a kdy samostatně. Pokud je dynamický, pravidla tvorby variant (racionální / aspirační / kampaňové).</p></div>
+        <div class="foot"><h2 class="slide__title">Claim</h2><p class="ph-text">Význam claimu, kdy se používá s logem a kdy samostatně. Pravidla tvorby variant (racionální / aspirační / kampaňové).</p></div>
       </div>
     </section>
 
-    <section class="slide" aria-label="Tone of voice">
+    <section class="slide" aria-label="Hlas značky">
       <div class="frame">
         <div class="runhead"><span>Brand Guide</span><span>[Značka]</span><span>02 Verbální identita</span></div>
         <div class="stage cols-3 middle">
@@ -188,18 +267,97 @@
           <div class="pair"><span class="label">02</span><h3 class="slide__sub">[Princip 2]</h3><div class="pair__row"><p class="ph-text"><strong>Jsme</strong><br>Popiš vlastnost.</p><p class="ph-text"><strong>Nejsme</strong><br>Její přehnaná podoba.</p></div></div>
           <div class="pair"><span class="label">03</span><h3 class="slide__sub">[Princip 3]</h3><div class="pair__row"><p class="ph-text"><strong>Jsme</strong><br>Popiš vlastnost.</p><p class="ph-text"><strong>Nejsme</strong><br>Její přehnaná podoba.</p></div></div>
         </div>
-        <div class="foot"><h2 class="slide__title">Tone of voice</h2><p class="ph-text">3–4 principy, jak značka mluví. Hlas zůstává stejný, tón se přizpůsobuje kanálu.</p></div>
+        <div class="foot"><h2 class="slide__title">Hlas značky</h2><p class="ph-text">Hlas (co říkáme) je stálý, tón (jak to říkáme) se mění podle kanálu. 3–4 principy.</p></div>
       </div>
     </section>
 
-    <section class="slide" aria-label="Tone of voice v praxi">
+    <section class="slide" aria-label="Škály a příklady hlasu">
       <div class="frame">
         <div class="runhead"><span>Brand Guide</span><span>[Značka]</span><span>02 Verbální identita</span></div>
         <div class="stage cols-2">
-          <div class="card"><span class="verdict"><span class="verdict__icon"><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg></span>Správně</span><p class="ph-text ph-text--lg">Ukázková věta, která naplňuje tón značky.</p></div>
-          <div class="card"><span class="verdict"><span class="verdict__icon"><svg class="icon" aria-hidden="true"><use href="#i-x"/></svg></span>Nesprávně</span><p class="ph-text ph-text--lg">Stejná myšlenka napsaná mimo tón značky.</p></div>
+          <div class="tone-scales">
+            <div class="tone-scale"><span>vážný</span><ol><li></li><li></li><li></li><li class="is-set"></li><li></li><li></li><li></li></ol><span>hravý</span></div>
+            <div class="tone-scale"><span>formální</span><ol><li></li><li></li><li></li><li class="is-set"></li><li></li><li></li><li></li></ol><span>neformální</span></div>
+            <div class="tone-scale"><span>zdrženlivý</span><ol><li></li><li></li><li></li><li class="is-set"></li><li></li><li></li><li></li></ol><span>nadšený</span></div>
+            <div class="tone-scale"><span>odborný</span><ol><li></li><li></li><li></li><li class="is-set"></li><li></li><li></li><li></li></ol><span>lidový</span></div>
+          </div>
+          <div class="stage rows-2">
+            <div class="card"><span class="verdict"><span class="verdict__icon"><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg></span>Správně</span><p class="ph-text ph-text--lg">Ukázková věta, která naplňuje hlas značky.</p></div>
+            <div class="card"><span class="verdict"><span class="verdict__icon"><svg class="icon" aria-hidden="true"><use href="#i-x"/></svg></span>Nesprávně</span><p class="ph-text ph-text--lg">Stejná myšlenka napsaná mimo hlas značky.</p></div>
+          </div>
         </div>
-        <div class="foot"><h2 class="slide__title">Tone of voice v praxi</h2><p class="ph-text">Přidej 2–3 dvojice příkladů z reálných kanálů (web, sociální sítě, zákaznická podpora).</p></div>
+        <div class="foot"><h2 class="slide__title">Škály a příklady</h2><p class="ph-text">Pozice značky na škálách −3 až +3 a dvojice příkladů z reálných textů značky.</p></div>
+      </div>
+    </section>
+
+    <section class="slide" aria-label="Tón podle kanálu">
+      <div class="frame">
+        <div class="runhead"><span>Brand Guide</span><span>[Značka]</span><span>02 Verbální identita</span></div>
+        <div class="stage" style="align-content:start">
+          <table class="table">
+            <thead><tr><th>Kanál</th><th>Tón</th><th>Oslovení</th><th>Ukázka</th></tr></thead>
+            <tbody>
+              <tr><td>Web a kampaně</td><td>[sebevědomý, inspirativní]</td><td>[—]</td><td>[věta]</td></tr>
+              <tr><td>Sociální sítě</td><td>[uvolněný, rychlý]</td><td>[—]</td><td>[věta]</td></tr>
+              <tr><td>Produkt a aplikace</td><td>[jasný, přímý, praktický]</td><td>[—]</td><td>[věta]</td></tr>
+              <tr><td>Zákaznická podpora</td><td>[klidný, empatický]</td><td>[—]</td><td>[věta]</td></tr>
+              <tr><td>Krizová komunikace</td><td>[věcný, bez humoru]</td><td>[—]</td><td>[věta]</td></tr>
+              <tr><td>HR a nábor</td><td>[otevřený, lidský]</td><td>[—]</td><td>[věta]</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="foot"><h2 class="slide__title">Tón podle kanálu</h2><p class="ph-text">Hlas zůstává, tón se přizpůsobuje kanálu a situaci.</p></div>
+      </div>
+    </section>
+
+    <section class="slide slide--light" aria-label="Messaging a boilerplate">
+      <div class="frame">
+        <div class="runhead"><span>Brand Guide</span><span>[Značka]</span><span>02 Verbální identita</span></div>
+        <div class="stage cols-2" style="align-content:start">
+          <div style="display:grid; gap:1cqw; align-content:start">
+            <span class="label">Messagingové pilíře</span>
+            <ul class="ph-list">
+              <li><strong>Pilíř 1:</strong> hlavní sdělení + 2–3 důkazy.</li>
+              <li><strong>Pilíř 2:</strong> hlavní sdělení + 2–3 důkazy.</li>
+              <li><strong>Pilíř 3:</strong> hlavní sdělení + 2–3 důkazy.</li>
+            </ul>
+          </div>
+          <table class="table">
+            <thead><tr><th>Délka</th><th>Použití</th></tr></thead>
+            <tbody>
+              <tr><td>1 věta</td><td>Bio na sítích, patička, podpis</td></tr>
+              <tr><td>cca 50 slov</td><td>Elevator pitch, profil u partnera</td></tr>
+              <tr><td>cca 100 slov</td><td>Tiskové zprávy, web O nás</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="foot"><h2 class="slide__title">Messaging a boilerplate</h2><p class="ph-text">Plné texty boilerplatu jsou ve web manuálu a v tiskovém kitu.</p></div>
+      </div>
+    </section>
+
+    <section class="slide" aria-label="UX writing a pojmenování">
+      <div class="frame">
+        <div class="runhead"><span>Brand Guide</span><span>[Značka]</span><span>02 Verbální identita</span></div>
+        <div class="stage cols-2-1" style="align-content:start">
+          <table class="table">
+            <thead><tr><th>Prvek</th><th>Pravidlo</th><th>Správně</th></tr></thead>
+            <tbody>
+              <tr><td>Tlačítko</td><td>Sloveso, co se stane. Max. 3 slova.</td><td>[Uložit změny]</td></tr>
+              <tr><td>Chyba</td><td>Co se stalo + jak to opravit.</td><td>[Heslo musí mít aspoň 8 znaků.]</td></tr>
+              <tr><td>Prázdný stav</td><td>Proč je prázdno + první krok.</td><td>[Přidejte první projekt.]</td></tr>
+              <tr><td>Potvrzení</td><td>Co se povedlo, co dál.</td><td>[Objednávka odeslána.]</td></tr>
+            </tbody>
+          </table>
+          <div style="display:grid; gap:1cqw; align-content:start">
+            <span class="label">Pojmenování</span>
+            <ul class="ph-list">
+              <li>Zápis a skloňování názvu značky.</li>
+              <li>Systém názvů produktů a tarifů.</li>
+              <li>Kde se uvádí ® / ™.</li>
+            </ul>
+          </div>
+        </div>
+        <div class="foot"><h2 class="slide__title">UX writing a naming</h2><p class="ph-text">V rozhraní má jasnost přednost před vtipem.</p></div>
       </div>
     </section>
 
@@ -214,11 +372,11 @@
               <tr><td>Název značky</td><td>Přesný zápis a skloňování</td></tr>
               <tr><td>Čísla a měna</td><td>Mezery, zápis měny, procenta</td></tr>
               <tr><td>Datum a čas</td><td>Formát</td></tr>
-              <tr><td>Nadpisy</td><td>Velká písmena, tečka na konci</td></tr>
+              <tr><td>Inkluzivní jazyk</td><td>Oslovení, rod, náhrady výrazů</td></tr>
             </tbody>
           </table>
           <table class="table">
-            <thead><tr><th>Používáme</th><th>Nepoužíváme</th></tr></thead>
+            <thead><tr><th>Používáme</th><th>Neříkáme</th></tr></thead>
             <tbody>
               <tr><td>[preferované slovo]</td><td>[nevhodné slovo]</td></tr>
               <tr><td>[preferované slovo]</td><td>[nevhodné slovo]</td></tr>
@@ -227,7 +385,7 @@
             </tbody>
           </table>
         </div>
-        <div class="foot"><h2 class="slide__title">Gramatika a slovník</h2><p class="ph-text">Stylová pravidla a preferovaná terminologie, aby všechny týmy psaly jednotně.</p></div>
+        <div class="foot"><h2 class="slide__title">Gramatika a slovník</h2><p class="ph-text">Stylová pravidla a terminologie, aby všechny týmy psaly jednotně.</p></div>
       </div>
     </section>
 
@@ -245,7 +403,7 @@
       <div class="frame">
         <div class="runhead"><span>Brand Guide</span><span>[Značka]</span><span>03 Logo</span></div>
         <div class="stage center"><div class="ph" style="width:46%; height:50%"><span class="ph__label"><span class="ph-tag">Logo</span>Primární logo na bílém pozadí, velké a vycentrované</span></div></div>
-        <div class="foot"><h2 class="slide__title">Primární logo</h2><p class="ph-text">Z čeho se logo skládá, co symbolizuje a proč je výchozí volbou pro většinu aplikací.</p></div>
+        <div class="foot"><h2 class="slide__title">Primární logo</h2><p class="ph-text">Z čeho se logo skládá, co symbolizuje a na jaké mřížce je postavené.</p></div>
       </div>
     </section>
 
@@ -253,11 +411,11 @@
       <div class="frame">
         <div class="runhead"><span>Brand Guide</span><span>[Značka]</span><span>03 Logo</span></div>
         <div class="stage cols-3">
-          <div class="cell"><div class="ph"><span class="ph__label">Primární logo (horizontální)</span></div><p class="ph-text"><strong>Primární.</strong> Výchozí volba.</p></div>
-          <div class="cell"><div class="ph"><span class="ph__label">Sekundární logo: symbol / monogram</span></div><p class="ph-text"><strong>Sekundární.</strong> Malé formáty: favicon, avatar.</p></div>
-          <div class="cell"><div class="ph"><span class="ph__label">Terciální logo s deskriptorem / claimem</span></div><p class="ph-text"><strong>Terciální.</strong> Když je potřeba doplnit obor.</p></div>
+          <div class="cell"><div class="ph"><span class="ph__label">Primární logo (horizontální)</span></div><p class="ph-text"><strong>Primární.</strong> Výchozí volba, dost místa na šířku.</p></div>
+          <div class="cell"><div class="ph"><span class="ph__label">Sekundární logo: symbol / monogram</span></div><p class="ph-text"><strong>Symbol.</strong> Malý prostor, mřížka log, favicon, avatar.</p></div>
+          <div class="cell"><div class="ph"><span class="ph__label">Logo s deskriptorem / claimem</span></div><p class="ph-text"><strong>S deskriptorem.</strong> První kontakt, veletrh, nový trh.</p></div>
         </div>
-        <div class="foot"><h2 class="slide__title">Varianty loga</h2><p class="ph-text">Hierarchie variant: primární je výchozí, ostatní jen tam, kde primární nefunguje.</p></div>
+        <div class="foot"><h2 class="slide__title">Varianty a kdy je použít</h2><p class="ph-text">Primární je výchozí, ostatní jen tam, kde primární nefunguje.</p></div>
       </div>
     </section>
 
@@ -267,7 +425,7 @@
         <div class="stage cols-3">
           <div class="cell"><div class="ph"><span class="ph__label">Plnobarevné logo na bílé</span></div><p class="ph-text"><strong>Plnobarevná</strong> pro světlá pozadí.</p></div>
           <div class="cell"><div class="ph tile--primary"><span class="ph__label">Inverzní (bílé) logo na primární barvě</span></div><p class="ph-text"><strong>Inverzní</strong> pro tmavá a fotografická pozadí.</p></div>
-          <div class="cell"><div class="ph"><span class="ph__label">Monochromatické (černé) logo</span></div><p class="ph-text"><strong>Monochromatická</strong> pro jednobarevný tisk a ražbu.</p></div>
+          <div class="cell"><div class="ph"><span class="ph__label">Monochromatické (černé) logo</span></div><p class="ph-text"><strong>Monochromatická</strong> pro jednobarevný tisk, ražbu, výšivku.</p></div>
         </div>
         <div class="foot"><h2 class="slide__title">Barevné verze</h2><p class="ph-text">Kdy použít kterou verzi. Pro každou uveď pozitiv i negativ.</p></div>
       </div>
@@ -277,18 +435,40 @@
       <div class="frame">
         <div class="runhead"><span>Brand Guide</span><span>[Značka]</span><span>03 Logo</span></div>
         <div class="stage center"><div class="clearspace"><div class="ph"><span class="ph__label">Logo</span></div></div></div>
-        <div class="foot"><h2 class="slide__title">Ochranná zóna</h2><p class="ph-text">Jednotka „x“ odvozená z prvku loga (např. výška písmene) a kolik „x“ musí zůstat volných kolem loga.</p></div>
+        <div class="foot"><h2 class="slide__title">Ochranná zóna</h2><p class="ph-text">Jednotka „x“ jako poměr části loga (např. výška písmene), takže roste s logem. Kolik „x“ zůstává volných.</p></div>
       </div>
     </section>
 
-    <section class="slide" aria-label="Minimální velikost">
+    <section class="slide" aria-label="Minimální velikost a responzivní logo">
       <div class="frame">
         <div class="runhead"><span>Brand Guide</span><span>[Značka]</span><span>03 Logo</span></div>
-        <div class="stage cols-2">
+        <div class="stage cols-3">
           <div class="cell"><div class="ph"><span class="ph__label">Logo v minimální tiskové velikosti s kótou</span></div><p class="ph-text"><strong>Tisk:</strong> minimální výška — mm</p></div>
           <div class="cell"><div class="ph"><span class="ph__label">Logo v minimální digitální velikosti s kótou</span></div><p class="ph-text"><strong>Digitál:</strong> minimální výška — px</p></div>
+          <div class="cell"><div class="ph"><span class="ph__label">Responzivní logo: stupně od plné verze po symbol</span></div><p class="ph-text"><strong>Responzivní:</strong> od jaké velikosti který stupeň.</p></div>
         </div>
-        <div class="foot"><h2 class="slide__title">Minimální velikost</h2><p class="ph-text">Pod tuto velikost se logo nepoužívá. Pro malé formáty použij sekundární symbol.</p></div>
+        <div class="foot"><h2 class="slide__title">Velikost a responzivní logo</h2><p class="ph-text">Pod minimální velikost se logo nepoužívá. Pro malé formáty použij symbol.</p></div>
+      </div>
+    </section>
+
+    <section class="slide slide--light" aria-label="Ikony a malé formáty">
+      <div class="frame">
+        <div class="runhead"><span>Brand Guide</span><span>[Značka]</span><span>03 Logo</span></div>
+        <div class="stage cols-1-2" style="align-content:start">
+          <div class="ph"><span class="ph__label">Symbol jako favicon, ikona aplikace a avatar v kruhovém ořezu</span></div>
+          <table class="table">
+            <thead><tr><th>Použití</th><th>Rozměr</th><th>Formát</th></tr></thead>
+            <tbody>
+              <tr><td>Favicon</td><td>16, 32, 48 px + vektor</td><td>ICO, SVG</td></tr>
+              <tr><td>Apple touch icon</td><td>180 × 180 px</td><td>PNG bez průhlednosti</td></tr>
+              <tr><td>PWA / Android</td><td>192 a 512 px, maskable</td><td>PNG</td></tr>
+              <tr><td>Ikona aplikace iOS</td><td>1024 × 1024 px</td><td>PNG</td></tr>
+              <tr><td>Avatar sociálních sítí</td><td>min. 400 × 400 px</td><td>PNG, JPG</td></tr>
+              <tr><td>Sdílecí obrázek (OG)</td><td>1200 × 630 px</td><td>PNG, JPG</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="foot"><h2 class="slide__title">Ikony a malé formáty</h2><p class="ph-text">Každý formát zkontroluj v reálném prostředí, i v tmavém režimu.</p></div>
       </div>
     </section>
 
@@ -311,12 +491,12 @@
         <div class="stage cols-3 rows-2">
           <div class="cell"><div class="ph"><span class="ph__label">Roztažené / zúžené logo</span></div><span class="verdict"><span class="verdict__icon"><svg class="icon" aria-hidden="true"><use href="#i-x"/></svg></span>Nedeformuj</span></div>
           <div class="cell"><div class="ph"><span class="ph__label">Logo v nebrandových barvách</span></div><span class="verdict"><span class="verdict__icon"><svg class="icon" aria-hidden="true"><use href="#i-x"/></svg></span>Neměň barvy</span></div>
-          <div class="cell"><div class="ph"><span class="ph__label">Otočené logo</span></div><span class="verdict"><span class="verdict__icon"><svg class="icon" aria-hidden="true"><use href="#i-x"/></svg></span>Neotáčej</span></div>
           <div class="cell"><div class="ph"><span class="ph__label">Logo se stínem, obrysem, přechodem</span></div><span class="verdict"><span class="verdict__icon"><svg class="icon" aria-hidden="true"><use href="#i-x"/></svg></span>Nepřidávej efekty</span></div>
-          <div class="cell"><div class="ph"><span class="ph__label">Logo na neklidném pozadí s nízkým kontrastem</span></div><span class="verdict"><span class="verdict__icon"><svg class="icon" aria-hidden="true"><use href="#i-x"/></svg></span>Nízký kontrast</span></div>
-          <div class="cell"><div class="ph"><span class="ph__label">Přeskládané části loga</span></div><span class="verdict"><span class="verdict__icon"><svg class="icon" aria-hidden="true"><use href="#i-x"/></svg></span>Neměň skladbu</span></div>
+          <div class="cell"><div class="ph"><span class="ph__label">Logo na pozadí s nízkým kontrastem</span></div><span class="verdict"><span class="verdict__icon"><svg class="icon" aria-hidden="true"><use href="#i-x"/></svg></span>Nízký kontrast</span></div>
+          <div class="cell"><div class="ph"><span class="ph__label">Logo místo slova ve větě</span></div><span class="verdict"><span class="verdict__icon"><svg class="icon" aria-hidden="true"><use href="#i-x"/></svg></span>Nepoužívej ve větě</span></div>
+          <div class="cell"><div class="ph"><span class="ph__label">Obkreslené nebo AI verze loga</span></div><span class="verdict"><span class="verdict__icon"><svg class="icon" aria-hidden="true"><use href="#i-x"/></svg></span>Nepřekresluj</span></div>
         </div>
-        <div class="foot"><h2 class="slide__title">Nesprávné použití</h2><p class="ph-text">Nejčastější chyby. Vždy používej originální datové soubory loga.</p></div>
+        <div class="foot"><h2 class="slide__title">Nesprávné použití</h2><p class="ph-text">Dále: neotáčej, neměň skladbu, nedělej z loga vzor. Vždy originální soubory.</p></div>
       </div>
     </section>
 
@@ -324,41 +504,122 @@
     <section class="slide slide--primary" aria-label="Předěl 04 Barvy">
       <div class="divider">
         <h2 class="divider__title">Barvy</h2>
-        <p class="ph-text divider__lead"><span class="ph-tag">Perex</span>Role barev ve značce. Tisk: CMYK / Pantone, obrazovka: HEX / RGB.</p>
+        <p class="ph-text divider__lead"><span class="ph-tag">Perex</span>Role barev ve značce. Tisk: CMYK / Pantone, obrazovka: HEX / RGB / OKLCH.</p>
         <svg class="divider__num" viewBox="0 0 1000 560" aria-hidden="true"><text x="1010" y="640" text-anchor="end">04</text></svg>
         <span class="divider__meta">Brand Guide · [Značka]</span>
       </div>
     </section>
 
-    <!-- Plné plochy barev (styl Nine Group) — barvy se berou z brand.css -->
+    <!-- Plné plochy barev — barvy se berou z brand.css, HEX a RGB doplní js/tokens.js -->
     <section class="slide" aria-label="Primární paleta">
       <div class="color-blocks">
         <div class="color-block color-block--hero c-primary">
           <h2 class="slide__title">Primární paleta</h2>
           <div>
             <p class="color-block__name">[Název primární barvy]</p>
-            <dl><dt>HEX</dt><dd>#——————</dd><dt>RGB</dt><dd>— / — / —</dd><dt>CMYK</dt><dd>— / — / — / —</dd><dt>Pantone</dt><dd>—</dd><dt>RAL</dt><dd>—</dd></dl>
+            <dl><dt>HEX</dt><dd data-token-hex="--brand-primary">—</dd><dt>RGB</dt><dd data-token-rgb="--brand-primary">—</dd><dt>CMYK C / U</dt><dd>— / —</dd><dt>Pantone C / U</dt><dd>— / —</dd><dt>RAL</dt><dd>—</dd></dl>
           </div>
         </div>
-        <div class="color-block c-secondary-2"><p class="color-block__name">[Název barvy]</p><dl><dt>HEX</dt><dd>—</dd><dt>RGB</dt><dd>—</dd><dt>CMYK</dt><dd>—</dd></dl></div>
-        <div class="color-block c-secondary-1"><p class="color-block__name">[Název barvy]</p><dl><dt>HEX</dt><dd>—</dd><dt>RGB</dt><dd>—</dd><dt>CMYK</dt><dd>—</dd></dl></div>
-        <div class="color-block c-primary-2"><p class="color-block__name">[Název barvy]</p><dl><dt>HEX</dt><dd>—</dd><dt>RGB</dt><dd>—</dd><dt>CMYK</dt><dd>—</dd></dl></div>
+        <div class="color-block c-secondary-2"><p class="color-block__name">[Název barvy]</p><dl><dt>HEX</dt><dd data-token-hex="--brand-secondary-2">—</dd><dt>CMYK</dt><dd>—</dd><dt>Pantone</dt><dd>—</dd></dl></div>
+        <div class="color-block c-secondary-1"><p class="color-block__name">[Název barvy]</p><dl><dt>HEX</dt><dd data-token-hex="--brand-secondary-1">—</dd><dt>CMYK</dt><dd>—</dd><dt>Pantone</dt><dd>—</dd></dl></div>
+        <div class="color-block c-primary-2"><p class="color-block__name">[Název barvy]</p><dl><dt>HEX</dt><dd data-token-hex="--brand-primary-2">—</dd><dt>CMYK</dt><dd>—</dd><dt>Pantone</dt><dd>—</dd></dl></div>
       </div>
     </section>
 
-    <!-- Karty s odstíny 50 % / 25 % (styl MILES) -->
     <section class="slide" aria-label="Kompletní paleta">
       <div class="frame">
         <div class="runhead"><span>Brand Guide</span><span>[Značka]</span><span>04 Barvy</span></div>
         <div class="stage cols-6">
-          <div class="swatch-card c-primary"><div class="swatch-card__main"><strong>[Primární]</strong><span>HEX — · RGB — · CMYK — · Pantone —</span></div><div class="swatch-card__t50">50 %</div><div class="swatch-card__t25">25 %</div></div>
-          <div class="swatch-card c-primary-2"><div class="swatch-card__main"><strong>[Primární 2]</strong><span>HEX — · RGB — · CMYK —</span></div><div class="swatch-card__t50">50 %</div><div class="swatch-card__t25">25 %</div></div>
-          <div class="swatch-card c-secondary-1"><div class="swatch-card__main"><strong>[Sekundární 1]</strong><span>HEX — · RGB — · CMYK —</span></div><div class="swatch-card__t50">50 %</div><div class="swatch-card__t25">25 %</div></div>
-          <div class="swatch-card c-secondary-2"><div class="swatch-card__main"><strong>[Sekundární 2]</strong><span>HEX — · RGB — · CMYK —</span></div><div class="swatch-card__t50">50 %</div><div class="swatch-card__t25">25 %</div></div>
-          <div class="swatch-card c-neutral-dark"><div class="swatch-card__main"><strong>[Neutrální tmavá]</strong><span>HEX — · RGB — · CMYK —</span></div><div class="swatch-card__t50">50 %</div><div class="swatch-card__t25">25 %</div></div>
-          <div class="swatch-card c-neutral-light" style="box-shadow: inset 0 0 0 0.06cqw var(--hair)"><div class="swatch-card__main"><strong>[Neutrální světlá]</strong><span>HEX — · RGB — · CMYK —</span></div><div class="swatch-card__t50">50 %</div><div class="swatch-card__t25">25 %</div></div>
+          <div class="swatch-card c-primary"><div class="swatch-card__main"><strong>[Primární]</strong><span data-token-hex="--brand-primary">—</span></div><div class="swatch-card__t50">50 %</div><div class="swatch-card__t25">25 %</div></div>
+          <div class="swatch-card c-primary-2"><div class="swatch-card__main"><strong>[Primární 2]</strong><span data-token-hex="--brand-primary-2">—</span></div><div class="swatch-card__t50">50 %</div><div class="swatch-card__t25">25 %</div></div>
+          <div class="swatch-card c-secondary-1"><div class="swatch-card__main"><strong>[Sekundární 1]</strong><span data-token-hex="--brand-secondary-1">—</span></div><div class="swatch-card__t50">50 %</div><div class="swatch-card__t25">25 %</div></div>
+          <div class="swatch-card c-secondary-2"><div class="swatch-card__main"><strong>[Sekundární 2]</strong><span data-token-hex="--brand-secondary-2">—</span></div><div class="swatch-card__t50">50 %</div><div class="swatch-card__t25">25 %</div></div>
+          <div class="swatch-card c-neutral-dark"><div class="swatch-card__main"><strong>[Neutrální tmavá]</strong><span data-token-hex="--brand-neutral-dark">—</span></div><div class="swatch-card__t50">50 %</div><div class="swatch-card__t25">25 %</div></div>
+          <div class="swatch-card c-neutral-light" style="box-shadow: inset 0 0 0 0.06cqw var(--hair)"><div class="swatch-card__main"><strong>[Neutrální světlá]</strong><span data-token-hex="--brand-neutral-light">—</span></div><div class="swatch-card__t50">50 %</div><div class="swatch-card__t25">25 %</div></div>
         </div>
-        <div class="foot"><h2 class="slide__title">Barevná paleta</h2><p class="ph-text">Sekundární a neutrální barvy a jejich odstíny. Kdy je použít: akcenty, grafy, pozadí, text.</p></div>
+        <div class="foot"><h2 class="slide__title">Barevná paleta</h2><p class="ph-text">Sekundární a neutrální barvy. Kdy je použít: akcenty, grafy, pozadí, text.</p></div>
+      </div>
+    </section>
+
+    <section class="slide" aria-label="Škály odstínů">
+      <div class="frame">
+        <div class="runhead"><span>Brand Guide</span><span>[Značka]</span><span>04 Barvy</span></div>
+        <div class="stage rows-2">
+          <div class="scale-row">
+            <div style="--c: var(--brand-primary-50)"><strong>50</strong><span data-token-hex="--brand-primary-50">—</span></div>
+            <div style="--c: var(--brand-primary-100)"><strong>100</strong><span data-token-hex="--brand-primary-100">—</span></div>
+            <div style="--c: var(--brand-primary-200)"><strong>200</strong><span data-token-hex="--brand-primary-200">—</span></div>
+            <div style="--c: var(--brand-primary-300)"><strong>300</strong><span data-token-hex="--brand-primary-300">—</span></div>
+            <div style="--c: var(--brand-primary-400)"><strong>400</strong><span data-token-hex="--brand-primary-400">—</span></div>
+            <div style="--c: var(--brand-primary-500)"><strong>500</strong><span data-token-hex="--brand-primary-500">—</span></div>
+            <div style="--c: var(--brand-primary-600)"><strong>600</strong><span data-token-hex="--brand-primary-600">—</span></div>
+            <div style="--c: var(--brand-primary-700)"><strong>700</strong><span data-token-hex="--brand-primary-700">—</span></div>
+            <div style="--c: var(--brand-primary-800)"><strong>800</strong><span data-token-hex="--brand-primary-800">—</span></div>
+            <div style="--c: var(--brand-primary-900)"><strong>900</strong><span data-token-hex="--brand-primary-900">—</span></div>
+          </div>
+          <div class="scale-row">
+            <div style="--c: var(--brand-neutral-50)"><strong>50</strong><span data-token-hex="--brand-neutral-50">—</span></div>
+            <div style="--c: var(--brand-neutral-100)"><strong>100</strong><span data-token-hex="--brand-neutral-100">—</span></div>
+            <div style="--c: var(--brand-neutral-200)"><strong>200</strong><span data-token-hex="--brand-neutral-200">—</span></div>
+            <div style="--c: var(--brand-neutral-300)"><strong>300</strong><span data-token-hex="--brand-neutral-300">—</span></div>
+            <div style="--c: var(--brand-neutral-400)"><strong>400</strong><span data-token-hex="--brand-neutral-400">—</span></div>
+            <div style="--c: var(--brand-neutral-500)"><strong>500</strong><span data-token-hex="--brand-neutral-500">—</span></div>
+            <div style="--c: var(--brand-neutral-600)"><strong>600</strong><span data-token-hex="--brand-neutral-600">—</span></div>
+            <div style="--c: var(--brand-neutral-700)"><strong>700</strong><span data-token-hex="--brand-neutral-700">—</span></div>
+            <div style="--c: var(--brand-neutral-800)"><strong>800</strong><span data-token-hex="--brand-neutral-800">—</span></div>
+            <div style="--c: var(--brand-neutral-900)"><strong>900</strong><span data-token-hex="--brand-neutral-900">—</span></div>
+          </div>
+        </div>
+        <div class="foot"><h2 class="slide__title">Škály odstínů</h2><p class="ph-text">Primární a neutrální škála 50–900 pro UI, grafy a plochy. 500 = základní barva.</p></div>
+      </div>
+    </section>
+
+    <section class="slide slide--light" aria-label="Stavové barvy a tmavý režim">
+      <div class="frame">
+        <div class="runhead"><span>Brand Guide</span><span>[Značka]</span><span>04 Barvy</span></div>
+        <div class="stage cols-2">
+          <div class="scale-row" style="--steps: 4">
+            <div style="--c: var(--brand-success)"><strong>Úspěch</strong><span data-token-hex="--brand-success">—</span></div>
+            <div style="--c: var(--brand-warning)"><strong>Varování</strong><span data-token-hex="--brand-warning">—</span></div>
+            <div style="--c: var(--brand-error)"><strong>Chyba</strong><span data-token-hex="--brand-error">—</span></div>
+            <div style="--c: var(--brand-info)"><strong>Informace</strong><span data-token-hex="--brand-info">—</span></div>
+          </div>
+          <div style="display:grid; gap:1cqw; align-content:center; padding-left:2cqw">
+            <span class="label">Tmavý režim</span>
+            <ul class="ph-list">
+              <li>Pozadí je nejtmavší neutrální odstín značky, ne čistá černá.</li>
+              <li>Brandové barvy zesvětlit, aby splnily kontrast.</li>
+              <li>Stíny zesílit nebo nahradit světlejší plochou.</li>
+              <li>Logo vždy v inverzní verzi.</li>
+            </ul>
+          </div>
+        </div>
+        <div class="foot"><h2 class="slide__title">Stavové barvy a tmavý režim</h2><p class="ph-text">Stavové barvy nesou význam a nesmí se plést s brandovou barvou.</p></div>
+      </div>
+    </section>
+
+    <section class="slide" aria-label="Barvy v grafech">
+      <div class="frame">
+        <div class="runhead"><span>Brand Guide</span><span>[Značka]</span><span>04 Barvy</span></div>
+        <div class="stage cols-2">
+          <div class="stage rows-2">
+            <div class="scale-row" style="--steps: 5">
+              <div style="--c: var(--brand-primary)"><strong>1</strong><span data-token-hex="--brand-primary">—</span></div>
+              <div style="--c: var(--brand-primary-2)"><strong>2</strong><span data-token-hex="--brand-primary-2">—</span></div>
+              <div style="--c: var(--brand-secondary-1)"><strong>3</strong><span data-token-hex="--brand-secondary-1">—</span></div>
+              <div style="--c: var(--brand-primary-300)"><strong>4</strong><span data-token-hex="--brand-primary-300">—</span></div>
+              <div style="--c: var(--brand-neutral-500)"><strong>5</strong><span data-token-hex="--brand-neutral-500">—</span></div>
+            </div>
+            <div class="ph"><span class="ph__label">Ukázkový graf: hlavní řada v brandové barvě, ostatní šedé</span></div>
+          </div>
+          <ul class="ph-list" style="align-self:center; padding-left:2cqw">
+            <li>Jedna hlavní řada: brandová barva, ostatní šedé.</li>
+            <li>Sekvenční data: škála primární barvy 100–900.</li>
+            <li>Divergentní data: dvě barvy, neutrální střed.</li>
+            <li>Rozlišitelné i pro barvoslepé; popisky přímo u dat.</li>
+          </ul>
+        </div>
+        <div class="foot"><h2 class="slide__title">Barvy v grafech</h2><p class="ph-text">Kategorická paleta v pořadí použití. Barva nikdy není jediným nositelem informace.</p></div>
       </div>
     </section>
 
@@ -372,15 +633,29 @@
             <div class="c-secondary-1" style="flex:10">10 %</div>
             <div class="c-primary-2" style="flex:5">5 %</div>
           </div>
-          <table class="table">
+          <table class="table table--compact">
             <thead><tr><th>Text</th><th>Pozadí</th><th>Kontrast</th><th>Použití</th></tr></thead>
             <tbody>
-              <tr><td>[barva]</td><td>[barva]</td><td>— : 1</td><td>Běžný text / jen velký text / nepoužívat</td></tr>
-              <tr><td>[barva]</td><td>[barva]</td><td>— : 1</td><td>Běžný text / jen velký text / nepoužívat</td></tr>
+              <tr><td data-token="--brand-on-primary">—</td><td data-token="--brand-primary">—</td><td data-contrast="--brand-on-primary --brand-primary">—</td><td>Text na primární barvě</td></tr>
+              <tr><td data-token="--brand-neutral-dark">—</td><td data-token="--brand-neutral-light">—</td><td data-contrast="--brand-neutral-dark --brand-neutral-light">—</td><td>Text na světlé ploše</td></tr>
+              <tr><td data-token="--brand-primary">—</td><td data-token="--ui-background">—</td><td data-contrast="--brand-primary --ui-background">—</td><td>Primární jako text na bílé</td></tr>
+              <tr><td data-token="--brand-primary-2">—</td><td data-token="--ui-background">—</td><td data-contrast="--brand-primary-2 --ui-background" data-large>—</td><td>Jen velký text a grafika</td></tr>
             </tbody>
           </table>
         </div>
-        <div class="foot"><h2 class="slide__title">Poměr a kontrast</h2><p class="ph-text">Uprav poměry podle značky. Pro běžný text je minimum WCAG AA 4,5 : 1, pro velký text 3 : 1.</p></div>
+        <div class="foot"><h2 class="slide__title">Poměr a kontrast</h2><p class="ph-text">Kontrast se počítá z brand.css (WCAG 2.2). Běžný text min. 4,5 : 1, velký 3 : 1.</p></div>
+      </div>
+    </section>
+
+    <section class="slide" aria-label="Nesprávné použití barev">
+      <div class="frame">
+        <div class="runhead"><span>Brand Guide</span><span>[Značka]</span><span>04 Barvy</span></div>
+        <div class="stage cols-3">
+          <div class="cell"><div class="ph"><span class="ph__label">Kombinace s dostatečným kontrastem a dodrženým poměrem</span></div><span class="verdict"><span class="verdict__icon" style="background:var(--brand-do)"><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg></span>Správně</span></div>
+          <div class="cell"><div class="ph"><span class="ph__label">Text s nedostatečným kontrastem</span></div><span class="verdict"><span class="verdict__icon" style="background:var(--brand-dont)"><svg class="icon" aria-hidden="true"><use href="#i-x"/></svg></span>Nízký kontrast</span></div>
+          <div class="cell"><div class="ph"><span class="ph__label">Barvy mimo paletu nebo příliš mnoho barev</span></div><span class="verdict"><span class="verdict__icon" style="background:var(--brand-dont)"><svg class="icon" aria-hidden="true"><use href="#i-x"/></svg></span>Nebrandové barvy</span></div>
+        </div>
+        <div class="foot"><h2 class="slide__title">Nesprávné použití</h2><span></span></div>
       </div>
     </section>
 
@@ -412,7 +687,7 @@
       <div class="frame">
         <div class="runhead"><span>Brand Guide</span><span>[Značka]</span><span>05 Typografie</span></div>
         <div class="stage specimen specimen--body">
-          <p class="ph-text"><span class="label">[Název písma]</span><br><span class="ph-tag">Odstavec</span>Použití pro delší texty a UI, dostupné řezy, čitelnost v malých velikostech. Uveď i záložní systémové písmo (např. Arial).</p>
+          <p class="ph-text"><span class="label">[Název písma]</span><br><span class="ph-tag">Odstavec</span>Použití pro delší texty a UI, dostupné řezy, čitelnost v malých velikostech.</p>
           <div>
             <div class="specimen__glyph" aria-hidden="true">Aa</div>
             <p class="specimen__chars">AaBbCcDdEeFfGgHhIiJjKkLlMmNnOo PpQqRrSsTtUuVvWwXxYyZz 0123456789 ěščřžýáíéůú</p>
@@ -432,7 +707,53 @@
           <div><span class="label">Text · — pt · — %</span><span class="body">Běžný text odstavce v sekundárním písmu značky.</span></div>
           <div><span class="label">Popisek · — pt</span><span class="caption">Popisek, poznámka, zdroj</span></div>
         </div>
-        <div class="foot"><h2 class="slide__title">Hierarchie</h2><p class="ph-text">Doplň velikosti, řezy a řádkování. Pravidla sazby: zarovnání, délka řádku, zvýraznění.</p></div>
+        <div class="foot"><h2 class="slide__title">Hierarchie pro tisk</h2><p class="ph-text">Velikosti, řezy a řádkování pro tiskoviny. Škála pro web je v kapitole 09.</p></div>
+      </div>
+    </section>
+
+    <section class="slide slide--light" aria-label="Řezy, náhradní písma a licence">
+      <div class="frame">
+        <div class="runhead"><span>Brand Guide</span><span>[Značka]</span><span>05 Typografie</span></div>
+        <div class="stage cols-2" style="align-content:start">
+          <table class="table table--compact">
+            <thead><tr><th>Prostředí</th><th>Nadpisy</th><th>Text</th></tr></thead>
+            <tbody>
+              <tr><td>Web a aplikace</td><td>[brandové]</td><td>[brandové]</td></tr>
+              <tr><td>MS Office</td><td>[např. Arial Bold]</td><td>[Arial]</td></tr>
+              <tr><td>Google Workspace</td><td>[Google Font]</td><td>[—]</td></tr>
+              <tr><td>HTML e-mail</td><td>[systémové]</td><td>[Helvetica, Arial]</td></tr>
+              <tr><td>Nelatinková písma</td><td>[Noto Sans]</td><td>[—]</td></tr>
+            </tbody>
+          </table>
+          <table class="table table--compact">
+            <thead><tr><th>Řez</th><th>Úloha</th><th>Licence</th></tr></thead>
+            <tbody>
+              <tr><td>[Bold 700]</td><td>Display, H1–H2</td><td>[desktop / web / app]</td></tr>
+              <tr><td>[Semibold 600]</td><td>H3–H6, tlačítka</td><td>[—]</td></tr>
+              <tr><td>[Regular 400]</td><td>Text, UI</td><td>[—]</td></tr>
+              <tr><td>[Italic]</td><td>Citace, zvýraznění</td><td>[—]</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="foot"><h2 class="slide__title">Náhradní písma a licence</h2><p class="ph-text">Kdo licenci vlastní, kde ji rozšířit. Fonty se nesmí posílat dalším firmám.</p></div>
+      </div>
+    </section>
+
+    <section class="slide" aria-label="Sazba a nesprávné použití písma">
+      <div class="frame">
+        <div class="runhead"><span>Brand Guide</span><span>[Značka]</span><span>05 Typografie</span></div>
+        <div class="stage cols-4">
+          <ul class="ph-list" style="align-self:center">
+            <li>Zarovnání doleva.</li>
+            <li>Délka řádku 45–75 znaků.</li>
+            <li>Zvýraznění řezem, ne barvou.</li>
+            <li>Nezlomitelné mezery po předložkách, české uvozovky „“.</li>
+          </ul>
+          <div class="cell"><div class="ph"><span class="ph__label">Uměle zúžený / rozšířený text</span></div><span class="verdict"><span class="verdict__icon"><svg class="icon" aria-hidden="true"><use href="#i-x"/></svg></span>Nedeformuj</span></div>
+          <div class="cell"><div class="ph"><span class="ph__label">Kombinace s nebrandovým písmem</span></div><span class="verdict"><span class="verdict__icon"><svg class="icon" aria-hidden="true"><use href="#i-x"/></svg></span>Nemíchej fonty</span></div>
+          <div class="cell"><div class="ph"><span class="ph__label">Příliš mnoho řezů a velikostí</span></div><span class="verdict"><span class="verdict__icon"><svg class="icon" aria-hidden="true"><use href="#i-x"/></svg></span>Nepřeháněj</span></div>
+        </div>
+        <div class="foot"><h2 class="slide__title">Sazba a chyby</h2><span></span></div>
       </div>
     </section>
 
@@ -452,7 +773,30 @@
         <div class="stage">
           <div class="grid-demo" role="img" aria-label="Schéma 12sloupcového gridu"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
         </div>
-        <div class="foot"><h2 class="slide__title">Grid a okraje</h2><p class="ph-text">Počet sloupců, šířka mezer a okrajů pro tisk (A4, A5) a digitál. Základní jednotka spacingu.</p></div>
+        <div class="foot"><h2 class="slide__title">Grid a formáty</h2><p class="ph-text">Sloupce, mezery a okraje pro A4, prezentaci 16:9, web desktop a mobil.</p></div>
+      </div>
+    </section>
+
+    <section class="slide slide--light" aria-label="Spacing, breakpointy a zóny">
+      <div class="frame">
+        <div class="runhead"><span>Brand Guide</span><span>[Značka]</span><span>06 Kompozice</span></div>
+        <div class="stage cols-3">
+          <table class="table table--compact" style="align-self:start">
+            <thead><tr><th>Breakpoint</th><th>Od</th><th>Sloupce</th></tr></thead>
+            <tbody>
+              <tr><td>sm</td><td>640 px</td><td>4</td></tr>
+              <tr><td>md</td><td>768 px</td><td>8</td></tr>
+              <tr><td>lg</td><td>1024 px</td><td>12</td></tr>
+              <tr><td>xl</td><td>1280 px</td><td>12</td></tr>
+            </tbody>
+          </table>
+          <div style="display:grid; gap:1cqw; align-content:start">
+            <span class="label">Spacing</span>
+            <p class="ph-text">Základní jednotka: <strong data-token-raw="--ui-space">—</strong> (web), [5 mm] (tisk). Násobky 1, 2, 3, 4, 6, 8, 12.</p>
+          </div>
+          <div class="ph"><span class="ph__label">Spadávka 3 mm, bezpečná zóna tisku, bezpečné zóny stories 9:16</span></div>
+        </div>
+        <div class="foot"><h2 class="slide__title">Spacing a zóny</h2><p class="ph-text">Kolik prázdného prostoru značka potřebuje: vzdušně, nebo hutně?</p></div>
       </div>
     </section>
 
@@ -468,10 +812,10 @@
       </div>
     </section>
 
-    <!-- ======================= 07 OBRAZOVÝ STYL ======================= -->
-    <section class="slide slide--primary-2" aria-label="Předěl 07 Obrazový styl">
+    <!-- ======================= 07 VIZUÁLNÍ JAZYK ======================= -->
+    <section class="slide slide--primary-2" aria-label="Předěl 07 Vizuální jazyk">
       <div class="divider">
-        <h2 class="divider__title">Obrazový styl</h2>
+        <h2 class="divider__title">Vizuální jazyk</h2>
         <p class="ph-text divider__lead"><span class="ph-tag">Perex</span>Fotografie, ilustrace, ikony a grafické prvky.</p>
         <svg class="divider__num" viewBox="0 0 1000 560" aria-hidden="true"><text x="1010" y="640" text-anchor="end">07</text></svg>
         <span class="divider__meta">Brand Guide · [Značka]</span>
@@ -480,23 +824,19 @@
 
     <section class="slide" aria-label="Styl fotografií">
       <div class="frame">
-        <div class="runhead"><span>Brand Guide</span><span>[Značka]</span><span>07 Obrazový styl</span></div>
-        <div class="stage cols-2">
-          <p class="ph-text ph-text--lg" style="align-self:start"><span class="ph-tag">Odstavec</span>Co fotografie značky zobrazují a jakou atmosféru budují.</p>
-          <ul class="ph-list" style="align-self:start">
-            <li><strong>Obsah:</strong> lidé, prostředí, produkt, detail.</li>
-            <li><strong>Nálada:</strong> světlo, barevnost, autenticita.</li>
-            <li><strong>Kompozice:</strong> ořez, místo pro text a logo.</li>
-            <li><strong>Postprodukce:</strong> ladění, zrno, kontrast.</li>
-          </ul>
+        <div class="runhead"><span>Brand Guide</span><span>[Značka]</span><span>07 Vizuální jazyk</span></div>
+        <div class="stage cols-3" style="align-content:start">
+          <div style="display:grid; gap:1cqw"><span class="label">Brief: lidé a lifestyle</span><ul class="ph-list"><li>Casting, rozmanitost, skuteční lidé.</li><li>Nálada, světlo, barevnost.</li><li>Místo pro text a logo.</li></ul></div>
+          <div style="display:grid; gap:1cqw"><span class="label">Brief: produkt a detail</span><ul class="ph-list"><li>Pozadí, světlo, úhly, stín.</li><li>Packshot, v kontextu, detail.</li><li>Postprodukce a ladění.</li></ul></div>
+          <div style="display:grid; gap:1cqw"><span class="label">Tvrdá pravidla</span><ul class="ph-list"><li>Stock: [ano / ne].</li><li>Nikdy text přes tváře.</li><li>Lidé důstojně, ne jako rekvizita.</li><li>Žádné filtry mimo ladění.</li></ul></div>
         </div>
-        <div class="foot"><h2 class="slide__title">Styl fotografií</h2><span></span></div>
+        <div class="foot"><h2 class="slide__title">Styl fotografií</h2><p class="ph-text">Pokud značka fotí produkt i lidi, má dva samostatné briefy.</p></div>
       </div>
     </section>
 
     <section class="slide" aria-label="Ukázky fotografií">
       <div class="frame">
-        <div class="runhead"><span>Brand Guide</span><span>[Značka]</span><span>07 Obrazový styl</span></div>
+        <div class="runhead"><span>Brand Guide</span><span>[Značka]</span><span>07 Vizuální jazyk</span></div>
         <div class="stage cols-4 rows-2">
           <div class="ph" style="grid-row: span 2"><span class="ph__label">Lidé v přirozené situaci</span></div>
           <div class="ph"><span class="ph__label">Prostředí / místo</span></div>
@@ -505,119 +845,476 @@
           <div class="ph"><span class="ph__label">Interakce</span></div>
           <div class="ph"><span class="ph__label">Atmosféra</span></div>
         </div>
-        <div class="foot"><h2 class="slide__title">Ukázky fotografií</h2><p class="ph-text">Vyber fotky, které nejlépe reprezentují principy. Přidej i příklad nevhodné fotky (generický stock).</p></div>
+        <div class="foot"><h2 class="slide__title">Ukázky fotografií</h2><p class="ph-text">Fotky, které nejlépe reprezentují principy. Přidej i příklad nevhodné fotky.</p></div>
+      </div>
+    </section>
+
+    <section class="slide slide--light" aria-label="Práva, AI a alt text">
+      <div class="frame">
+        <div class="runhead"><span>Brand Guide</span><span>[Značka]</span><span>07 Vizuální jazyk</span></div>
+        <div class="stage cols-3 end">
+          <div class="card"><span class="label">Práva a kredity</span><p class="ph-text">Licence (rozsah, území, doba), kredit autora, souhlas s užitím podobizny.</p></div>
+          <div class="card"><span class="label">Obrazy generované AI</span><p class="ph-text">Kde je smíme použít, jak je označujeme, co je zakázáno (tváře, loga, klamavé zobrazení produktu).</p></div>
+          <div class="card"><span class="label">Alt text</span><p class="ph-text">Popisujeme podstatné pro sdělení. Dekorativní obrázky mají prázdný alt.</p></div>
+        </div>
+        <div class="foot"><h2 class="slide__title">Práva, AI a alt text</h2><span></span></div>
       </div>
     </section>
 
     <section class="slide" aria-label="Ilustrace a ikony">
       <div class="frame">
-        <div class="runhead"><span>Brand Guide</span><span>[Značka]</span><span>07 Obrazový styl</span></div>
+        <div class="runhead"><span>Brand Guide</span><span>[Značka]</span><span>07 Vizuální jazyk</span></div>
         <div class="stage cols-2">
-          <div class="cell"><div class="ph"><span class="ph__label">Ukázky ilustrací (volitelné)</span></div><p class="ph-text"><strong>Ilustrace:</strong> styl, barvy, tloušťka linek.</p></div>
+          <div class="cell"><div class="stage cols-3"><div class="ph"><span class="ph__label">Základní</span></div><div class="ph"><span class="ph__label">Rozšířená</span></div><div class="ph"><span class="ph__label">Hero</span></div></div><p class="ph-text"><strong>Ilustrace:</strong> úrovně podle důležitosti výstupu, styl, barvy.</p></div>
           <div class="cell"><div class="stage cols-4 rows-2">
             <div class="ph"><span class="ph__label">Ikona</span></div><div class="ph"><span class="ph__label">Ikona</span></div><div class="ph"><span class="ph__label">Ikona</span></div><div class="ph"><span class="ph__label">Ikona</span></div>
             <div class="ph"><span class="ph__label">Ikona</span></div><div class="ph"><span class="ph__label">Ikona</span></div><div class="ph"><span class="ph__label">Ikona</span></div><div class="ph"><span class="ph__label">Ikona</span></div>
-          </div><p class="ph-text"><strong>Ikony:</strong> mřížka, tah, zaoblení, výplň vs. linka.</p></div>
+          </div><p class="ph-text"><strong>Ikony:</strong> mřížka, tah, UI 16 / 20 / 24 px × marketingové.</p></div>
         </div>
         <div class="foot"><h2 class="slide__title">Ilustrace a ikony</h2><span></span></div>
       </div>
     </section>
 
-    <section class="slide slide--light" aria-label="Grafické prvky">
+    <section class="slide" aria-label="Maskot a postava">
       <div class="frame">
-        <div class="runhead"><span>Brand Guide</span><span>[Značka]</span><span>07 Obrazový styl</span></div>
-        <div class="stage"><div class="ph"><span class="ph__label"><span class="ph-tag">Obrázek</span>Přehled grafických prvků: tvary, linky, textury, stickers, pattern odvozený z loga</span></div></div>
-        <div class="foot"><h2 class="slide__title">Grafické prvky</h2><p class="ph-text">Pravidla, jak prvky kombinovat s logem, textem a fotografií.</p></div>
-      </div>
-    </section>
-
-    <!-- ======================= 08 MOTION (volitelné) ======================= -->
-    <section class="slide" aria-label="Motion a zvuk">
-      <div class="frame">
-        <div class="runhead"><span>Brand Guide</span><span>[Značka]</span><span>08 Motion a zvuk</span></div>
+        <div class="runhead"><span>Brand Guide</span><span>[Značka]</span><span>07 Vizuální jazyk</span></div>
         <div class="stage cols-2-1">
-          <div class="ph"><span class="ph__label"><span class="ph-tag">Video</span>Klíčové snímky animace loga (intro / outro)</span></div>
+          <div class="stage cols-2"><div class="ph"><span class="ph__label">Konstrukční list postavy: proporce, pohledy, barvy</span></div><div class="ph"><span class="ph__label">Sada výrazů a pozic</span></div></div>
           <ul class="ph-list" style="align-self:center">
-            <li><strong>Charakter pohybu:</strong> např. plynulý, nikdy trhaný.</li>
-            <li><strong>Rychlost:</strong> standardní délky animací.</li>
-            <li><strong>Easing:</strong> křivky zrychlení.</li>
-            <li><strong>Zvuk:</strong> sonic logo, jingle.</li>
+            <li>Kdo postava je a jak mluví.</li>
+            <li>Co se smí měnit a co nikdy.</li>
+            <li>Nikdy nenahrazuje logo.</li>
+            <li>Kdo schvaluje nové verze.</li>
           </ul>
         </div>
-        <div class="foot"><h2 class="slide__title">Motion a zvuk</h2><p class="ph-text"><span class="ph-tag">Volitelné</span>Pokud se značka nepohybuje ve videu ani v digitálním produktu, slide smaž.</p></div>
+        <div class="foot"><h2 class="slide__title">Maskot a postava</h2><p class="ph-text"><span class="ph-tag">Volitelné</span>Pokud značka postavu nemá, slide smaž.</p></div>
       </div>
     </section>
 
-    <!-- ======================= 09 APLIKACE ======================= -->
-    <section class="slide slide--primary" aria-label="Předěl 09 Aplikace">
+    <section class="slide slide--light" aria-label="Grafické prvky">
+      <div class="frame">
+        <div class="runhead"><span>Brand Guide</span><span>[Značka]</span><span>07 Vizuální jazyk</span></div>
+        <div class="stage"><div class="ph"><span class="ph__label"><span class="ph-tag">Obrázek</span>Přehled grafických prvků: tvary, linky, textury, stickers, pattern odvozený z loga</span></div></div>
+        <div class="foot"><h2 class="slide__title">Grafické prvky</h2><p class="ph-text">Jak prvky kombinovat s logem, textem a fotografií a jak tvořit nové kombinace.</p></div>
+      </div>
+    </section>
+
+    <!-- ======================= 08 MOTION ======================= -->
+    <section class="slide slide--secondary" aria-label="Předěl 08 Motion, video a zvuk">
       <div class="divider">
-        <h2 class="divider__title">Aplikace</h2>
-        <p class="ph-text divider__lead"><span class="ph-tag">Perex</span>Vzorové aplikace identity. Hotové šablony jsou ke stažení.</p>
+        <h2 class="divider__title">Motion, video a zvuk</h2>
+        <p class="ph-text divider__lead"><span class="ph-tag">Perex</span>Jak se značka pohybuje a zní.</p>
+        <svg class="divider__num" viewBox="0 0 1000 560" aria-hidden="true"><text x="1010" y="640" text-anchor="end">08</text></svg>
+        <span class="divider__meta">Brand Guide · [Značka]</span>
+      </div>
+    </section>
+
+    <section class="slide" aria-label="Principy a tokeny pohybu">
+      <div class="frame">
+        <div class="runhead"><span>Brand Guide</span><span>[Značka]</span><span>08 Motion, video a zvuk</span></div>
+        <div class="stage cols-2-1">
+          <div class="ph"><span class="ph__label"><span class="ph-tag">Video</span>Klíčové snímky animace loga a referenční motion reel</span></div>
+          <table class="table table--compact" style="align-self:center">
+            <thead><tr><th>Token</th><th>Hodnota</th></tr></thead>
+            <tbody>
+              <tr><td>duration-fast</td><td data-token-raw="--ui-duration-fast">—</td></tr>
+              <tr><td>duration-base</td><td data-token-raw="--ui-duration-base">—</td></tr>
+              <tr><td>duration-slow</td><td data-token-raw="--ui-duration-slow">—</td></tr>
+              <tr><td>ease</td><td data-token-raw="--ui-ease">—</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="foot"><h2 class="slide__title">Principy a tokeny</h2><p class="ph-text">Charakter pohybu, délky a křivky. Animované logo je součást identity. Respektuj omezený pohyb.</p></div>
+      </div>
+    </section>
+
+    <section class="slide" aria-label="Video">
+      <div class="frame">
+        <div class="runhead"><span>Brand Guide</span><span>[Značka]</span><span>08 Motion, video a zvuk</span></div>
+        <div class="stage cols-3">
+          <div class="cell"><div class="ph"><span class="ph__label">Lower third: jméno a funkce</span></div><p class="ph-text"><strong>Lower third</strong></p></div>
+          <div class="cell"><div class="ph"><span class="ph__label">Titulky: písmo, velikost, pozadí</span></div><p class="ph-text"><strong>Titulky vždy</strong></p></div>
+          <div class="cell"><div class="ph"><span class="ph__label">End card: logo, claim, výzva</span></div><p class="ph-text"><strong>End card</strong></p></div>
+        </div>
+        <div class="foot"><h2 class="slide__title">Video a zvuk</h2><p class="ph-text">Formáty 16:9, 1:1, 4:5, 9:16 a jejich zóny. Hudba a zvukové logo s licencí.</p></div>
+      </div>
+    </section>
+
+    <!-- ======================= 09 DIGITÁLNÍ PRODUKT A UI ======================= -->
+    <section class="slide slide--primary" aria-label="Předěl 09 Digitální produkt a UI">
+      <div class="divider">
+        <h2 class="divider__title">Digitální produkt a UI</h2>
+        <p class="ph-text divider__lead"><span class="ph-tag">Perex</span>Most mezi značkou a design systémem. Všechny hodnoty jsou tokeny.</p>
         <svg class="divider__num" viewBox="0 0 1000 560" aria-hidden="true"><text x="1010" y="640" text-anchor="end">09</text></svg>
+        <span class="divider__meta">Brand Guide · [Značka]</span>
+      </div>
+    </section>
+
+    <section class="slide" aria-label="Typography scale">
+      <div class="frame">
+        <div class="runhead"><span>Brand Guide</span><span>[Značka]</span><span>09 Digitální produkt a UI</span></div>
+        <div class="stage" style="align-content:start">
+          <table class="table">
+            <thead><tr><th>Úroveň</th><th>Písmo</th><th>Řez</th><th>Velikost (mobil → desktop)</th><th>Řádkování</th><th>Prostrkání</th></tr></thead>
+            <tbody>
+              <tr><td>Display</td><td>Primary</td><td data-token-raw="--ui-display-weight">—</td><td data-token-raw="--ui-display-size">—</td><td data-token-raw="--ui-display-lh">—</td><td data-token-raw="--ui-display-tracking">—</td></tr>
+              <tr><td>H1</td><td>Primary</td><td data-token-raw="--ui-h1-weight">—</td><td data-token-raw="--ui-h1-size">—</td><td data-token-raw="--ui-h1-lh">—</td><td data-token-raw="--ui-h1-tracking">—</td></tr>
+              <tr><td>H2</td><td>Primary</td><td data-token-raw="--ui-h2-weight">—</td><td data-token-raw="--ui-h2-size">—</td><td data-token-raw="--ui-h2-lh">—</td><td data-token-raw="--ui-h2-tracking">—</td></tr>
+              <tr><td>H3</td><td>Primary</td><td data-token-raw="--ui-h3-weight">—</td><td data-token-raw="--ui-h3-size">—</td><td data-token-raw="--ui-h3-lh">—</td><td data-token-raw="--ui-h3-tracking">—</td></tr>
+              <tr><td>H4</td><td>Primary</td><td data-token-raw="--ui-h4-weight">—</td><td data-token-raw="--ui-h4-size">—</td><td data-token-raw="--ui-h4-lh">—</td><td data-token-raw="--ui-h4-tracking">—</td></tr>
+              <tr><td>H5</td><td>Primary</td><td data-token-raw="--ui-h5-weight">—</td><td data-token-raw="--ui-h5-size">—</td><td data-token-raw="--ui-h5-lh">—</td><td data-token-raw="--ui-h5-tracking">—</td></tr>
+              <tr><td>H6</td><td>Primary</td><td data-token-raw="--ui-h6-weight">—</td><td data-token-raw="--ui-h6-size">—</td><td data-token-raw="--ui-h6-lh">—</td><td data-token-raw="--ui-h6-tracking">—</td></tr>
+              <tr><td>P1 Lead</td><td>Secondary</td><td data-token-raw="--ui-p1-weight">—</td><td data-token-raw="--ui-p1-size">—</td><td data-token-raw="--ui-p1-lh">—</td><td data-token-raw="--ui-p1-tracking">—</td></tr>
+              <tr><td>P2 Base</td><td>Secondary</td><td data-token-raw="--ui-p2-weight">—</td><td data-token-raw="--ui-p2-size">—</td><td data-token-raw="--ui-p2-lh">—</td><td data-token-raw="--ui-p2-tracking">—</td></tr>
+              <tr><td>P3 Detail</td><td>Secondary</td><td data-token-raw="--ui-p3-weight">—</td><td data-token-raw="--ui-p3-size">—</td><td data-token-raw="--ui-p3-lh">—</td><td data-token-raw="--ui-p3-tracking">—</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="foot"><h2 class="slide__title">Typography scale</h2><p class="ph-text">Display až H3 se plynule zvětšují od mobilu po desktop. Tailwind: text-display, text-h1 … text-p3.</p></div>
+      </div>
+    </section>
+
+    <section class="slide" aria-label="Typography scale v praxi">
+      <div class="frame">
+        <div class="runhead"><span>Brand Guide</span><span>[Značka]</span><span>09 Digitální produkt a UI</span></div>
+        <div class="stage">
+          <div class="ui-zoom">
+            <div class="ui type-ladder-slide">
+              <div><span class="meta">Display</span><p class="ui-display">Značka v akci</p></div>
+              <div><span class="meta">H1</span><p class="ui-h1">Nadpis stránky</p></div>
+              <div><span class="meta">H2</span><p class="ui-h2">Nadpis sekce</p></div>
+              <div><span class="meta">H3 · H4</span><p class="ui-h3">Podsekce <span class="ui-h4">· Nadpis karty</span></p></div>
+              <div><span class="meta">H5 · H6</span><p class="ui-h5">Nadpis dialogu <span class="ui-h6">· Popisek skupiny</span></p></div>
+              <div><span class="meta">P1 Lead</span><p class="ui-p1">Perex uvádí stránku jednou až dvěma větami.</p></div>
+              <div><span class="meta">P2 · P3</span><p class="ui-p2">Běžný text odstavce. <span class="ui-p3 ui-muted-text">Popisek a nápověda.</span></p></div>
+            </div>
+          </div>
+        </div>
+        <div class="foot"><h2 class="slide__title">Škála v praxi</h2><p class="ph-text">Živá ukázka z tokenů --ui-* v css/brand.css.</p></div>
+      </div>
+    </section>
+
+    <section class="slide" aria-label="Sémantická paleta">
+      <div class="frame">
+        <div class="runhead"><span>Brand Guide</span><span>[Značka]</span><span>09 Digitální produkt a UI</span></div>
+        <div class="stage" style="align-content:start">
+          <table class="table">
+            <thead><tr><th>Token</th><th>Role</th><th>Světlý</th><th>Tmavý</th><th>Kontrast textu</th></tr></thead>
+            <tbody>
+              <tr><td>primary / -foreground</td><td>Hlavní akce, odkazy</td><td data-token="--ui-primary">—</td><td data-token="--ui-primary" data-theme-source="dark">—</td><td data-contrast="--ui-primary-foreground --ui-primary">—</td></tr>
+              <tr><td>primary-hover</td><td>Hover hlavní akce</td><td data-token="--ui-primary-hover">—</td><td data-token="--ui-primary-hover" data-theme-source="dark">—</td><td data-contrast="--ui-primary-foreground --ui-primary-hover">—</td></tr>
+              <tr><td>secondary / -foreground</td><td>Vedlejší akce</td><td data-token="--ui-secondary">—</td><td data-token="--ui-secondary" data-theme-source="dark">—</td><td data-contrast="--ui-secondary-foreground --ui-secondary">—</td></tr>
+              <tr><td>background / foreground</td><td>Pozadí webu, hlavní text</td><td data-token="--ui-background">—</td><td data-token="--ui-background" data-theme-source="dark">—</td><td data-contrast="--ui-foreground --ui-background">—</td></tr>
+              <tr><td>muted / -foreground</td><td>Tlumené plochy, sekundární text</td><td data-token="--ui-muted">—</td><td data-token="--ui-muted" data-theme-source="dark">—</td><td data-contrast="--ui-muted-foreground --ui-muted">—</td></tr>
+              <tr><td>border</td><td>Linky, ohraničení</td><td data-token="--ui-border">—</td><td data-token="--ui-border" data-theme-source="dark">—</td><td>—</td></tr>
+              <tr><td>inverted / -foreground</td><td>Tmavé sekce</td><td data-token="--ui-inverted">—</td><td data-token="--ui-inverted" data-theme-source="dark">—</td><td data-contrast="--ui-inverted-foreground --ui-inverted">—</td></tr>
+              <tr><td>accent / -foreground</td><td>Zvýraznění</td><td data-token="--ui-accent">—</td><td data-token="--ui-accent" data-theme-source="dark">—</td><td data-contrast="--ui-accent-foreground --ui-accent">—</td></tr>
+              <tr><td>destructive</td><td>Chyby, mazání</td><td data-token="--ui-destructive">—</td><td data-token="--ui-destructive" data-theme-source="dark">—</td><td data-contrast="--ui-destructive-foreground --ui-destructive">—</td></tr>
+              <tr><td>success</td><td>Potvrzení</td><td data-token="--ui-success">—</td><td data-token="--ui-success" data-theme-source="dark">—</td><td data-contrast="--ui-success-foreground --ui-success">—</td></tr>
+              <tr><td>ring</td><td>Focus</td><td data-token="--ui-ring">—</td><td data-token="--ui-ring" data-theme-source="dark">—</td><td data-contrast="--ui-ring --ui-background" data-large>—</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="foot"><h2 class="slide__title">Sémantická paleta</h2><p class="ph-text">Barvy značky jako role v rozhraní (Tailwind styl). Kontrast počítán podle WCAG.</p></div>
+      </div>
+    </section>
+
+    <section class="slide slide--light" aria-label="Radius a elevation">
+      <div class="frame">
+        <div class="runhead"><span>Brand Guide</span><span>[Značka]</span><span>09 Digitální produkt a UI</span></div>
+        <div class="stage rows-2">
+          <div class="shape-row">
+            <figure><span class="shape-row__box" style="border-radius: var(--ui-radius-none)"></span><figcaption><strong>none</strong><span data-token-raw="--ui-radius-none">—</span></figcaption></figure>
+            <figure><span class="shape-row__box" style="border-radius: var(--ui-radius-sm)"></span><figcaption><strong>sm</strong><span data-token-raw="--ui-radius-sm">—</span></figcaption></figure>
+            <figure><span class="shape-row__box" style="border-radius: var(--ui-radius-md)"></span><figcaption><strong>md · tlačítka, pole</strong><span data-token-raw="--ui-radius-md">—</span></figcaption></figure>
+            <figure><span class="shape-row__box" style="border-radius: var(--ui-radius-lg)"></span><figcaption><strong>lg · karty, modaly</strong><span data-token-raw="--ui-radius-lg">—</span></figcaption></figure>
+            <figure><span class="shape-row__box" style="border-radius: var(--ui-radius-full)"></span><figcaption><strong>full</strong><span data-token-raw="--ui-radius-full">—</span></figcaption></figure>
+          </div>
+          <div class="shape-row shape-row--elevation" style="--n: 3; padding: 0 6cqw">
+            <figure><span class="shape-row__box" style="box-shadow: var(--ui-shadow-sm)"></span><figcaption><strong>shadow-sm</strong>tlačítka</figcaption></figure>
+            <figure><span class="shape-row__box" style="box-shadow: var(--ui-shadow-md)"></span><figcaption><strong>shadow-md</strong>karty</figcaption></figure>
+            <figure><span class="shape-row__box" style="box-shadow: var(--ui-shadow-lg)"></span><figcaption><strong>shadow-lg</strong>modaly</figcaption></figure>
+          </div>
+        </div>
+        <div class="foot"><h2 class="slide__title">Radius a elevation</h2><p class="ph-text">Flat brand: „Brand nevyužívá elevation ani shadows, design je striktně flat.“</p></div>
+      </div>
+    </section>
+
+    <section class="slide" aria-label="Komponenty a stavy">
+      <div class="frame">
+        <div class="runhead"><span>Brand Guide</span><span>[Značka]</span><span>09 Digitální produkt a UI</span></div>
+        <div class="stage cols-2-1">
+          <div class="ui-zoom">
+            <div class="ui" style="display:grid; gap:28px; padding:32px; border-radius: var(--ui-radius-md)">
+              <div class="ui-actions"><span class="ui-btn">Primární</span><span class="ui-btn is-hover">Hover</span><span class="ui-btn is-focus">Focus</span><span class="ui-btn is-disabled">Neaktivní</span></div>
+              <div class="ui-actions"><span class="ui-btn ui-btn--secondary">Sekundární</span><span class="ui-btn ui-btn--ghost">Obrysové</span><span class="ui-btn ui-btn--destructive">Smazat</span></div>
+              <div class="ui-grid">
+                <div class="ui-field"><span class="ui-label">E-mail</span><span class="ui-input">jana@firma.cz</span><span class="ui-help">Nápověda k poli.</span></div>
+                <div class="ui-field"><span class="ui-label">Chyba</span><span class="ui-input is-error">jana@</span><span class="ui-help is-error">Zadejte celý e-mail.</span></div>
+              </div>
+              <div class="ui-grid">
+                <div class="ui-alert ui-alert--success"><svg class="icon" aria-hidden="true"><use href="#i-circle-check"/></svg><div><strong>Hotovo</strong>Potvrzení jsme poslali na e-mail.</div></div>
+                <div class="ui-alert ui-alert--destructive"><svg class="icon" aria-hidden="true"><use href="#i-circle-alert"/></svg><div><strong>Něco se nepovedlo</strong>Zkuste to znovu.</div></div>
+              </div>
+            </div>
+          </div>
+          <div class="annot">
+            <p><strong>Primární tlačítko</strong>bg-primary text-primary-foreground rounded-button shadow-button · hover bg-primary-hover · focus ring</p>
+            <p><strong>Sekundární / obrysové</strong>bg-secondary text-secondary-foreground · border-border hover:bg-muted</p>
+            <p><strong>Pole</strong>bg-background border-border rounded-input text-p2 · chyba border-destructive</p>
+            <p><strong>Stavy</strong>bg-success / bg-destructive, rounded-md text-p3</p>
+          </div>
+        </div>
+        <div class="foot"><h2 class="slide__title">Komponenty a stavy</h2><p class="ph-text">Úplná knihovna je ve Figmě / Storybooku. Tady je, jak značka vypadá v rozhraní.</p></div>
+      </div>
+    </section>
+
+    <section class="slide" aria-label="Brand Web Preview: hero">
+      <div class="frame">
+        <div class="runhead"><span>Brand Guide</span><span>[Značka]</span><span>09 Digitální produkt a UI</span></div>
+        <div class="stage cols-2-1">
+          <div class="ui-zoom">
+            <div class="ui ui-page">
+              <div class="ui-nav"><span class="ui-nav__logo"></span><span class="ui-nav__links"><span>Produkt</span><span>Ceník</span><span>O nás</span></span><span class="ui-btn">Vyzkoušet</span></div>
+              <div class="ui-hero">
+                <p class="ui-display">[Hlavní sdělení značky]</p>
+                <p class="ui-p1 ui-hero__lead">[Perex: jednou až dvěma větami, co zákazník získá.]</p>
+                <div class="ui-actions"><span class="ui-btn">Začít zdarma<svg class="icon" aria-hidden="true"><use href="#i-arrow-right"/></svg></span><span class="ui-btn ui-btn--ghost">Zjistit více</span></div>
+              </div>
+            </div>
+          </div>
+          <div class="annot">
+            <p><strong>Navigace</strong>bg-background border-b border-border · odkazy text-p3 text-muted-foreground · CTA bg-primary rounded-button</p>
+            <p><strong>Hero</strong>bg-background text-foreground · nadpis font-primary text-display · perex text-p1 text-muted-foreground</p>
+            <p><strong>Tlačítka</strong>hlavní bg-primary hover:bg-primary-hover shadow-button · vedlejší border-border hover:bg-muted</p>
+          </div>
+        </div>
+        <div class="foot"><h2 class="slide__title">Brand Web Preview</h2><p class="ph-text">Stylováno výhradně tokeny z kapitoly 09, vývojář ji postaví 1 : 1.</p></div>
+      </div>
+    </section>
+
+    <section class="slide" aria-label="Brand Web Preview: obsah">
+      <div class="frame">
+        <div class="runhead"><span>Brand Guide</span><span>[Značka]</span><span>09 Digitální produkt a UI</span></div>
+        <div class="stage cols-2-1">
+          <div class="ui-zoom">
+            <div class="ui ui-page">
+              <div class="ui-section ui-section--muted">
+                <div class="ui-grid">
+                  <div class="ui-card"><p class="ui-h4">[Přínos 1]</p><p class="ui-p2 ui-muted-text">[Jedna až dvě věty o přínosu.]</p></div>
+                  <div class="ui-card"><p class="ui-h4">[Přínos 2]</p><p class="ui-p2 ui-muted-text">[Jedna až dvě věty o přínosu.]</p></div>
+                  <div class="ui-card"><p class="ui-h4">[Přínos 3]</p><p class="ui-p2 ui-muted-text">[Jedna až dvě věty o přínosu.]</p></div>
+                </div>
+              </div>
+              <div class="ui-section ui-section--inverted">
+                <div style="display:grid; gap:16px">
+                  <p class="ui-h2">[Výzva k akci]</p>
+                  <p class="ui-p1 ui-muted-text">[Poslední věta, proč začít právě teď.]</p>
+                  <div class="ui-actions"><span class="ui-btn ui-btn--inverted">Domluvit ukázku</span></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="annot">
+            <p><strong>Karty</strong>sekce bg-muted · karta bg-background border-border rounded-card shadow-card · text-h4, text-p2 text-muted-foreground</p>
+            <p><strong>Tmavá sekce</strong>bg-inverted text-inverted-foreground · nadpis text-h2 · tlačítko v obrácených barvách</p>
+            <p><strong>Modal</strong>bg-background rounded-modal shadow-modal · překryv bg-inverted/55</p>
+          </div>
+        </div>
+        <div class="foot"><h2 class="slide__title">Brand Web Preview: obsah</h2><p class="ph-text">Živá verze se přepínačem tmavého režimu je ve web manuálu.</p></div>
+      </div>
+    </section>
+
+    <section class="slide slide--light" aria-label="Export a produktové detaily">
+      <div class="frame">
+        <div class="runhead"><span>Brand Guide</span><span>[Značka]</span><span>09 Digitální produkt a UI</span></div>
+        <div class="stage cols-4">
+          <div class="cell"><div class="ph"><span class="ph__label">Ikona aplikace a splash</span></div><p class="ph-text"><strong>Ikona a spuštění</strong></p></div>
+          <div class="cell"><div class="ph"><span class="ph__label">Transakční e-mail</span></div><p class="ph-text"><strong>Transakční e-maily</strong></p></div>
+          <div class="cell"><div class="ph"><span class="ph__label">Prázdný stav, onboarding</span></div><p class="ph-text"><strong>Prázdné stavy</strong></p></div>
+          <div class="cell"><div class="ph"><span class="ph__label">Graf / dashboard</span></div><p class="ph-text"><strong>Data v produktu</strong></p></div>
+        </div>
+        <div class="foot"><h2 class="slide__title">Export a produkt</h2><p class="ph-text">Tailwind v4 theme a tokens.json se stahují z web manuálu (09 Export pro vývoj), vždy z aktuálních hodnot.</p></div>
+      </div>
+    </section>
+
+    <!-- ======================= 10 APLIKACE ======================= -->
+    <section class="slide slide--primary-2" aria-label="Předěl 10 Aplikace a šablony">
+      <div class="divider">
+        <h2 class="divider__title">Aplikace a šablony</h2>
+        <p class="ph-text divider__lead"><span class="ph-tag">Perex</span>Vzorové aplikace identity. Hotové šablony jsou ke stažení.</p>
+        <svg class="divider__num" viewBox="0 0 1000 560" aria-hidden="true"><text x="1010" y="640" text-anchor="end">10</text></svg>
         <span class="divider__meta">Brand Guide · [Značka]</span>
       </div>
     </section>
 
     <section class="slide slide--light" aria-label="Tiskoviny">
       <div class="frame">
-        <div class="runhead"><span>Brand Guide</span><span>[Značka]</span><span>09 Aplikace</span></div>
+        <div class="runhead"><span>Brand Guide</span><span>[Značka]</span><span>10 Aplikace a šablony</span></div>
         <div class="stage cols-2">
           <div class="cell"><div class="ph"><span class="ph__label">Vizitka, přední a zadní strana (90 × 50 mm)</span></div><p class="ph-text"><strong>Vizitka:</strong> formát, papír, technologie tisku.</p></div>
-          <div class="cell"><div class="ph"><span class="ph__label">Hlavičkový papír A4 a obálka DL</span></div><p class="ph-text"><strong>Hlavičkový papír:</strong> okraje, logo, patička.</p></div>
+          <div class="cell"><div class="ph"><span class="ph__label">Hlavičkový papír A4 a obálka DL</span></div><p class="ph-text"><strong>Hlavičkový papír:</strong> okraje, logo, patička; verze pro Word.</p></div>
         </div>
         <div class="foot"><h2 class="slide__title">Tiskoviny</h2><span></span></div>
       </div>
     </section>
 
-    <section class="slide" aria-label="E-mail a web">
+    <section class="slide" aria-label="E-mail, web a bannery">
       <div class="frame">
-        <div class="runhead"><span>Brand Guide</span><span>[Značka]</span><span>09 Aplikace</span></div>
-        <div class="stage cols-2">
-          <div class="cell"><div class="ph"><span class="ph__label">Podpis do e-mailu v e-mailovém klientovi</span></div><p class="ph-text"><strong>Podpis do e-mailu:</strong> jméno, pozice, kontakty, logo.</p></div>
-          <div class="cell"><div class="ph"><span class="ph__label">Web: hero sekce na desktopu a mobilu</span></div><p class="ph-text"><strong>Web a bannery:</strong> základní pravidla a rozměry.</p></div>
+        <div class="runhead"><span>Brand Guide</span><span>[Značka]</span><span>10 Aplikace a šablony</span></div>
+        <div class="stage cols-3">
+          <div class="cell"><div class="ph"><span class="ph__label">Podpis do e-mailu</span></div><p class="ph-text"><strong>Podpis:</strong> jméno, pozice, kontakty, logo.</p></div>
+          <div class="cell"><div class="ph"><span class="ph__label">Newsletter</span></div><p class="ph-text"><strong>Newsletter:</strong> hlavička, blok, patička.</p></div>
+          <table class="table table--compact" style="align-self:center">
+            <thead><tr><th>Banner</th><th>px</th></tr></thead>
+            <tbody>
+              <tr><td>Leaderboard</td><td>728 × 90</td></tr>
+              <tr><td>Medium rectangle</td><td>300 × 250</td></tr>
+              <tr><td>Half page</td><td>300 × 600</td></tr>
+              <tr><td>Billboard</td><td>970 × 250</td></tr>
+              <tr><td>Mobile</td><td>320 × 100</td></tr>
+            </tbody>
+          </table>
         </div>
-        <div class="foot"><h2 class="slide__title">E-mail a web</h2><span></span></div>
+        <div class="foot"><h2 class="slide__title">E-mail, web a bannery</h2><span></span></div>
       </div>
     </section>
 
     <section class="slide" aria-label="Sociální sítě">
       <div class="frame">
-        <div class="runhead"><span>Brand Guide</span><span>[Značka]</span><span>09 Aplikace</span></div>
+        <div class="runhead"><span>Brand Guide</span><span>[Značka]</span><span>10 Aplikace a šablony</span></div>
         <div class="stage cols-4">
           <div class="ph"><span class="ph__label">Profilový obrázek (1:1)</span></div>
-          <div class="ph"><span class="ph__label">Post (1:1)</span></div>
-          <div class="ph"><span class="ph__label">Post (4:5)</span></div>
-          <div class="ph"><span class="ph__label">Story / Reels (9:16)</span></div>
+          <div class="ph"><span class="ph__label">Post 1080 × 1080</span></div>
+          <div class="ph"><span class="ph__label">Post 1080 × 1350</span></div>
+          <div class="ph"><span class="ph__label">Story 1080 × 1920, horní a dolní pás bez textu</span></div>
         </div>
-        <div class="foot"><h2 class="slide__title">Sociální sítě</h2><p class="ph-text">Práce s logem, textem a safe zónami na jednotlivých sítích.</p></div>
+        <div class="foot"><h2 class="slide__title">Sociální sítě</h2><p class="ph-text">Práce s logem, textem a bezpečnými zónami. Rozměry před kampaní ověř u platformy.</p></div>
       </div>
     </section>
 
-    <section class="slide" aria-label="Prezentace a merch">
+    <section class="slide" aria-label="Prezentace a dokumenty">
       <div class="frame">
-        <div class="runhead"><span>Brand Guide</span><span>[Značka]</span><span>09 Aplikace</span></div>
-        <div class="stage cols-3">
+        <div class="runhead"><span>Brand Guide</span><span>[Značka]</span><span>10 Aplikace a šablony</span></div>
+        <div class="stage cols-4">
           <div class="ph"><span class="ph__label">Titulní slide prezentace</span></div>
-          <div class="ph"><span class="ph__label">Obsahový slide prezentace</span></div>
-          <div class="ph"><span class="ph__label">Merch / signage (volitelné)</span></div>
+          <div class="ph"><span class="ph__label">Obsahový slide</span></div>
+          <div class="ph"><span class="ph__label">Nabídka / report</span></div>
+          <div class="ph"><span class="ph__label">Faktura / smlouva</span></div>
         </div>
-        <div class="foot"><h2 class="slide__title">Prezentace a merch</h2><p class="ph-text">Kde je šablona prezentace ke stažení a jaké písmo použít, když brandový font není k dispozici.</p></div>
+        <div class="foot"><h2 class="slide__title">Prezentace a dokumenty</h2><p class="ph-text">Šablony s nastavenými styly a náhradním písmem pro Office / Google.</p></div>
       </div>
     </section>
 
-    <!-- ======================= 10 ARCHITEKTURA ======================= -->
-    <section class="slide slide--secondary" aria-label="Předěl 10 Architektura značky">
+    <section class="slide" aria-label="Galerie použití">
+      <div class="frame">
+        <div class="runhead"><span>Brand Guide</span><span>[Značka]</span><span>10 Aplikace a šablony</span></div>
+        <div class="stage cols-3 rows-2">
+          <div class="ph"><span class="ph__label">Výstup 1</span></div><div class="ph"><span class="ph__label">Výstup 2</span></div><div class="ph"><span class="ph__label">Výstup 3</span></div>
+          <div class="ph"><span class="ph__label">Výstup 4</span></div><div class="ph"><span class="ph__label">Výstup 5</span></div><div class="ph"><span class="ph__label">Výstup 6</span></div>
+        </div>
+        <div class="foot"><h2 class="slide__title">Galerie použití</h2><p class="ph-text">Reálné výstupy, které ukazují systém jako celek.</p></div>
+      </div>
+    </section>
+
+    <!-- ======================= 11 OBALY, PROSTOR A PRODUKT (modul) ======================= -->
+    <section class="slide slide--secondary" aria-label="Předěl 11 Obaly, prostor a produkt">
       <div class="divider">
-        <h2 class="divider__title">Architektura značky</h2>
-        <p class="ph-text divider__lead"><span class="ph-tag">Perex</span>Sub-brandy a spolupráce s partnery.</p>
-        <svg class="divider__num" viewBox="0 0 1000 560" aria-hidden="true"><text x="1010" y="640" text-anchor="end">10</text></svg>
+        <h2 class="divider__title">Obaly, prostor a produkt</h2>
+        <p class="ph-text divider__lead"><span class="ph-tag">Modul</span>Pro značky s fyzickým produktem nebo prostorem. Jinak celou kapitolu smaž.</p>
+        <svg class="divider__num" viewBox="0 0 1000 560" aria-hidden="true"><text x="1010" y="640" text-anchor="end">11</text></svg>
+        <span class="divider__meta">Brand Guide · [Značka]</span>
+      </div>
+    </section>
+
+    <section class="slide" aria-label="Architektura obalu">
+      <div class="frame">
+        <div class="runhead"><span>Brand Guide</span><span>[Značka]</span><span>11 Obaly, prostor a produkt</span></div>
+        <div class="stage cols-2">
+          <div class="ph"><span class="ph__label"><span class="ph-tag">Diagram</span>Obal se zónami: logo, název, varianta, informační panel, povinné údaje</span></div>
+          <ul class="ph-list" style="align-self:center; padding-left:2cqw">
+            <li><strong>Pevné:</strong> [logo, pozice, informační panel].</li>
+            <li><strong>Proměnné:</strong> [barva varianty, ilustrace, název].</li>
+            <li><strong>Čitelnost:</strong> co poznat na 3 m, na 1 m a v ruce.</li>
+            <li><strong>Podklady:</strong> dielines od výrobce, kdo schvaluje nátisk.</li>
+          </ul>
+        </div>
+        <div class="foot"><h2 class="slide__title">Architektura obalu</h2><span></span></div>
+      </div>
+    </section>
+
+    <section class="slide slide--light" aria-label="Řada, regál a materiály">
+      <div class="frame">
+        <div class="runhead"><span>Brand Guide</span><span>[Značka]</span><span>11 Obaly, prostor a produkt</span></div>
+        <div class="stage cols-2-1">
+          <div class="ph"><span class="ph__label">Celá řada vedle sebe v regálu</span></div>
+          <table class="table table--compact" style="align-self:center">
+            <thead><tr><th>Prvek</th><th>Materiál a úprava</th></tr></thead>
+            <tbody>
+              <tr><td>[Krabička]</td><td>[papír, lak, ražba]</td></tr>
+              <tr><td>[Láhev / dóza]</td><td>[sklo, potisk, emboss]</td></tr>
+              <tr><td>[Etiketa]</td><td>[—]</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="foot"><h2 class="slide__title">Řada a materiály</h2><p class="ph-text">Obaly navrhuj jako sadu. Materiály potvrď nátiskem nebo vzorkem.</p></div>
+      </div>
+    </section>
+
+    <section class="slide" aria-label="Udržitelnost a regulace">
+      <div class="frame">
+        <div class="runhead"><span>Brand Guide</span><span>[Značka]</span><span>11 Obaly, prostor a produkt</span></div>
+        <div class="stage cols-4 end">
+          <div class="card"><span class="label">Nepoužíváme</span><p class="ph-text">Zakázané materiály a postupy, u každého důvod.</p></div>
+          <div class="card"><span class="label">Minimum a cíl</span><p class="ph-text">Minimální standard a aspirační cíl s termínem.</p></div>
+          <div class="card"><span class="label">Tvrzení</span><p class="ph-text">Co smíme tvrdit a čím to doložíme (certifikace).</p></div>
+          <div class="card"><span class="label">Povinné údaje</span><p class="ph-text">Složení, alergeny, EAN, recyklace, varování.</p></div>
+        </div>
+        <div class="foot"><h2 class="slide__title">Udržitelnost a regulace</h2><p class="ph-text">Každé environmentální tvrzení musí být doložitelné (pravidla EU proti greenwashingu).</p></div>
+      </div>
+    </section>
+
+    <section class="slide" aria-label="Prostor a senzorika">
+      <div class="frame">
+        <div class="runhead"><span>Brand Guide</span><span>[Značka]</span><span>11 Obaly, prostor a produkt</span></div>
+        <div class="stage cols-2-1">
+          <div class="ph"><span class="ph__label">Prodejna / kancelář: fasáda, interiér, značení</span></div>
+          <ul class="ph-list" style="align-self:center">
+            <li><strong>Fixní prvky</strong> všude stejné.</li>
+            <li><strong>Lokální volnost</strong> pro architekta.</li>
+            <li><strong>Materiály</strong> a RAL / NCS.</li>
+            <li><strong>Senzorika:</strong> vůně, hmat, zvuk.</li>
+          </ul>
+        </div>
+        <div class="foot"><h2 class="slide__title">Prostor a senzorika</h2><p class="ph-text">Konzistence přes principy, ne kopírováním jedné šablony.</p></div>
+      </div>
+    </section>
+
+    <section class="slide slide--light" aria-label="Limitky, kolaborace a merch">
+      <div class="frame">
+        <div class="runhead"><span>Brand Guide</span><span>[Značka]</span><span>11 Obaly, prostor a produkt</span></div>
+        <div class="stage cols-3">
+          <div class="cell"><div class="ph"><span class="ph__label">Limitovaná edice / kolaborace</span></div><p class="ph-text"><strong>Pevné:</strong> logo, info panel. <strong>Volné:</strong> ilustrace, barvy.</p></div>
+          <div class="cell"><div class="ph"><span class="ph__label">Merch: oblečení, doplňky</span></div><p class="ph-text"><strong>Merch:</strong> technika a mono verze loga.</p></div>
+          <div class="cell"><div class="ph"><span class="ph__label">Dárkové balení</span></div><p class="ph-text"><strong>Kredit autora</strong> a kdo schvaluje.</p></div>
+        </div>
+        <div class="foot"><h2 class="slide__title">Edice a merch</h2><span></span></div>
+      </div>
+    </section>
+
+    <!-- ======================= 12 ARCHITEKTURA ======================= -->
+    <section class="slide slide--primary" aria-label="Předěl 12 Architektura a partneři">
+      <div class="divider">
+        <h2 class="divider__title">Architektura a partneři</h2>
+        <p class="ph-text divider__lead"><span class="ph-tag">Perex</span>Sub-brandy, partneři, třetí strany a média.</p>
+        <svg class="divider__num" viewBox="0 0 1000 560" aria-hidden="true"><text x="1010" y="640" text-anchor="end">12</text></svg>
         <span class="divider__meta">Brand Guide · [Značka]</span>
       </div>
     </section>
 
     <section class="slide" aria-label="Sub-brandy">
       <div class="frame">
-        <div class="runhead"><span>Brand Guide</span><span>[Značka]</span><span>10 Architektura značky</span></div>
+        <div class="runhead"><span>Brand Guide</span><span>[Značka]</span><span>12 Architektura a partneři</span></div>
         <div class="stage rows-2">
           <div class="ph" style="width:40%; margin-inline:auto"><span class="ph__label">Mateřská značka (logo s deskriptorem)</span></div>
           <div class="stage cols-3">
@@ -626,26 +1323,135 @@
             <div class="ph"><span class="ph__label">Sub-brand C</span></div>
           </div>
         </div>
-        <div class="foot"><h2 class="slide__title">Sub-brandy</h2><p class="ph-text">Model (branded house / house of brands / hybrid) a pravidla tvorby loga sub-brandu: co zůstává stejné a co se mění.</p></div>
+        <div class="foot"><h2 class="slide__title">Sub-brandy a naming</h2><p class="ph-text">Model (branded house / house of brands / hybrid), co zůstává stejné a jak pojmenovat nový produkt.</p></div>
       </div>
     </section>
 
     <section class="slide" aria-label="Co-branding">
       <div class="frame">
-        <div class="runhead"><span>Brand Guide</span><span>[Značka]</span><span>10 Architektura značky</span></div>
+        <div class="runhead"><span>Brand Guide</span><span>[Značka]</span><span>12 Architektura a partneři</span></div>
         <div class="stage cols-2-1">
           <div class="ph"><span class="ph__label">Logo značky a logo partnera oddělené linkou, se společnou ochrannou zónou</span></div>
           <ul class="ph-list" style="align-self:center">
-            <li>Poměr velikostí log.</li>
-            <li>Oddělení: linka, mezera, spojka.</li>
-            <li>Kdo schvaluje společné výstupy.</li>
+            <li>Mezera v % značky, ne v mm.</li>
+            <li>Oddělení: linka, mezera, „×“.</li>
+            <li>Autor výstupu vlevo / nahoře.</li>
+            <li>Opticky vyvážené velikosti.</li>
           </ul>
         </div>
-        <div class="foot"><h2 class="slide__title">Co-branding</h2><span></span></div>
+        <div class="foot"><h2 class="slide__title">Co-branding</h2><p class="ph-text">Šablony lockupů jsou v balíčku pro partnery.</p></div>
       </div>
     </section>
 
-    <!-- ======================= 11 PŘEHLED A KONTAKT ======================= -->
+    <section class="slide slide--light" aria-label="Pravidla pro třetí strany">
+      <div class="frame">
+        <div class="runhead"><span>Brand Guide</span><span>[Značka]</span><span>12 Architektura a partneři</span></div>
+        <div class="stage cols-2">
+          <div class="card"><span class="verdict"><span class="verdict__icon" style="background:var(--brand-do)"><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg></span>Správně</span><ul class="ph-list"><li>„[Produkt] pro [Značku]“, „funguje s [Značkou]“.</li><li>Pravdivá zmínka v článku nebo výuce.</li><li>Oficiální logo z tiskového kitu.</li></ul></div>
+          <div class="card"><span class="verdict"><span class="verdict__icon" style="background:var(--brand-dont)"><svg class="icon" aria-hidden="true"><use href="#i-x"/></svg></span>Nesprávně</span><ul class="ph-list"><li>„[Značka] [produkt partnera]“.</li><li>Značka v názvu firmy, domény, účtu.</li><li>Naznačené partnerství, logo na merchi.</li></ul></div>
+        </div>
+        <div class="foot"><h2 class="slide__title">Pravidla pro třetí strany</h2><p class="ph-text">Branding partnera je výraznější než náš. Licence je omezená a odvolatelná.</p></div>
+      </div>
+    </section>
+
+    <section class="slide" aria-label="Tiskový kit">
+      <div class="frame">
+        <div class="runhead"><span>Brand Guide</span><span>[Značka]</span><span>12 Architektura a partneři</span></div>
+        <div class="stage cols-4 end">
+          <div class="card"><span class="label">Loga</span><p class="ph-text">Primární a symbol, světlá a tmavá, SVG a PNG.</p></div>
+          <div class="card"><span class="label">Fakta</span><p class="ph-text">Boilerplate 100 slov, rok založení, sídlo, čísla.</p></div>
+          <div class="card"><span class="label">Fotografie</span><p class="ph-text">Vedení, tým, produkt, prostory. S kredity.</p></div>
+          <div class="card"><span class="label">Tiskové zprávy</span><p class="ph-text">Archiv podle data, jazyky, kontakt.</p></div>
+        </div>
+        <div class="foot"><h2 class="slide__title">Tiskový kit</h2><span></span></div>
+      </div>
+    </section>
+
+    <!-- ======================= 13 PŘÍSTUPNOST ======================= -->
+    <section class="slide slide--primary-2" aria-label="Předěl 13 Přístupnost">
+      <div class="divider">
+        <h2 class="divider__title">Přístupnost</h2>
+        <p class="ph-text divider__lead"><span class="ph-tag">Perex</span>Značka čitelná pro všechny.</p>
+        <svg class="divider__num" viewBox="0 0 1000 560" aria-hidden="true"><text x="1010" y="640" text-anchor="end">13</text></svg>
+        <span class="divider__meta">Brand Guide · [Značka]</span>
+      </div>
+    </section>
+
+    <section class="slide" aria-label="Minimální požadavky přístupnosti">
+      <div class="frame">
+        <div class="runhead"><span>Brand Guide</span><span>[Značka]</span><span>13 Přístupnost</span></div>
+        <div class="stage" style="align-content:start">
+          <table class="table">
+            <thead><tr><th>Oblast</th><th>Pravidlo</th></tr></thead>
+            <tbody>
+              <tr><td>Kontrast</td><td>Text min. 4,5 : 1, velký text a UI 3 : 1 (WCAG 2.2 AA)</td></tr>
+              <tr><td>Velikost písma</td><td>Web min. 16 px, tisk min. [— pt]</td></tr>
+              <tr><td>Barva</td><td>Nikdy jediný nositel informace</td></tr>
+              <tr><td>Klávesnice a fokus</td><td>Vše ovladatelné klávesnicí, viditelný focus</td></tr>
+              <tr><td>Média</td><td>Alt text, titulky u videa, přepisy</td></tr>
+              <tr><td>Pohyb</td><td>Respektovat omezený pohyb, nic neblikat</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="foot"><h2 class="slide__title">Minimální požadavky</h2><p class="ph-text">European Accessibility Act platí od 28. 6. 2025 (v ČR zákon č. 424/2023 Sb.).</p></div>
+      </div>
+    </section>
+
+    <!-- ======================= 14 SPRÁVA A KE STAŽENÍ ======================= -->
+    <section class="slide slide--secondary" aria-label="Předěl 14 Správa a ke stažení">
+      <div class="divider">
+        <h2 class="divider__title">Správa a ke stažení</h2>
+        <p class="ph-text divider__lead"><span class="ph-tag">Perex</span>Oficiální soubory, pravidla a lidé, kteří značku spravují.</p>
+        <svg class="divider__num" viewBox="0 0 1000 560" aria-hidden="true"><text x="1010" y="640" text-anchor="end">14</text></svg>
+        <span class="divider__meta">Brand Guide · [Značka]</span>
+      </div>
+    </section>
+
+    <section class="slide" aria-label="Soubory a formáty">
+      <div class="frame">
+        <div class="runhead"><span>Brand Guide</span><span>[Značka]</span><span>14 Správa a ke stažení</span></div>
+        <div class="stage" style="align-content:start">
+          <table class="table">
+            <thead><tr><th>Použití</th><th>Formát</th><th>Barevný prostor</th><th>Rozlišení</th></tr></thead>
+            <tbody>
+              <tr><td>Web, aplikace, UI</td><td>SVG, WebP / PNG</td><td>sRGB</td><td>2× cílová velikost</td></tr>
+              <tr><td>Kancelář</td><td>PNG s průhledností</td><td>sRGB</td><td>min. 1000 px</td></tr>
+              <tr><td>Tisk</td><td>PDF, písmo v křivkách</td><td>CMYK [profil] / Pantone</td><td>300 PPI, spadávka 3 mm</td></tr>
+              <tr><td>Výroba</td><td>EPS / AI / PDF</td><td>Přímé barvy</td><td>Vektor</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="foot"><h2 class="slide__title">Soubory a formáty</h2><p class="ph-text">Balíčky: interní tým, partneři, média. Názvy: [znacka]_[prvek]_[varianta]_[barva]_[prostor].</p></div>
+      </div>
+    </section>
+
+    <section class="slide slide--light" aria-label="Právní pravidla a schvalování">
+      <div class="frame">
+        <div class="runhead"><span>Brand Guide</span><span>[Značka]</span><span>14 Správa a ke stažení</span></div>
+        <div class="stage cols-2" style="align-content:start">
+          <div style="display:grid; gap:1cqw; align-content:start">
+            <span class="label">Právní pravidla</span>
+            <ul class="ph-list">
+              <li>Registrované známky a značení ® / ™.</li>
+              <li>Copyright: „© [rok] [vlastník].“</li>
+              <li>Licence k užití značky jen písemně.</li>
+              <li>Cizí prvky mají vlastní licence.</li>
+            </ul>
+          </div>
+          <table class="table">
+            <thead><tr><th>Role</th><th>Odpovídá za</th></tr></thead>
+            <tbody>
+              <tr><td>Vlastník značky</td><td>Strategie, zásadní změny</td></tr>
+              <tr><td>Brand manager</td><td>Schvalování, dotazy, aktualizace</td></tr>
+              <tr><td>Design system</td><td>Tokeny, Figma, komponenty</td></tr>
+              <tr><td>Externí studio</td><td>Nové šablony a rozšíření</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="foot"><h2 class="slide__title">Právo a schvalování</h2><p class="ph-text">Jak požádat o schválení, lhůta odpovědi a frekvence revize manuálu.</p></div>
+      </div>
+    </section>
+
     <!-- Značka na jedné straně (styl MILES) -->
     <section class="slide" aria-label="Přehled značky">
       <div class="overview">
@@ -663,13 +1469,28 @@
       <div class="cover">
         <div class="cover__main">
           <h2 class="cover__title">Kontakt</h2>
-          <p class="ph-text ph-text--lg"><span class="ph-tag">Text</span>Správce značky: jméno, role, e-mail. Na koho se obrátit se schválením výstupů nebo s dotazem.</p>
-          <p class="ph-text"><span class="ph-tag">Odkaz</span>Kde najít loga, fonty a šablony ke stažení (web manuál, sdílená složka).</p>
+          <p class="ph-text ph-text--lg"><span class="ph-tag">Text</span>Správce značky: jméno, role, e-mail. Legal, média a design system: kontakty podle účelu.</p>
+          <p class="ph-text"><span class="ph-tag">Odkaz</span>Kde najít loga, fonty, šablony a tokeny (web manuál, sdílená složka).</p>
         </div>
         <div class="cover__foot"><span>Brand Guide · [Značka]</span><span>Design: [studio / autor] · [rok]</span></div>
       </div>
     </section>
 
   </main>
+
+  <script>
+    // Ukázky UI (.ui-zoom) jsou navržené pro šířku slidu 1920 px.
+    // Na obrazovce je zmenšíme na skutečnou šířku slidu, v tisku platí 1 : 1 (slides.css).
+    (function () {
+      function fit() {
+        document.querySelectorAll('.ui-zoom').forEach(function (el) {
+          var slide = el.closest('.slide');
+          el.style.setProperty('--z', (slide.clientWidth / 1920).toFixed(4));
+        });
+      }
+      window.addEventListener('resize', fit);
+      fit();
+    })();
+  </script>
 </body>
 </html>

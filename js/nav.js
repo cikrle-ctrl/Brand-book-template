@@ -27,31 +27,35 @@
   });
   desktop.addEventListener('change', function () { setOpen(false); });
 
-  // Stáhnout PDF: stáhne hotový PDF manuál z assets/downloads/.
+  // Tlačítka ke stažení ([data-file]): stáhnou soubor z assets/.
   // Dokud soubor neexistuje, zobrazí hlášku místo chybové stránky.
-  var pdfLink = document.querySelector('[data-pdf]');
   var toast = document.querySelector('.toast');
   var toastTimer;
-  if (pdfLink && toast && location.protocol !== 'file:') {
-    pdfLink.addEventListener('click', function (e) {
-      e.preventDefault();
-      var url = pdfLink.getAttribute('href');
-      fetch(url, { method: 'HEAD' })
-        .then(function (res) {
-          if (!res.ok) throw new Error('missing');
-          var a = document.createElement('a');
-          a.href = url;
-          a.download = '';
-          document.body.appendChild(a);
-          a.click();
-          a.remove();
-        })
-        .catch(function () {
-          toast.textContent = 'PDF manuál zatím není nahraný (' + url + ').';
-          toast.classList.add('is-visible');
-          clearTimeout(toastTimer);
-          toastTimer = setTimeout(function () { toast.classList.remove('is-visible'); }, 4000);
-        });
+  function showToast(text) {
+    toast.textContent = text;
+    toast.classList.add('is-visible');
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(function () { toast.classList.remove('is-visible'); }, 4000);
+  }
+  if (toast && location.protocol !== 'file:') {
+    document.querySelectorAll('[data-file]').forEach(function (link) {
+      link.addEventListener('click', function (e) {
+        e.preventDefault();
+        var url = link.getAttribute('href');
+        fetch(url, { method: 'HEAD' })
+          .then(function (res) {
+            if (!res.ok) throw new Error('missing');
+            var a = document.createElement('a');
+            a.href = url;
+            a.download = '';
+            document.body.appendChild(a);
+            a.click();
+            a.remove();
+          })
+          .catch(function () {
+            showToast((link.getAttribute('data-file') || 'Soubor') + ' zatím není nahraný (' + url + ').');
+          });
+      });
     });
   }
 

@@ -19,8 +19,8 @@
   --c-accent:        var(--brand-primary);      /* tlačítka, aktivní navigace, focus */
   --c-on-accent:     var(--brand-on-primary);
   --c-accent-soft:   color-mix(in srgb, var(--brand-primary) 12%, var(--c-bg));
-  --c-do:            #3d3d3d;   /* štítek „Správně“ — v reálném brandu např. zelená */
-  --c-dont:          #3d3d3d;   /* štítek „Nesprávně“ — v reálném brandu např. červená */
+  --c-do:            var(--brand-do);     /* štítek „Správně“ */
+  --c-dont:          var(--brand-dont);   /* štítek „Nesprávně“ */
 
   /* --- Typografie --- */
   --font-sans:    var(--brand-font-body);

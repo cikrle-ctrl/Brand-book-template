@@ -431,10 +431,12 @@
   gap: var(--sp-2);
   min-height: 40px;
   padding: var(--sp-2) var(--sp-4);
+  font-family: inherit;
   font-size: var(--fs-sm);
   font-weight: var(--fw-medium);
   color: var(--c-text);
   text-decoration: none;
+  cursor: pointer;
   background: var(--c-bg);
   border: 1px solid var(--c-border-strong);
   border-radius: var(--radius);
@@ -505,6 +507,151 @@
   transition: opacity var(--transition), transform var(--transition);
 }
 .toast.is-visible { opacity: 1; transform: none; }
+
+/* ==========================================================================
+   v1.1 — škály, UI systém, preview, přehled značky
+   ========================================================================== */
+
+/* Názvy tokenů v textu: stejné písmo jako text, jen tmavší */
+code { font-family: inherit; font-size: 1em; color: var(--c-text); background: none; padding: 0; }
+
+/* --- Odstínová škála 50–900 (barvy z css/brand.css) --- */
+.scale {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: var(--sp-2);
+}
+@media (min-width: 900px) { .scale { grid-template-columns: repeat(10, minmax(0, 1fr)); } }
+.scale__step { display: grid; gap: var(--sp-1); font-size: var(--fs-xs); color: var(--c-text-muted); }
+.scale__chip {
+  aspect-ratio: 1;
+  background: var(--c);
+  border: 1px solid var(--c-border);
+  border-radius: var(--radius);
+}
+.scale__step strong { color: var(--c-text); font-weight: var(--fw-medium); }
+
+/* Malý vzorek barvy v tabulce tokenů */
+.token-chip {
+  display: inline-block;
+  width: 1.25rem;
+  height: 1.25rem;
+  margin-right: var(--sp-2);
+  vertical-align: -0.25rem;
+  background: var(--c);
+  border: 1px solid var(--c-border-strong);
+  border-radius: var(--radius-sm);
+}
+.data-table td[data-token],
+.data-table td[data-contrast] { white-space: nowrap; }
+.is-pass { color: var(--c-text); }
+.is-fail { color: var(--brand-error); font-weight: var(--fw-medium); }
+
+/* --- Škála tónu (−3 … +3) --- */
+.tone-scale {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  gap: var(--sp-3);
+  font-size: var(--fs-sm);
+  color: var(--c-text-muted);
+}
+.tone-scale > span:last-child { text-align: right; }
+.tone-scale ol {
+  display: flex;
+  gap: var(--sp-2);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.tone-scale li {
+  width: 1rem;
+  height: 1rem;
+  border: 1.5px solid var(--c-border-strong);
+  border-radius: 50%;
+}
+.tone-scale li.is-set { background: var(--c-accent); border-color: var(--c-accent); }
+.tone-scales { display: grid; gap: var(--sp-3); max-width: 640px; }
+
+/* --- Geometrie: radius a elevation (hodnoty z --ui-*) --- */
+.shape-demo {
+  display: grid;
+  gap: var(--sp-4);
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+}
+.shape-demo figure { display: grid; gap: var(--sp-2); margin: 0; font-size: var(--fs-sm); color: var(--c-text-muted); }
+.shape-demo figcaption strong { display: block; color: var(--c-text); font-weight: var(--fw-medium); }
+.shape-demo__box {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  background: var(--ui-muted);
+  border: 1px solid var(--ui-border);
+}
+.shape-demo--elevation .shape-demo__box { background: var(--ui-background); border-color: transparent; border-radius: var(--ui-radius-card); }
+
+/* --- Živá typografická škála UI (Display–P3) --- */
+.type-ladder { display: grid; }
+.type-ladder > div {
+  display: grid;
+  gap: var(--sp-2);
+  padding: var(--sp-4) 0;
+  border-bottom: 1px solid var(--c-border);
+}
+.type-ladder > div:first-child { padding-top: 0; }
+.type-ladder__meta { font-size: var(--fs-xs); color: var(--c-text-subtle); }
+.type-ladder .ui-display,
+.type-ladder .ui-h1 { overflow-wrap: anywhere; }
+@media (min-width: 900px) {
+  .type-ladder > div { grid-template-columns: 180px 1fr; align-items: baseline; gap: var(--sp-5); }
+}
+
+/* --- Brand Web Preview: rám, přepínač, anotace tokenů --- */
+.preview { display: grid; gap: var(--sp-3); }
+.preview__bar { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: var(--sp-3); }
+.preview__bar p { margin: 0; font-size: var(--fs-sm); color: var(--c-text-muted); }
+.preview__stage {
+  padding: var(--sp-4);
+  background: var(--c-surface);
+  border-radius: var(--radius-lg);
+}
+.preview__stage > .ui { border-radius: var(--ui-radius-md); }
+.annot {
+  margin: var(--sp-2) 0 0;
+  padding: 0;
+  list-style: none;
+  font-size: var(--fs-sm);
+  color: var(--c-text-muted);
+}
+.annot li + li { margin-top: var(--sp-1); }
+.annot strong { color: var(--c-text); font-weight: var(--fw-medium); }
+.preview-block + .preview-block { margin-top: var(--sp-6); }
+
+/* --- Brand na jedné stránce (web) --- */
+.overview-web {
+  display: grid;
+  gap: var(--sp-3);
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+@media (min-width: 900px) { .overview-web { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
+.overview-web > * { min-width: 0; margin: 0; }
+.overview-web .span-2 { grid-column: span 2; }
+.overview-web__tile {
+  display: grid;
+  align-content: space-between;
+  gap: var(--sp-3);
+  min-height: 160px;
+  padding: var(--sp-4);
+  border-radius: var(--radius-lg);
+}
+.overview-web__tile--primary { color: var(--brand-on-primary); background: var(--brand-primary); }
+.overview-web__tile--light { background: var(--brand-neutral-light); }
+.overview-web__tile p { margin: 0; }
+.overview-web__label { font-size: var(--fs-xs); opacity: 0.8; }
+.overview-web__claim { font-family: var(--font-heading); font-weight: var(--brand-heading-weight); font-size: var(--fs-xl); line-height: 1.15; text-transform: var(--brand-heading-case); }
+.overview-web__type { font-family: var(--font-heading); font-weight: var(--brand-heading-weight); font-size: var(--fs-2xl); line-height: 1; }
+.overview-web__strip { display: flex; min-height: 64px; overflow: hidden; border-radius: var(--radius-lg); }
+.overview-web__strip span { flex: 1; background: var(--c); }
 
 /* --- Ikony ---
    Zdroj: SVG sprite na začátku <body> v index.html.

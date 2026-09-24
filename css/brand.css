@@ -1,8 +1,18 @@
 /* ==========================================================================
    BRAND — jediný soubor, který se vyplňuje pro konkrétního klienta.
-   Barvy a písma odsud se propíšou do celého web manuálu:
-   header, navigace, nadpisy, barevné vzorky, poměr barev, ukázky písma.
+   Barvy, písma a UI tokeny odsud se propíšou do celého web manuálu
+   i do PDF manuálu: header, navigace, nadpisy, barevné vzorky, škály,
+   poměr barev, ukázky písma, kapitola 09 (UI systém, Brand Web Preview)
+   a export pro Tailwind / tokens.json.
    Výchozí hodnoty = šedý wireframe.
+
+   Pořadí vyplňování:
+   1. Brandové barvy a písma (--brand-*).
+   2. Stavové barvy (--brand-success … --brand-dont).
+   3. Škály odstínů: dopočítají se samy, přepiš jen když máš ručně
+      laděné odstíny.
+   4. UI / WEB SYSTEM (--ui-*): pokud značka nemá vlastní web/UI paletu,
+      odvoď ji odsud (sémantické tokeny, typescale, radius, elevation).
    ========================================================================== */
 
 /* Brandové fonty: soubory dej do assets/fonts/ a odkomentuj.
@@ -21,6 +31,10 @@
 */
 
 :root {
+  /* ======================================================================
+     1. BRANDOVÉ BARVY A PÍSMA
+     ====================================================================== */
+
   /* --- Primární paleta --- */
   --brand-primary:        #4a4a4a;  /* hlavní barva: tlačítka, aktivní navigace, akcenty */
   --brand-on-primary:     #ffffff;  /* text na hlavní barvě (musí mít kontrast min. 4,5 : 1) */
@@ -39,6 +53,164 @@
   --brand-font-body:      system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   --brand-heading-weight: 700;
   --brand-heading-case:   none;     /* none | uppercase */
+
+  /* ======================================================================
+     2. STAVOVÉ BARVY
+     Výchozí hodnoty jsou tlumené, ale navzájem odlišitelné i tónem.
+     Nesmí kolidovat s brandovou barvou: je-li primární barva červená,
+     zvol pro chybu jiný odstín.
+     ====================================================================== */
+  --brand-success:        #2f6b4f;
+  --brand-warning:        #8a5a00;
+  --brand-error:          #a23b32;
+  --brand-info:           #2f5b8a;
+
+  /* Štítky Správně / Nesprávně v manuálu */
+  --brand-do:             var(--brand-success);
+  --brand-dont:           var(--brand-error);
+
+  /* ======================================================================
+     3. ŠKÁLY ODSTÍNŮ (50–900)
+     Dopočet přes color-mix v OKLCH. 500 = základní barva.
+     Když má značka ručně laděné odstíny, přepiš konkrétní stupně.
+     ====================================================================== */
+  --brand-primary-50:  color-mix(in oklch, var(--brand-primary) 8%,  white);
+  --brand-primary-100: color-mix(in oklch, var(--brand-primary) 16%, white);
+  --brand-primary-200: color-mix(in oklch, var(--brand-primary) 30%, white);
+  --brand-primary-300: color-mix(in oklch, var(--brand-primary) 48%, white);
+  --brand-primary-400: color-mix(in oklch, var(--brand-primary) 72%, white);
+  --brand-primary-500: var(--brand-primary);
+  --brand-primary-600: color-mix(in oklch, var(--brand-primary) 86%, black);
+  --brand-primary-700: color-mix(in oklch, var(--brand-primary) 72%, black);
+  --brand-primary-800: color-mix(in oklch, var(--brand-primary) 56%, black);
+  --brand-primary-900: color-mix(in oklch, var(--brand-primary) 40%, black);
+
+  --brand-neutral-50:  color-mix(in oklch, var(--brand-neutral-dark) 3%,  white);
+  --brand-neutral-100: color-mix(in oklch, var(--brand-neutral-dark) 7%,  white);
+  --brand-neutral-200: color-mix(in oklch, var(--brand-neutral-dark) 14%, white);
+  --brand-neutral-300: color-mix(in oklch, var(--brand-neutral-dark) 26%, white);
+  --brand-neutral-400: color-mix(in oklch, var(--brand-neutral-dark) 42%, white);
+  --brand-neutral-500: color-mix(in oklch, var(--brand-neutral-dark) 58%, white);
+  --brand-neutral-600: color-mix(in oklch, var(--brand-neutral-dark) 70%, white);
+  --brand-neutral-700: color-mix(in oklch, var(--brand-neutral-dark) 80%, white);
+  --brand-neutral-800: color-mix(in oklch, var(--brand-neutral-dark) 90%, white);
+  --brand-neutral-900: var(--brand-neutral-dark);
+
+  /* ======================================================================
+     4. UI / WEB SYSTEM (Tailwind a design system standard)
+     Sémantické tokeny pro web a aplikaci. Kapitola 09 manuálu je z nich
+     vykreslená živě a exportuje je jako Tailwind v4 @theme a tokens.json.
+     Brand Web Preview se styluje VÝHRADNĚ těmito tokeny.
+     ====================================================================== */
+
+  /* --- 4a. Sémantická paleta --- */
+  --ui-primary:              var(--brand-primary);
+  --ui-primary-hover:        color-mix(in oklch, var(--brand-primary) 84%, black);
+  --ui-primary-foreground:   var(--brand-on-primary);
+  --ui-secondary:            var(--brand-secondary-2);
+  --ui-secondary-foreground: var(--brand-neutral-dark);
+  --ui-background:           #ffffff;                     /* základní pozadí webu */
+  --ui-foreground:           var(--brand-neutral-dark);   /* hlavní text */
+  --ui-muted:                var(--brand-neutral-light);  /* tlumené plochy */
+  --ui-muted-foreground:     color-mix(in oklch, var(--brand-neutral-dark) 72%, white); /* sekundární text */
+  --ui-border:               color-mix(in oklch, var(--brand-neutral-dark) 16%, white);
+  --ui-inverted:             var(--brand-neutral-dark);   /* tmavé sekce na světlém webu */
+  --ui-inverted-foreground:  var(--brand-neutral-light);
+  --ui-accent:               var(--brand-primary-2);
+  --ui-accent-foreground:    var(--brand-neutral-dark);
+  --ui-destructive:          var(--brand-error);          /* chybové stavy */
+  --ui-destructive-foreground: #ffffff;
+  --ui-success:              var(--brand-success);
+  --ui-success-foreground:   #ffffff;
+  --ui-ring:                 var(--brand-primary);        /* focus */
+
+  /* --- 4b. Typography scale --- */
+  --ui-font-primary:   var(--brand-font-heading);  /* nadpisy, Display */
+  --ui-font-secondary: var(--brand-font-body);     /* text, UI */
+
+  /* size / line-height / weight / tracking. Display–H3 jsou fluidní (mobil → desktop):
+     -max = velikost na desktopu, -size = plynulý přechod od mobilu. */
+  --ui-display-max: 4.5rem;   --ui-h1-max: 3.5rem;   --ui-h2-max: 2.75rem;   --ui-h3-max: 2.125rem;
+  --ui-display-size: clamp(3rem, 2rem + 4vw, var(--ui-display-max));      /* 48 → 72 px */
+  --ui-display-lh: 1.05;  --ui-display-weight: var(--brand-heading-weight);  --ui-display-tracking: -0.02em;
+  --ui-h1-size: clamp(2.5rem, 1.8rem + 2.8vw, var(--ui-h1-max));          /* 40 → 56 px */
+  --ui-h1-lh: 1.1;        --ui-h1-weight: var(--brand-heading-weight);       --ui-h1-tracking: -0.015em;
+  --ui-h2-size: clamp(2rem, 1.5rem + 2vw, var(--ui-h2-max));              /* 32 → 44 px */
+  --ui-h2-lh: 1.15;       --ui-h2-weight: var(--brand-heading-weight);       --ui-h2-tracking: -0.01em;
+  --ui-h3-size: clamp(1.625rem, 1.3rem + 1.3vw, var(--ui-h3-max));        /* 26 → 34 px */
+  --ui-h3-lh: 1.2;        --ui-h3-weight: 600;  --ui-h3-tracking: -0.005em;
+  --ui-h4-size: 1.625rem;                                        /* 26 px */
+  --ui-h4-lh: 1.3;        --ui-h4-weight: 600;  --ui-h4-tracking: 0em;
+  --ui-h5-size: 1.3125rem;                                       /* 21 px */
+  --ui-h5-lh: 1.4;        --ui-h5-weight: 600;  --ui-h5-tracking: 0em;
+  --ui-h6-size: 1.125rem;                                        /* 18 px */
+  --ui-h6-lh: 1.4;        --ui-h6-weight: 600;  --ui-h6-tracking: 0.01em;
+  --ui-p1-size: 1.3125rem;                                       /* 21 px, Large / Lead */
+  --ui-p1-lh: 1.6;        --ui-p1-weight: 400;  --ui-p1-tracking: 0em;
+  --ui-p2-size: 1.125rem;                                        /* 18 px, Base */
+  --ui-p2-lh: 1.6;        --ui-p2-weight: 400;  --ui-p2-tracking: 0em;
+  --ui-p3-size: 0.9375rem;                                       /* 15 px, Small / Detail */
+  --ui-p3-lh: 1.5;        --ui-p3-weight: 400;  --ui-p3-tracking: 0.005em;
+
+  /* --- 4c. Geometry: radius --- */
+  --ui-radius-none: 0px;
+  --ui-radius-sm:   4px;
+  --ui-radius-md:   8px;
+  --ui-radius-lg:   16px;
+  --ui-radius-full: 9999px;
+  /* Role: který radius dostane která komponenta */
+  --ui-radius-button: var(--ui-radius-md);
+  --ui-radius-input:  var(--ui-radius-md);
+  --ui-radius-card:   var(--ui-radius-lg);
+  --ui-radius-modal:  var(--ui-radius-lg);
+
+  /* --- 4d. Elevation: stíny ---
+     Flat brand: nastav všechny --ui-shadow-* na none a v kapitole 09
+     ponech větu „Brand nevyužívá elevation ani shadows, design je striktně flat.“ */
+  --ui-shadow-sm: 0 1px 2px rgb(0 0 0 / 0.06), 0 1px 1px rgb(0 0 0 / 0.04);
+  --ui-shadow-md: 0 4px 12px rgb(0 0 0 / 0.08), 0 1px 3px rgb(0 0 0 / 0.06);
+  --ui-shadow-lg: 0 16px 40px rgb(0 0 0 / 0.14), 0 4px 12px rgb(0 0 0 / 0.08);
+  --ui-shadow-button: var(--ui-shadow-sm);
+  --ui-shadow-card:   var(--ui-shadow-md);
+  --ui-shadow-modal:  var(--ui-shadow-lg);
+
+  /* --- 4e. Spacing a pohyb --- */
+  --ui-space:          0.5rem;   /* základní jednotka 8 px; násobky 1–12 */
+  --ui-duration-fast:  120ms;    /* hover, focus */
+  --ui-duration-base:  240ms;    /* otevření panelu, přechod stavu */
+  --ui-duration-slow:  480ms;    /* modal, přechod stránky */
+  --ui-ease:           cubic-bezier(0.2, 0, 0, 1);
+}
+
+/* --- 4f. Dark mode ---
+   Stejné názvy tokenů, jiné hodnoty. Hodnoty zde piš napřímo
+   (odvozené tokeny se v tmavém režimu znovu nepřepočítají). */
+[data-theme="dark"] {
+  --ui-primary:              color-mix(in oklch, var(--brand-primary) 45%, white);
+  --ui-primary-hover:        color-mix(in oklch, var(--brand-primary) 32%, white);
+  --ui-primary-foreground:   var(--brand-neutral-dark);
+  --ui-secondary:            color-mix(in oklch, var(--brand-neutral-dark) 78%, white);
+  --ui-secondary-foreground: var(--brand-neutral-light);
+  --ui-background:           var(--brand-neutral-dark);
+  --ui-foreground:           var(--brand-neutral-light);
+  --ui-muted:                color-mix(in oklch, var(--brand-neutral-dark) 88%, white);
+  --ui-muted-foreground:     color-mix(in oklch, var(--brand-neutral-light) 68%, var(--brand-neutral-dark));
+  --ui-border:               color-mix(in oklch, var(--brand-neutral-dark) 76%, white);
+  --ui-inverted:             var(--brand-neutral-light);
+  --ui-inverted-foreground:  var(--brand-neutral-dark);
+  --ui-accent:               var(--brand-primary-2);
+  --ui-accent-foreground:    var(--brand-neutral-dark);
+  --ui-destructive:          color-mix(in oklch, var(--brand-error) 55%, white);
+  --ui-destructive-foreground: var(--brand-neutral-dark);
+  --ui-success:              color-mix(in oklch, var(--brand-success) 55%, white);
+  --ui-success-foreground:   var(--brand-neutral-dark);
+  --ui-ring:                 color-mix(in oklch, var(--brand-primary) 45%, white);
+  --ui-shadow-sm: 0 1px 2px rgb(0 0 0 / 0.4);
+  --ui-shadow-md: 0 4px 14px rgb(0 0 0 / 0.45);
+  --ui-shadow-lg: 0 18px 44px rgb(0 0 0 / 0.55);
+  --ui-shadow-button: var(--ui-shadow-sm);
+  --ui-shadow-card:   var(--ui-shadow-md);
+  --ui-shadow-modal:  var(--ui-shadow-lg);
 }
 
 /* Příklad vyplnění (Nine Group) — odkomentuj a uvidíš, jak se web přebarví:
@@ -53,5 +225,6 @@
   --brand-font-heading:   "Enra Semi", system-ui, sans-serif;
   --brand-font-body:      "Enra Semi", system-ui, sans-serif;
   --brand-heading-weight: 600;
+  --ui-radius-button:     var(--ui-radius-full);
 }
 */
