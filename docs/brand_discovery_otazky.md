@@ -39,6 +39,7 @@ Dotazník na začátek spolupráce. Pomáhá pochopit, proč značka existuje, p
 7. Jaké jsou vaše obchodní cíle na 1 rok a na 3 roky (čísla, pokud je lze sdílet)?
 8. Co je dnes vaší největší obchodní překážkou? Jak by jí měla pomoct značka?
 9. Máte investory nebo plánujete investiční kolo, prodej, nebo vstup na burzu?
+10. Máte víc poboček nebo prodejních míst? Liší se mezi nimi ceník, otevírací doba, tým nebo nabídka?
 
 ## C. Podstata značky
 
@@ -68,6 +69,7 @@ Dotazník na začátek spolupráce. Pomáhá pochopit, proč značka existuje, p
 8. Je nějaká skupina, kterou chcete oslovit nově a dosud se vám to nedaří?
 9. Je nějaká skupina, kterou záměrně oslovit nechcete?
 10. Máte data o zákaznících (průzkum, rozhovory, NPS, analytiku, recenze)? Můžeme je vidět?
+11. Jak si zákazník dnes objednává nebo rezervuje (rezervační systém, telefon, e-shop, zpráva)? Je to jeden systém pro celou firmu, nebo má každý člen týmu vlastní?
 
 ## E. Trh a konkurence
 
@@ -113,7 +115,7 @@ Dotazník na začátek spolupráce. Pomáhá pochopit, proč značka existuje, p
 4. Pošlete 3–5 referencí, které se vám nelíbí, a proč.
 5. Jsou barvy, tvary nebo symboly, které jsou pro vás nepřijatelné (osobně, kulturně, kvůli konkurenci)?
 6. Existují technická omezení (jednobarevný tisk, výšivka, gravírování, malá obrazovka, displej zařízení, ražba do kovu)?
-7. Kde bude logo nejčastěji vidět a v jaké velikosti (ikona aplikace, avatar, štít budovy, obal, faktura)?
+7. Kde bude logo nejčastěji vidět a v jaké velikosti (ikona aplikace, avatar, štít budovy, obal, faktura)? Máte symbol nebo monogram pro malé formáty (favicon, profilový obrázek, rezervační a recenzní profily)?
 8. Máte vlastní fotografie, nebo budeme fotit? Jaké lidi, prostředí a produkty chcete ukazovat?
 9. Máte nebo chcete maskota, postavu nebo ilustrační styl?
 10. Hraje v identitě roli pohyb, video nebo zvuk (aplikace, sociální sítě, reklama, prostor)?
@@ -134,6 +136,7 @@ Dotazník na začátek spolupráce. Pomáhá pochopit, proč značka existuje, p
 - [ ] Web / e-shop (na jaké platformě?)  [ ] landing pages  [ ] blog
 - [ ] Newsletter (nástroj?)  [ ] výkonnostní reklama a bannery  [ ] video a YouTube
 - [ ] Sociální sítě (které a jak často?)  [ ] podcast  [ ] influenceři a UGC
+- [ ] Rezervační systém (Noona, Reservio, Bookio…)  [ ] Google Business profil a recenze  [ ] profily týmu na webu
 
 **Firemní komunikace**
 - [ ] Vizitky  [ ] hlavičkový papír a obálky  [ ] e-mailový podpis
@@ -170,11 +173,12 @@ Dotazník na začátek spolupráce. Pomáhá pochopit, proč značka existuje, p
 1. Máte registrovanou ochrannou známku (slovní, obrazovou)? V jakých zemích a třídách? Vyprší?
 2. Víte o sporech nebo podobných značkách, které by mohly kolidovat?
 3. Kdo vlastní práva k současnému logu, fotografiím a písmům? Máte smlouvy s původními autory?
-4. Podléhá váš obor regulaci (potraviny, kosmetika, zdravotnictví, finance, alkohol, tabák, konopí, děti, farmacie)? Jaké povinné texty, varování nebo omezení reklamy platí?
-5. Musíte splňovat požadavky na přístupnost (European Accessibility Act, veřejný sektor)?
-6. Je udržitelnost součástí vaší značky? Jaká tvrzení chcete používat a čím je doložíte (certifikace, data, audit)?
-7. Máte požadavky na materiály, tiskárny nebo dodavatele (recyklované, certifikované FSC, lokální)?
-8. Existují interní pravidla (korporátní manuál mateřské firmy, požadavky investorů, compliance), která musíme respektovat?
+4. Souhlasí zaměstnanci a spolupracovníci se zveřejněním svých jmen a portrétů na webu a v materiálech? Co se stane po ukončení spolupráce?
+5. Podléhá váš obor regulaci (potraviny, kosmetika, zdravotnictví, finance, alkohol, tabák, konopí, děti, farmacie)? Jaké povinné texty, varování nebo omezení reklamy platí?
+6. Musíte splňovat požadavky na přístupnost (European Accessibility Act, veřejný sektor)?
+7. Je udržitelnost součástí vaší značky? Jaká tvrzení chcete používat a čím je doložíte (certifikace, data, audit)?
+8. Máte požadavky na materiály, tiskárny nebo dodavatele (recyklované, certifikované FSC, lokální)?
+9. Existují interní pravidla (korporátní manuál mateřské firmy, požadavky investorů, compliance), která musíme respektovat?
 
 ## K. Úspěch a měření
 
@@ -206,13 +210,14 @@ U položek, které dodáváte, zaškrtněte políčko. K ostatním připište **
 - [ ] Současný brand manuál nebo pravidla (i neúplné)
 - [ ] Názvy a soubory písem včetně dokladu o licenci (kdo ji koupil, pro kolik uživatelů, pro web?)
 - [ ] Barevné hodnoty (HEX, CMYK, Pantone), pokud existují
+- [ ] Symbol nebo monogram a favicon, pokud existují
 - [ ] Ikony, ilustrace, vzory, grafické prvky
 - [ ] Historická loga a materiály (archiv, první verze, skici)
 
 ### 3. Obrazový materiál
 - [ ] Fotobanka firmy: produkty, lidé, prostory, výroba
 - [ ] Informace o právech k fotografiím: autor, licence, souhlasy modelů
-- [ ] Portréty vedení a týmu
+- [ ] Portréty vedení a týmu: ideálně ve stejném světle, pozadí a výřezu, soubory pojmenované jménem osoby
 - [ ] Video materiály a animace
 - [ ] Hudba nebo zvuky, které používáte, a jejich licence
 
@@ -232,6 +237,7 @@ U položek, které dodáváte, zaškrtněte políčko. K ostatním připište **
 - [ ] Analytika: přístup pro čtení nebo export (GA4, Hotjar apod.)
 - [ ] Snímky obrazovky klíčových obrazovek aplikace, případně testovací účet
 - [ ] Seznam domén a účtů na sociálních sítích (bez hesel)
+- [ ] Odkazy na rezervační systémy, recenzní profily (Google, Reservio…), adresy a otevírací doby všech poboček
 
 ### 6. Tiskoviny a šablony
 - [ ] Současné šablony: prezentace, dokumenty, nabídky, faktury, e-mailový podpis

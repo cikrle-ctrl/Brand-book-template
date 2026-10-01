@@ -135,9 +135,19 @@ body.nav-open { overflow: hidden; }
 }
 .toc ol a { padding-block: var(--sp-1); font-size: var(--fs-xs); }
 
-.toc a.is-active {
+/* Aktivní kapitola: plná primární barva, bílý text i číslo (kontrast AA).
+   Aktivní podkapitola: jen primární text, aby nevznikly dva barevné bloky nad sebou. */
+.toc > li > a.is-active,
+.toc > li > a.is-active:hover {
+  color: var(--c-on-accent);
+  background: var(--c-accent);
+  font-weight: var(--fw-bold);
+}
+.toc > li > a.is-active .toc__num { color: var(--c-on-accent); }
+.toc ol a.is-active,
+.toc ol a.is-active:hover {
   color: var(--c-accent);
-  background: var(--c-accent-soft);
+  background: transparent;
   font-weight: var(--fw-bold);
 }
 

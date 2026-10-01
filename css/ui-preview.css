@@ -68,6 +68,12 @@
 .ui-btn--destructive { color: var(--ui-destructive-foreground); background: var(--ui-destructive); border-color: var(--ui-destructive); }
 .ui-btn--destructive:hover, .ui-btn--destructive.is-hover { background: var(--ui-destructive); border-color: var(--ui-destructive); opacity: 0.88; }
 .ui-btn--inverted { color: var(--ui-inverted); background: var(--ui-inverted-foreground); border-color: var(--ui-inverted-foreground); }
+/* Hover musí zůstat ve vlastní dvojici barev, jinak zdědí primary-hover a text zmizí */
+.ui-btn--inverted:hover, .ui-btn--inverted.is-hover {
+  color: var(--ui-inverted);
+  background: color-mix(in oklch, var(--ui-inverted-foreground) 85%, var(--ui-inverted));
+  border-color: color-mix(in oklch, var(--ui-inverted-foreground) 85%, var(--ui-inverted));
+}
 .ui-link { color: var(--ui-primary); text-decoration: underline; text-underline-offset: 0.2em; }
 
 /* --- Formulář --- */

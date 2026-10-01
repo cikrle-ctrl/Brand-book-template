@@ -44,6 +44,7 @@ Fáze 8 (Obaly, prostor a produkt) a položky označené *(modul)* vyplň jen te
 - [ ] Ikona aplikace pro iOS (1024 × 1024 bez průhlednosti) a Android (adaptivní ikona, popředí a pozadí) *(modul)*.
 - [ ] Profilový avatar pro sociální sítě, zkontrolovaný v kruhovém i čtvercovém ořezu.
 - [ ] OG / sdílecí obrázek 1200 × 630 px.
+- [ ] Stejný symbol a avatar je nahraný i v rezervačních, recenzních a firemních profilech (Google Business, rezervační systém, e-shop).
 
 ### Chyby a pohyb
 - [ ] Chyby použití mají min. 8 vizuálních příkladů. Mezi nimi: deformace, změna barev, rotace, efekty, rušivé pozadí, nedostatečný kontrast, logo ve větě, logo jako vzor, přestavění nebo znovunakreslení (i pomocí AI).
@@ -120,6 +121,7 @@ Fáze 8 (Obaly, prostor a produkt) a položky označené *(modul)* vyplň jen te
 - [ ] Radius (`none / sm / md / lg / full`) a jeho role (tlačítko, pole, karta, modal) odpovídají tonalitě značky.
 - [ ] Elevation (`shadow-sm / md / lg`) je definovaná, nebo je u flat brandu výslovně uvedeno: „Brand nevyužívá elevation ani shadows, design je striktně flat.“
 - [ ] Brand Web Preview je stylovaný výhradně tokeny (žádné hodnoty mimo `--ui-*`) a pod každým blokem je popis v tokenech. Texty ukázky jsou reálné texty značky.
+- [ ] Data v ukázkách (ceny, adresy, otevírací doby, jména, odkazy na rezervace) jsou reálná a u zdroje je uvedeno, odkud a k jakému datu jsou převzatá.
 - [ ] Export Tailwind v4 theme a tokens.json z kapitoly 09 je stažený, otestovaný v čistém projektu a předaný vývojářům.
 - [ ] Design tokeny jsou exportované (`tokens.json` ve formátu W3C Design Tokens nebo Style Dictionary) a jejich názvy odpovídají Figma variables.
 - [ ] Figma knihovna obsahuje barvy, typografii, efekty, mřížky a klíčové komponenty s variantami a stavy (default, hover, focus, active, disabled, chyba, načítání).
@@ -155,6 +157,7 @@ Fáze 8 (Obaly, prostor a produkt) a položky označené *(modul)* vyplň jen te
 - [ ] Newsletter: šablona v nástroji klienta (Mailchimp, Ecomail…) nebo HTML.
 - [ ] HR, nábor, eventy, inzerce, OOH, merch: jen to, co je v zadání. Každý výstup má technickou specifikaci.
 - [ ] Galerie reálného použití v manuálu ukazuje, jak systém funguje na min. 6 různých výstupech.
+- [ ] Tým *(modul)*: portréty mají jednotné pozadí, oblečení, světlo a výřez (např. 4:5), soubory jsou pojmenované podle konvence a role nebo úrovně osob potvrdil klient.
 
 ## 8. Obaly, prostor a produkt *(modul)*
 
@@ -197,6 +200,7 @@ Fáze 8 (Obaly, prostor a produkt) a položky označené *(modul)* vyplň jen te
 - [ ] Předávací protokol nebo smlouva výslovně převádí autorská majetková práva nebo uděluje výhradní licenci k logu a identitě (rozsah, území, doba).
 - [ ] Seznam všech cizích prvků s licencemi je hotový: písma, fotografie, ilustrace, ikony, hudba, mockupy. U každého je uveden vlastník licence.
 - [ ] Mockupy použité v prezentaci nejsou předány jako součást brandu, pokud to jejich licence nedovoluje.
+- [ ] Osoby na portrétech a se jménem v manuálu nebo na webu daly souhlas se zveřejněním (GDPR). Je určené, co se stane po ukončení spolupráce.
 - [ ] Pravidla užití značky třetími stranami (partneři, média) jsou v manuálu včetně kontaktu pro schválení.
 - [ ] Pravidla pro ®/™ a copyright řádek jsou určená.
 
@@ -207,6 +211,7 @@ Fáze 8 (Obaly, prostor a produkt) a položky označené *(modul)* vyplň jen te
 - [ ] Všechny kapitoly v sidebaru odpovídají obsahu. Nepoužité moduly jsou smazané včetně odkazů v navigaci.
 - [ ] Verze, datum a autor jsou vyplněné na webu, v PDF, v patičce a v changelogu.
 - [ ] Brand na jedné stránce je aktuální.
+- [ ] V manuálu nejsou osobní telefonní čísla ani soukromé kontakty zaměstnanců, jen firemní kontakty a veřejné profily se souhlasem.
 
 ### Konzistence
 - [ ] Web a PDF mají stejné kapitoly, názvy, hodnoty barev i rozměry.
@@ -220,6 +225,7 @@ Fáze 8 (Obaly, prostor a produkt) a položky označené *(modul)* vyplň jen te
 ### PDF a korektura
 - [ ] PDF je znovu vyexportované po posledních změnách (`pdf\build-pdf.ps1`). Text nepřetéká přes okraj slidu a písma jsou vložená. Velikost je rozumná (do cca 20 MB, případně i odlehčená verze).
 - [ ] Korektura: pravopis, typografie (nezalomitelné mezery, české uvozovky, pomlčky vs. spojovníky), jednotné psaní názvu značky.
+- [ ] Po hromadných úpravách skriptem je ověřené, že z textu nezmizely znaky (hlavně nezalomitelné mezery po předložkách) a že HTML má spárované tagy.
 - [ ] Druhý designér manuál prošel nezávisle (čtyři oči).
 
 ## 13. Export assetů
