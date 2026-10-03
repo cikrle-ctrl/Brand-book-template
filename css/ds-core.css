@@ -14,7 +14,7 @@
   color: var(--ui-foreground);
   background: var(--ui-surface-subtle);
 }
-.ui-app .icon { width: var(--ui-icon-md); height: var(--ui-icon-md); flex: none; }
+.ui-app .icon { width: var(--ui-icon-md); height: var(--ui-icon-md); flex: none; stroke-width: var(--ui-icon-stroke-md); }
 .ui-app-h1 { font-family: var(--ui-font-primary); font-size: var(--ui-app-h1-size); line-height: var(--ui-app-h1-lh); font-weight: var(--ui-app-h1-weight); }
 .ui-app-h2 { font-family: var(--ui-font-primary); font-size: var(--ui-app-h2-size); line-height: var(--ui-app-h2-lh); font-weight: var(--ui-app-h2-weight); }
 .ui-app-h3 { font-family: var(--ui-font-primary); font-size: var(--ui-app-h3-size); line-height: var(--ui-app-h3-lh); font-weight: var(--ui-app-h3-weight); }
@@ -38,7 +38,7 @@
 }
 .ui-btn--sm { min-height: var(--ui-button-h-sm); padding: 0 var(--ui-button-px-sm); }
 .ui-btn--lg { min-height: var(--ui-button-h-lg); padding: 0 var(--ui-button-px-lg); font-size: var(--ui-app-body-size); }
-.ui-btn .icon { width: var(--ui-icon-sm); height: var(--ui-icon-sm); }
+.ui-btn .icon { width: var(--ui-icon-sm); height: var(--ui-icon-sm); stroke-width: var(--ui-icon-stroke-sm); }
 .ui-btn.is-loading { cursor: progress; }
 .ui-btn.is-loading .icon { animation: ui-spin calc(var(--ui-duration-slow) * 1.5) linear infinite; }
 .ui-btn:focus-visible, .ui-btn.is-focus { outline: var(--ui-focus-width) solid var(--ui-ring); outline-offset: var(--ui-focus-offset); }
@@ -183,7 +183,7 @@
 
 .ui-crumbs { display: flex; flex-wrap: wrap; align-items: center; gap: var(--ui-space-1); padding: 0; margin: 0; list-style: none; font-size: var(--ui-app-label-size); color: var(--ui-foreground-subtle); }
 .ui-crumbs li { display: inline-flex; align-items: center; gap: var(--ui-space-1); }
-.ui-crumbs .icon { width: var(--ui-icon-sm); height: var(--ui-icon-sm); }
+.ui-crumbs .icon { width: var(--ui-icon-sm); height: var(--ui-icon-sm); stroke-width: var(--ui-icon-stroke-sm); }
 .ui-crumbs a { color: inherit; }
 .ui-crumbs [aria-current] { color: var(--ui-foreground); font-weight: var(--ui-app-label-weight); }
 
@@ -202,7 +202,7 @@
 .ui-table .is-num { text-align: right; font-variant-numeric: var(--ui-app-numeric); }
 .ui-table .is-check { width: calc(var(--ui-icon-md) + var(--ui-table-cell-px) * 2); }
 .ui-sort { display: inline-flex; align-items: center; gap: var(--ui-space-1); padding: 0; font: inherit; color: inherit; background: none; border: 0; cursor: pointer; }
-.ui-sort .icon { width: var(--ui-icon-sm); height: var(--ui-icon-sm); color: var(--ui-foreground-subtle); }
+.ui-sort .icon { width: var(--ui-icon-sm); height: var(--ui-icon-sm); stroke-width: var(--ui-icon-stroke-sm); color: var(--ui-foreground-subtle); }
 .ui-sort[aria-sort] .icon { color: var(--ui-foreground); }
 .ui-table__primary { font-weight: var(--ui-app-label-weight); }
 .ui-table__meta { display: block; font-size: var(--ui-app-caption-size); line-height: var(--ui-app-caption-lh); color: var(--ui-foreground-subtle); }
@@ -222,7 +222,7 @@
 .ui-stat__value { font-family: var(--ui-font-primary); font-size: var(--ui-app-h1-size); line-height: var(--ui-app-h1-lh); font-weight: var(--ui-app-h1-weight); font-variant-numeric: var(--ui-app-numeric); }
 .ui-stat__delta { display: inline-flex; align-items: center; gap: var(--ui-space-1); font-size: var(--ui-app-caption-size); font-weight: var(--ui-app-caption-weight); color: var(--ui-success); }
 .ui-stat__delta.is-down { color: var(--ui-destructive); }
-.ui-stat__delta .icon { width: var(--ui-icon-sm); height: var(--ui-icon-sm); }
+.ui-stat__delta .icon { width: var(--ui-icon-sm); height: var(--ui-icon-sm); stroke-width: var(--ui-icon-stroke-sm); }
 
 /* --- Hlášky v produktu (subtle) --- */
 .ui-message {
@@ -294,7 +294,7 @@
 /* --- Prázdný stav --- */
 .ui-empty { display: grid; justify-items: center; gap: var(--ui-space-3); padding: var(--ui-space-10) var(--ui-space-6); text-align: center; }
 .ui-empty__icon { display: grid; place-items: center; width: var(--ui-space-12); height: var(--ui-space-12); color: var(--ui-foreground); background: var(--ui-muted); border-radius: var(--ui-radius-full); }
-.ui-empty__icon .icon { width: var(--ui-icon-lg); height: var(--ui-icon-lg); }
+.ui-empty__icon .icon { width: var(--ui-icon-lg); height: var(--ui-icon-lg); stroke-width: var(--ui-icon-stroke-lg); }
 .ui-empty p { max-width: 36ch; color: var(--ui-foreground-subtle); }
 
 /* --- Skeleton --- */
@@ -360,7 +360,7 @@
   border-radius: var(--ui-radius-sm);
 }
 .ui-sidenav a:hover { color: var(--ui-foreground); background: var(--ui-muted); }
-.ui-sidenav a[aria-current="page"] { color: var(--ui-selected-foreground); background: var(--ui-selected); }
+.ui-sidenav a[aria-current="page"] { color: var(--ui-primary-foreground); background: var(--ui-primary); }   /* jako navigace manuálu: Louka + Kosodřevina */
 .ui-sidenav a .ui-badge { margin-left: auto; }
 .ui-main { display: grid; grid-template-rows: auto 1fr; min-width: 0; background: var(--ui-surface-subtle); }
 .ui-topbar {

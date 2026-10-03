@@ -215,6 +215,7 @@
   var SPACE = ['0', '1', '2', '3', '4', '5', '6', '8', '10', '12', '16', '20', '24'];
   var Z = ['base', 'dropdown', 'sticky', 'overlay', 'modal', 'toast', 'tooltip'];
   var LAYOUT = ['control-h-sm', 'control-h-md', 'control-h-lg', 'icon-sm', 'icon-md', 'icon-lg',
+    'icon-stroke-sm', 'icon-stroke-md', 'icon-stroke-lg',
     'border-width', 'focus-width', 'focus-offset'];
   // Úroveň 3 — komponentní tokeny (--ui-<název>)
   var COMPONENT = ['button-h-sm', 'button-px-sm', 'button-h-md', 'button-px-md', 'button-h-lg', 'button-px-lg',
