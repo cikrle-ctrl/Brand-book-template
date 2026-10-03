@@ -241,12 +241,12 @@
   --ui-p3-lh: 1.5;        --ui-p3-weight: 400;  --ui-p3-tracking: 0.005em;
 
   /* Produktová škála (aplikace, portály, dashboardy) */
-  --ui-app-h1-size: 1.75rem;      --ui-app-h1-lh: 2.25rem;     --ui-app-h1-weight: var(--brand-heading-weight);
+  --ui-app-h1-size: 1.75rem;      --ui-app-h1-lh: 2.25rem;     --ui-app-h1-weight: 600;
   --ui-app-h2-size: 1.25rem;      --ui-app-h2-lh: 1.75rem;     --ui-app-h2-weight: 600;
   --ui-app-h3-size: 1rem;         --ui-app-h3-lh: 1.5rem;      --ui-app-h3-weight: 600;
   --ui-app-body-size: 1rem;       --ui-app-body-lh: 1.5rem;    --ui-app-body-weight: 400;
-  --ui-app-label-size: 0.875rem;  --ui-app-label-lh: 1.25rem;  --ui-app-label-weight: 600;
-  --ui-app-caption-size: 0.75rem; --ui-app-caption-lh: 1rem;   --ui-app-caption-weight: 600;
+  --ui-app-label-size: 0.875rem;  --ui-app-label-lh: 1.25rem;  --ui-app-label-weight: 500;
+  --ui-app-caption-size: 0.75rem; --ui-app-caption-lh: 1rem;   --ui-app-caption-weight: 500;
   --ui-app-numeric: tabular-nums;
 
   /* --- 4c. Geometry: radius --- */

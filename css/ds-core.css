@@ -283,13 +283,28 @@
   flex: none;
   font-size: var(--ui-app-caption-size);
   font-weight: var(--ui-app-caption-weight);
-  color: var(--ui-selected-foreground);
-  background: var(--ui-selected);
+  color: var(--ui-primary-foreground);
+  background: var(--ui-primary);
   border-radius: var(--ui-radius-full);
+  outline: var(--ui-focus-width) solid var(--ui-surface);   /* prstenec pro překrývání ve skupině, bez stínu */
 }
 .ui-avatar--sm { width: var(--ui-control-h-sm); height: var(--ui-control-h-sm); }
 .ui-progress { height: var(--ui-space-2); overflow: hidden; background: var(--ui-muted); border-radius: var(--ui-radius-full); }
 .ui-progress > span { display: block; height: 100%; width: var(--value, 0%); background: var(--ui-accent); border-radius: inherit; }
+
+/* --- Meta čipy: ikona + krátký údaj místo věty („6 dnes“, „2 po termínu“) --- */
+.ui-meta { display: flex; flex-wrap: wrap; align-items: center; gap: var(--ui-space-2) var(--ui-space-4); font-size: var(--ui-app-label-size); line-height: var(--ui-app-label-lh); color: var(--ui-foreground-subtle); }
+.ui-meta > span { display: inline-flex; align-items: center; gap: var(--ui-space-1); }
+.ui-meta .icon { width: var(--ui-icon-sm); height: var(--ui-icon-sm); stroke-width: var(--ui-icon-stroke-sm); }
+.ui-meta .is-danger { color: var(--ui-destructive); }
+
+/* --- Rozbalovací blok (<details>): sekundární vysvětlení --- */
+.ui-disclosure summary { display: inline-flex; align-items: center; gap: var(--ui-space-1); font-size: var(--ui-app-label-size); font-weight: var(--ui-app-label-weight); cursor: pointer; list-style: none; }
+.ui-disclosure summary::-webkit-details-marker { display: none; }
+.ui-disclosure summary .icon { width: var(--ui-icon-sm); height: var(--ui-icon-sm); stroke-width: var(--ui-icon-stroke-sm); transition: rotate var(--ui-duration-fast) var(--ui-ease); }
+.ui-disclosure[open] summary .icon { rotate: 90deg; }
+.ui-disclosure summary:focus-visible { outline: var(--ui-focus-width) solid var(--ui-ring); outline-offset: var(--ui-focus-offset); border-radius: var(--ui-radius-xs); }
+.ui-disclosure > :not(summary) { margin-top: var(--ui-space-1); }
 
 /* --- Prázdný stav --- */
 .ui-empty { display: grid; justify-items: center; gap: var(--ui-space-3); padding: var(--ui-space-10) var(--ui-space-6); text-align: center; }
@@ -361,7 +376,23 @@
 }
 .ui-sidenav a:hover { color: var(--ui-foreground); background: var(--ui-muted); }
 .ui-sidenav a[aria-current="page"] { color: var(--ui-primary-foreground); background: var(--ui-primary); }   /* jako navigace manuálu: Louka + Kosodřevina */
-.ui-sidenav a .ui-badge { margin-left: auto; }
+.ui-sidenav a .ui-badge, .ui-sidenav a .ui-count { margin-left: auto; }
+/* Počet v navigaci: kompaktní pilulka 20 px */
+.ui-count {
+  display: inline-grid;
+  place-items: center;
+  min-width: var(--ui-space-5);
+  height: var(--ui-space-5);
+  padding: 0 var(--ui-space-2);
+  font-size: var(--ui-app-caption-size);
+  line-height: 1;
+  font-weight: var(--ui-app-caption-weight);
+  font-variant-numeric: var(--ui-app-numeric);
+  color: var(--ui-foreground);
+  background: var(--ui-muted);
+  border-radius: var(--ui-radius-full);
+}
+.ui-sidenav a[aria-current="page"] .ui-count { color: var(--ui-primary); background: var(--ui-primary-foreground); }
 .ui-main { display: grid; grid-template-rows: auto 1fr; min-width: 0; background: var(--ui-surface-subtle); }
 .ui-topbar {
   display: flex;
