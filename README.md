@@ -1,4 +1,4 @@
-# Brand Book — šablona (wireframe) v1.1
+# Brand Book — šablona (wireframe) v1.2
 
 Čistá HTML/CSS šablona brand manuálu. Nemá žádné závislosti ani build krok. Stačí otevřít `index.html` v prohlížeči (pro kontrolu stahování souborů přes lokální server, viz `.claude/launch.json` → „brand-book“).
 
@@ -137,4 +137,5 @@ Při tisku webu (Ctrl+P) se header i navigace skryjí a každá kapitola začne 
 | Verze | Datum | Změna |
 |-------|-------|-------|
 | 1.1 | 24. 9. 2026 | Struktura 00–14 podle auditu (`docs/audit_a_navrh.md`): nové kapitoly 09 Digitální produkt a UI, 11 Obaly, prostor a produkt (modul), 13 Přístupnost; UI tokeny `--ui-*`, Brand Web Preview, export Tailwind v4 a tokens.json, živé HEX/RGB a kontrast, škály 50–900, stavové barvy; PDF rozšířeno na 91 slidů; docs (audit, checklist, discovery). |
+| 1.2 | 3. 10. 2026 | Kapitola 09 jako produktový design systém (podle Aestio Core): tři úrovně tokenů (primitive → semantic → component), tmavý režim s rolemi pro white-label, hustota default/compact/comfortable, produktová typografie, stavy warning/info, datová vizualizace, komponenty `css/ds-core.css`, stavy, texty v produktu, Product Preview; export DTCG ve třech úrovních a striktní Tailwind v4; nástroje `docs/tools/` (kontrast, export, snímky); metodika `docs/design_system_saas.md`; Figma SOP s kolekcemi Theme, Density, Component; PDF 96 slidů. |
 | 1.0 | 23. 9. 2026 | První verze: struktura 00–11, web + PDF (49 slidů). |

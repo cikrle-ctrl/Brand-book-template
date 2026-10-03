@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="cs">
+<head>
+<meta charset="utf-8">
+<title>Snímek sekce manuálu</title>
+<style>html, body { margin: 0; height: 100%; overflow: hidden; } iframe { border: 0; width: 100%; height: 100%; }</style>
+<!--
+  Snímek libovolné sekce manuálu v daném módu (kontrola a podklady pro PDF).
+  Parametry: sel=#ui-produkt  set=#product-preview|data-theme|dark;#product-preview|data-density|compact
+  Spuštění přes lokální server (python -m http.server), např.:
+  msedge --headless --window-size=1440,1600 --virtual-time-budget=6000 --screenshot=out.png "http://localhost:5180/docs/tools/shot.html?sel=%23ui-produkt"
+-->
+</head>
+<body>
+<iframe id="f" src="../../index.html"></iframe>
+<script>
+  var q = new URLSearchParams(location.search);
+  var f = document.getElementById('f');
+  f.addEventListener('load', function () {
+    var d = f.contentDocument, w = f.contentWindow;
+    d.documentElement.style.scrollBehavior = 'auto';
+    (q.get('set') || '').split(';').filter(Boolean).forEach(function (rule) {
+      var p = rule.split('|');
+      var el = d.querySelector(p[0]);
+      if (el) { if (p[2]) el.setAttribute(p[1], p[2]); else el.removeAttribute(p[1]); }
+    });
+    var go = function () {
+      var el = d.querySelector(q.get('sel') || 'body');
+      if (el) w.scrollTo(0, el.getBoundingClientRect().top + w.scrollY - Number(q.get('offset') || 88));
+    };
+    go();
+    setTimeout(go, 800);
+    setTimeout(go, 2000);
+  });
+</script>
+</body>
+</html>

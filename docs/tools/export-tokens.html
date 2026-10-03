@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="cs">
+<head>
+<meta charset="utf-8">
+<meta name="brand-slug" content="znacka">
+<title>Export tokenů</title>
+<link rel="stylesheet" href="../../css/brand.css">
+<!--
+  Přegeneruje tokens/aestio-theme.css a tokens/tokens.json bez otevírání manuálu.
+  msedge --headless --disable-gpu --allow-file-access-from-files --virtual-time-budget=4000 --dump-dom docs/tools/export-tokens.html
+  Výstup: <pre id="tailwind"> a <pre id="json">.
+-->
+</head>
+<body>
+<pre id="tailwind"></pre>
+<pre id="json"></pre>
+<script src="../../js/tokens.js"></script>
+<script>
+  try { document.getElementById('tailwind').textContent = BrandTokens.tailwind(); } catch (e) { document.getElementById('tailwind').textContent = 'ERROR ' + e.stack; }
+  try { document.getElementById('json').textContent = BrandTokens.json(); } catch (e) { document.getElementById('json').textContent = 'ERROR ' + e.stack; }
+</script>
+</body>
+</html>

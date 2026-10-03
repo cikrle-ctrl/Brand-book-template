@@ -32,6 +32,7 @@ Zdroje: [zeroheight: 26 tipů 2026](https://zeroheight.com/blog/building-scalabl
 | Navigace | Header desktop + mobil, Mobile menu, Nav dropdown, Tabs / Segmented control, Breadcrumbs, Pagination |
 | Obsah | Card, Badge / Tag, Accordion item, Review + Rating, Price row, List item, Quote, Stat |
 | Zpětná vazba | Modal / Dialog, Toast, Inline message, Tooltip, Cookie banner (EU nutnost), Empty state, Skeleton |
+| Produkt (portál, aplikace) | App shell (sidebar + topbar), Table (řazení, výběr, compact), Stat / KPI karta, Progress, Chart (sloupcový, čárový), Filter bar, Search |
 
 ## Must-have webové sekce
 
@@ -55,21 +56,26 @@ Z toho se vybere, co potřebuje konkrétní web podle sitemapy a wireframu. Nepo
 Zakládat v tomto pořadí.
 
 - [ ] **Primitives** (1 mód, skryté z publikace):
-  - `color/<název-z-palety>` (celá paleta značky)
+  - `color/<název-z-palety>` (celá paleta značky, škály 50–900, „noc“ `night/*` pro tmavý režim, stavové škály)
   - `radius/none|sm|md|lg|full`
   - `font/family/heading|body` (string)
   - `font/weight/*` (string řezu, např. Light, Regular, Medium, SemiBold)
-- [ ] **Color** (mód Light, případně Dark), aliasy 1:1 s `--ui-*`:
+- [ ] **Theme** (módy podle značek, např. Značka / Klient; jen u white-label systému): role `brand/primary`, `brand/on-primary`, `brand/primary-2`, `brand/on-primary-2`, `brand/primary-on-dark`, `brand/on-primary-on-dark`, `brand/focus`, neutrály. Aliasy na Primitives. Když plán Figma nemá dost módů, téma se sloučí do Color.
+- [ ] **Color** (módy Light / Dark), aliasy 1:1 s `--ui-*` (na Theme nebo Primitives):
   - `primary`, `primary-hover`, `primary-foreground`
   - `secondary`, `secondary-foreground`
-  - `background`, `surface`, `foreground`
-  - `muted`, `muted-foreground`, `border`
+  - `background`, `surface`, `surface-subtle`, `foreground`, `foreground-subtle`
+  - `muted`, `muted-foreground`, `border`, `border-strong`
+  - `selected`, `selected-foreground`, `disabled`, `disabled-foreground`, `overlay`
   - `inverted`, `inverted-foreground`
   - `accent`, `accent-subtle`, `accent-foreground`
-  - `destructive`, `destructive-foreground`, `success`, `success-foreground`
+  - `destructive`, `success`, `warning`, `info` + `-foreground`, `-subtle`, `-subtle-foreground`, `-border`
+  - `chart/1…6`, `chart/1…6-subtle`, `chart/seq-1…5`, `chart/div-neg|mid|pos`, `chart/grid`, `chart/axis`
   - `ring`
-- [ ] **Typography** (módy Desktop / Mobile): pro `display, h1–h6, p1–p3` proměnné `size`, `line-height`, `letter-spacing` (px), `family` a `weight` jako aliasy primitiv.
+- [ ] **Typography** (módy Desktop / Mobile): pro `display, h1–h6, p1–p3` a produktovou škálu `app-h1…app-caption` proměnné `size`, `line-height`, `letter-spacing` (px), `family` a `weight` jako aliasy primitiv.
 - [ ] **Layout** (módy Desktop 1440 / Tablet 768 / Mobile 375): škála `space/0 … 160` (po 4 a 8, stejná ve všech módech, scope GAP; v Primitives by nešla navázat na padding), `page/margin`, `grid/columns`, `grid/gutter`, `section/padding-y`, `stack/gap-sm|md|lg|xl`, `container/max`, `header/height`, `radius/button|input|card|modal` (aliasy).
+- [ ] **Density** (módy Default / Compact / Comfortable): `control-h/sm|md|lg`, `table/row-h`, `table/cell-px`, `card/padding`, `card/gap`, `badge/h`, `app-body/size|line-height`. Mění jen rozměry, nikdy barvy. Komponenty produktu na ně navázat, aby se hustota přepínala módem rámu.
+- [ ] **Component** (volitelně, jen kde se liší od sémantiky): `button/h-*`, `input/bg|border|border-focus`, `table/header-bg|row-hover|row-selected`, `toast/bg|fg`, `tooltip/bg|fg`. Komponentní proměnné odkazují jen na Color a Density.
 - [ ] Scoping u každé proměnné (barvy: fill, stroke, text; mezery: gap, padding; radius: corner radius; typografie: font vlastnosti).
 - [ ] Code syntax WEB = `var(--ui-…)` podle `brand.css`.
 - [ ] Kontrola: žádná komponenta neodkazuje na Primitives; každá textová dvojice (foreground × background) splňuje AA.
@@ -113,7 +119,7 @@ Zakládat v tomto pořadí.
 ## 7. QA a předání
 
 - [ ] Lint (skriptem nebo pluginem): nenavázané barvy, mezery, radius a text = 0; rozpojené instance = 0; skryté a prázdné vrstvy smazané.
-- [ ] Kontrast všech použitých dvojic ≥ 4,5 : 1 (velký text ≥ 3 : 1).
+- [ ] Kontrast všech použitých dvojic ≥ 4,5 : 1 (velký text ≥ 3 : 1), hranice polí, focus a grafy ≥ 3 : 1, ve všech módech (`docs/tools/contrast-check.html` nad `brand.css`).
 - [ ] Responzivita: sekce otestované na 375, 768 a 1440; přepnutí módů na šabloně.
 - [ ] Dev Mode: výběr tlačítka a hero ukazuje sémantické proměnné s code syntax `var(--ui-*)`.
 - [ ] Publikace knihovny, verze a changelog. Při každé změně tokenů sync s `css/brand.css` a `tokens.json` (obousměrně, zdroj pravdy je `brand.css`).

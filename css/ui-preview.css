@@ -62,7 +62,7 @@
 .ui-btn:disabled, .ui-btn.is-disabled { opacity: 0.45; box-shadow: none; cursor: not-allowed; }
 
 .ui-btn--secondary { color: var(--ui-secondary-foreground); background: var(--ui-secondary); border-color: var(--ui-secondary); }
-.ui-btn--secondary:hover, .ui-btn--secondary.is-hover { background: var(--ui-muted); border-color: var(--ui-border); }
+.ui-btn--secondary:hover, .ui-btn--secondary.is-hover { background: var(--ui-secondary-hover); border-color: var(--ui-secondary-hover); }
 .ui-btn--ghost { color: var(--ui-foreground); background: transparent; border-color: var(--ui-border); box-shadow: none; }
 .ui-btn--ghost:hover, .ui-btn--ghost.is-hover { background: var(--ui-muted); border-color: var(--ui-border); }
 .ui-btn--destructive { color: var(--ui-destructive-foreground); background: var(--ui-destructive); border-color: var(--ui-destructive); }
@@ -86,11 +86,11 @@
   font: inherit;
   font-size: var(--ui-p2-size);
   color: var(--ui-foreground);
-  background: var(--ui-background);
-  border: 1px solid var(--ui-border);
-  border-radius: var(--ui-radius-input);
+  background: var(--ui-input-bg);
+  border: var(--ui-border-width) solid var(--ui-input-border);   /* hranice pole ≥ 3 : 1 (WCAG 1.4.11) */
+  border-radius: var(--ui-input-radius);
 }
-.ui-input::placeholder { color: var(--ui-muted-foreground); }
+.ui-input::placeholder { color: var(--ui-foreground-subtle); }
 .ui-input:focus-visible, .ui-input.is-focus { outline: 2px solid var(--ui-ring); outline-offset: 1px; border-color: var(--ui-ring); }
 .ui-input.is-error { border-color: var(--ui-destructive); }
 .ui-help { font-size: var(--ui-p3-size); line-height: var(--ui-p3-lh); color: var(--ui-muted-foreground); }
@@ -166,7 +166,7 @@
   display: grid;
   place-items: center;
   padding: calc(var(--ui-space) * 5) calc(var(--ui-space) * 3);
-  background: color-mix(in oklch, var(--ui-inverted) 55%, transparent);
+  background: var(--ui-overlay);
   border-radius: var(--ui-radius-md);
 }
 .ui-modal {

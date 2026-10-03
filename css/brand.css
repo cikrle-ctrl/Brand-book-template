@@ -2,17 +2,26 @@
    BRAND — jediný soubor, který se vyplňuje pro konkrétního klienta.
    Barvy, písma a UI tokeny odsud se propíšou do celého web manuálu
    i do PDF manuálu: header, navigace, nadpisy, barevné vzorky, škály,
-   poměr barev, ukázky písma, kapitola 09 (UI systém, Brand Web Preview)
-   a export pro Tailwind / tokens.json.
+   poměr barev, ukázky písma, kapitola 09 (UI systém, Brand Web Preview,
+   Product Preview) a export pro Tailwind / tokens.json.
    Výchozí hodnoty = šedý wireframe.
 
+   TŘI ÚROVNĚ TOKENŮ (v1.2)
+   1. Global / Primitive  --brand-*            surové hodnoty značky (vyplňuje se)
+   2. Alias / Semantic    --ui-<role>          role, módy světlý / tmavý
+   3. Component           --ui-<komponenta>-*  rozměry a role komponent, módy hustoty
+   Komponenty sahají jen na úroveň 2 a 3, nikdy na --brand-*.
+   Postup a pravidla: docs/design_system_saas.md.
+
+   MÓDY (atributy na stejném prvku, typicky <html> nebo kontejner ukázky)
+   data-theme="dark" · data-density="compact|comfortable" · data-brand="<klient>"
+
    Pořadí vyplňování:
-   1. Brandové barvy a písma (--brand-*).
-   2. Stavové barvy (--brand-success … --brand-dont).
-   3. Škály odstínů: dopočítají se samy, přepiš jen když máš ručně
-      laděné odstíny.
-   4. UI / WEB SYSTEM (--ui-*): pokud značka nemá vlastní web/UI paletu,
-      odvoď ji odsud (sémantické tokeny, typescale, radius, elevation).
+   1. Brandové barvy a písma (--brand-*), včetně rolí pro tmavý režim.
+   2. Stavové barvy (--brand-success … --brand-info).
+   3. Škály odstínů a „noc“: dopočítají se samy, přepiš jen ručně laděné.
+   4. UI / WEB SYSTEM (--ui-*): sémantika, typescale, radius, elevation,
+      prostor, hustota, grafy. Pak spusť docs/tools/contrast-check.html.
    ========================================================================== */
 
 /* Brandové fonty: soubory dej do assets/fonts/ a odkomentuj.
@@ -30,23 +39,29 @@
 }
 */
 
+/* ==========================================================================
+   ÚROVEŇ 1 — GLOBAL / PRIMITIVE (vyplňuje se)
+   ========================================================================== */
 :root {
-  /* ======================================================================
-     1. BRANDOVÉ BARVY A PÍSMA
-     ====================================================================== */
+  /* --- 1. Brandové barvy --- */
+  --brand-primary:        #4a4a4a;  /* hlavní barva: tlačítka, aktivní navigace, akcenty */  /* DOPLNIT */
+  --brand-on-primary:     #ffffff;  /* text na hlavní barvě (min. 4,5 : 1) */                /* DOPLNIT */
+  --brand-primary-hover:  #3a3a3a;  /* hover hlavní akce */                                  /* DOPLNIT */
+  --brand-primary-2:      #8a8a8a;  /* druhá primární barva */                               /* DOPLNIT */
+  --brand-primary-2-hover:#777777;
+  --brand-secondary-1:    #b5b5b5;  /* DOPLNIT */
+  --brand-secondary-2:    #d0d0d0;  /* DOPLNIT */
+  --brand-neutral-dark:   #1a1a1a;  /* text */                                               /* DOPLNIT */
+  --brand-neutral-light:  #f5f5f5;  /* plochy, pozadí bloků */                               /* DOPLNIT */
+  --brand-white:          #ffffff;
 
-  /* --- Primární paleta --- */
-  --brand-primary:        #4a4a4a;  /* hlavní barva: tlačítka, aktivní navigace, akcenty */
-  --brand-on-primary:     #ffffff;  /* text na hlavní barvě (musí mít kontrast min. 4,5 : 1) */
-  --brand-primary-2:      #8a8a8a;  /* druhá primární barva */
-
-  /* --- Sekundární paleta --- */
-  --brand-secondary-1:    #b5b5b5;
-  --brand-secondary-2:    #d0d0d0;
-
-  /* --- Neutrální barvy --- */
-  --brand-neutral-dark:   #1a1a1a;  /* text */
-  --brand-neutral-light:  #f5f5f5;  /* plochy, pozadí bloků */
+  /* Role pro tmavý režim a white-label: co leží na tmavé značkové ploše
+     a jaká je primární barva v tmavém režimu (musí mít 4,5 : 1 na tmavé ploše). */
+  --brand-on-primary-2:          #1a1a1a;  /* DOPLNIT */
+  --brand-primary-on-dark:       #c8c8c8;  /* DOPLNIT */
+  --brand-primary-on-dark-hover: #dadada;
+  --brand-on-primary-on-dark:    #1a1a1a;
+  --brand-focus:                 var(--brand-primary);
 
   /* --- Typografie --- */
   --brand-font-heading:   system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
@@ -54,26 +69,34 @@
   --brand-heading-weight: 700;
   --brand-heading-case:   none;     /* none | uppercase */
 
-  /* ======================================================================
-     2. STAVOVÉ BARVY
-     Výchozí hodnoty jsou tlumené, ale navzájem odlišitelné i tónem.
-     Nesmí kolidovat s brandovou barvou: je-li primární barva červená,
-     zvol pro chybu jiný odstín.
-     ====================================================================== */
+  /* --- 2. Stavové barvy ---
+     Tlumené, ale navzájem odlišitelné i tónem. Nesmí kolidovat s brandovou
+     barvou: je-li primární barva červená, zvol pro chybu jiný odstín.
+     Úspěch je stavová barva, ne barva značky. */
   --brand-success:        #2f6b4f;
   --brand-warning:        #8a5a00;
   --brand-error:          #a23b32;
   --brand-info:           #2f5b8a;
-
-  /* Štítky Správně / Nesprávně v manuálu */
   --brand-do:             var(--brand-success);
   --brand-dont:           var(--brand-error);
 
-  /* ======================================================================
-     3. ŠKÁLY ODSTÍNŮ (50–900)
-     Dopočet přes color-mix v OKLCH. 500 = základní barva.
-     Když má značka ručně laděné odstíny, přepiš konkrétní stupně.
-     ====================================================================== */
+  /* Datová vizualizace: kategorické odstíny (tahy ≥ 3 : 1 na bílé). Řada 1 = značka. */
+  --brand-chart-2:        #b5601c;
+  --brand-chart-3:        #12808a;
+  --brand-chart-4:        #a8417f;
+  --brand-chart-5:        #5458c4;
+
+  /* Prostor: základní jednotka 4 px (Tailwind --spacing) */
+  --brand-space-unit: 0.25rem;
+}
+
+/* ==========================================================================
+   Odvozená primitiva + ÚROVEŇ 2
+   Selektor zahrnuje i prvky s módy, aby se odvozené hodnoty přepočítaly
+   tam, kde se mění primitiva (téma) nebo režim.
+   ========================================================================== */
+:root, [data-brand], [data-theme] {
+  /* --- 3. Škály 50–900 (OKLCH, 500 = základní barva) --- */
   --brand-primary-50:  color-mix(in oklch, var(--brand-primary) 8%,  white);
   --brand-primary-100: color-mix(in oklch, var(--brand-primary) 16%, white);
   --brand-primary-200: color-mix(in oklch, var(--brand-primary) 30%, white);
@@ -96,40 +119,105 @@
   --brand-neutral-800: color-mix(in oklch, var(--brand-neutral-dark) 90%, white);
   --brand-neutral-900: var(--brand-neutral-dark);
 
+  /* „Noc“: tmavé neutrální plochy tmavého režimu (tónované druhou barvou) */
+  --brand-night-950: color-mix(in oklch, var(--brand-neutral-dark) 88%, var(--brand-primary-2));
+  --brand-night-900: color-mix(in oklch, var(--brand-night-950) 94%, var(--brand-neutral-light));
+  --brand-night-850: color-mix(in oklch, var(--brand-night-950) 89%, var(--brand-neutral-light));
+  --brand-night-800: color-mix(in oklch, var(--brand-night-950) 84%, var(--brand-neutral-light));
+  --brand-night-700: color-mix(in oklch, var(--brand-night-950) 74%, var(--brand-neutral-light));
+  --brand-night-650: color-mix(in oklch, var(--brand-night-950) 66%, var(--brand-neutral-light));
+  --brand-night-500: color-mix(in oklch, var(--brand-night-950) 50%, var(--brand-neutral-light));
+  --brand-night-400: color-mix(in oklch, var(--brand-night-950) 38%, var(--brand-neutral-light));
+  --brand-night-350: color-mix(in oklch, var(--brand-night-950) 31%, var(--brand-neutral-light));
+  --brand-night-300: color-mix(in oklch, var(--brand-night-950) 24%, var(--brand-neutral-light));
+  --brand-night-accent: color-mix(in oklch, var(--brand-primary-on-dark) 16%, var(--brand-night-900));
+
   /* ======================================================================
-     4. UI / WEB SYSTEM (Tailwind a design system standard)
-     Sémantické tokeny pro web a aplikaci. Kapitola 09 manuálu je z nich
-     vykreslená živě a exportuje je jako Tailwind v4 @theme a tokens.json.
-     Brand Web Preview se styluje VÝHRADNĚ těmito tokeny.
+     ÚROVEŇ 2 — ALIAS / SEMANTIC
+     Brand Web Preview i Product Preview se stylují VÝHRADNĚ těmito tokeny.
      ====================================================================== */
 
-  /* --- 4a. Sémantická paleta --- */
+  /* --- 4a. Sémantická paleta (světlý režim) --- */
   --ui-primary:              var(--brand-primary);
-  --ui-primary-hover:        color-mix(in oklch, var(--brand-primary) 84%, black);
+  --ui-primary-hover:        var(--brand-primary-hover);
   --ui-primary-foreground:   var(--brand-on-primary);
   --ui-secondary:            var(--brand-secondary-2);
   --ui-secondary-foreground: var(--brand-neutral-dark);
-  --ui-background:           #ffffff;                     /* základní pozadí webu */
-  --ui-foreground:           var(--brand-neutral-dark);   /* hlavní text */
-  --ui-muted:                var(--brand-neutral-light);  /* tlumené plochy */
-  --ui-muted-foreground:     color-mix(in oklch, var(--brand-neutral-dark) 72%, white); /* sekundární text */
-  --ui-border:               color-mix(in oklch, var(--brand-neutral-dark) 16%, white);
-  --ui-inverted:             var(--brand-neutral-dark);   /* tmavé sekce na světlém webu */
+  --ui-secondary-hover:      var(--brand-secondary-1);
+  --ui-background:           var(--brand-white);
+  --ui-foreground:           var(--brand-neutral-dark);
+  --ui-muted:                var(--brand-neutral-light);
+  --ui-muted-foreground:     var(--brand-neutral-700);
+  --ui-border:               var(--brand-neutral-200);
+  --ui-inverted:             var(--brand-neutral-dark);
   --ui-inverted-foreground:  var(--brand-neutral-light);
-  --ui-accent:               var(--brand-primary-2);
-  --ui-accent-foreground:    var(--brand-neutral-dark);
-  --ui-destructive:          var(--brand-error);          /* chybové stavy */
-  --ui-destructive-foreground: #ffffff;
+  --ui-accent:               var(--brand-neutral-700);   /* odkazy: musí mít 4,5 : 1 na bílé */  /* DOPLNIT */
+  --ui-accent-foreground:    var(--brand-white);
+  --ui-destructive:          var(--brand-error);
+  --ui-destructive-foreground: var(--brand-white);
   --ui-success:              var(--brand-success);
-  --ui-success-foreground:   #ffffff;
-  --ui-ring:                 var(--brand-primary);        /* focus */
+  --ui-success-foreground:   var(--brand-white);
+  --ui-ring:                 var(--brand-focus);
+
+  /* Produkt: plochy, text, výběr, nedostupnost */
+  --ui-surface:              var(--brand-white);
+  --ui-surface-subtle:       var(--brand-neutral-50);
+  --ui-border-strong:        var(--brand-neutral-500);   /* hranice polí ≥ 3 : 1 */
+  --ui-foreground-subtle:    var(--brand-neutral-600);   /* placeholder, metadata ≥ 4,5 : 1 */
+  --ui-accent-subtle:        var(--brand-primary-50);
+  --ui-selected:             var(--brand-primary-100);
+  --ui-selected-foreground:  var(--brand-neutral-dark);
+  --ui-disabled:             var(--brand-neutral-100);
+  --ui-disabled-foreground:  var(--brand-neutral-500);
+  --ui-overlay:              color-mix(in srgb, var(--brand-neutral-dark) 48%, transparent);
+
+  /* Stavy: solid · subtle (plocha hlášky) · subtle-foreground (text) · border */
+  --ui-warning:              var(--brand-warning);
+  --ui-warning-foreground:   var(--brand-white);
+  --ui-info:                 var(--brand-info);
+  --ui-info-foreground:      var(--brand-white);
+  --ui-success-subtle:            color-mix(in oklch, var(--brand-success) 9%, white);
+  --ui-success-subtle-foreground: color-mix(in oklch, var(--brand-success) 70%, black);
+  --ui-success-border:            color-mix(in oklch, var(--brand-success) 35%, white);
+  --ui-warning-subtle:            color-mix(in oklch, var(--brand-warning) 9%, white);
+  --ui-warning-subtle-foreground: color-mix(in oklch, var(--brand-warning) 70%, black);
+  --ui-warning-border:            color-mix(in oklch, var(--brand-warning) 35%, white);
+  --ui-info-subtle:               color-mix(in oklch, var(--brand-info) 9%, white);
+  --ui-info-subtle-foreground:    color-mix(in oklch, var(--brand-info) 70%, black);
+  --ui-info-border:               color-mix(in oklch, var(--brand-info) 35%, white);
+  --ui-destructive-subtle:            color-mix(in oklch, var(--brand-error) 9%, white);
+  --ui-destructive-subtle-foreground: color-mix(in oklch, var(--brand-error) 70%, black);
+  --ui-destructive-border:            color-mix(in oklch, var(--brand-error) 35%, white);
+
+  /* Datová vizualizace */
+  --ui-chart-1: var(--brand-primary);
+  --ui-chart-2: var(--brand-chart-2);
+  --ui-chart-3: var(--brand-chart-3);
+  --ui-chart-4: var(--brand-chart-4);
+  --ui-chart-5: var(--brand-chart-5);
+  --ui-chart-6: var(--brand-neutral-600);
+  --ui-chart-1-subtle: var(--brand-primary-200);
+  --ui-chart-2-subtle: color-mix(in oklch, var(--brand-chart-2) 30%, white);
+  --ui-chart-3-subtle: color-mix(in oklch, var(--brand-chart-3) 30%, white);
+  --ui-chart-4-subtle: color-mix(in oklch, var(--brand-chart-4) 30%, white);
+  --ui-chart-5-subtle: color-mix(in oklch, var(--brand-chart-5) 30%, white);
+  --ui-chart-6-subtle: var(--brand-neutral-200);
+  --ui-chart-seq-1: var(--brand-primary-100);
+  --ui-chart-seq-2: var(--brand-primary-300);
+  --ui-chart-seq-3: var(--brand-primary-500);
+  --ui-chart-seq-4: var(--brand-primary-700);
+  --ui-chart-seq-5: var(--brand-primary-900);
+  --ui-chart-div-neg: var(--brand-chart-5);
+  --ui-chart-div-mid: var(--brand-neutral-100);
+  --ui-chart-div-pos: var(--brand-success);
+  --ui-chart-grid:  var(--brand-neutral-200);
+  --ui-chart-axis:  var(--brand-neutral-700);
 
   /* --- 4b. Typography scale --- */
   --ui-font-primary:   var(--brand-font-heading);  /* nadpisy, Display */
   --ui-font-secondary: var(--brand-font-body);     /* text, UI */
 
-  /* size / line-height / weight / tracking. Display–H3 jsou fluidní (mobil → desktop):
-     -max = velikost na desktopu, -size = plynulý přechod od mobilu. */
+  /* size / line-height / weight / tracking. Display–H3 jsou fluidní (mobil → desktop). */
   --ui-display-max: 4.5rem;   --ui-h1-max: 3.5rem;   --ui-h2-max: 2.75rem;   --ui-h3-max: 2.125rem;
   --ui-display-size: clamp(3rem, 2rem + 4vw, var(--ui-display-max));      /* 48 → 72 px */
   --ui-display-lh: 1.05;  --ui-display-weight: var(--brand-heading-weight);  --ui-display-tracking: -0.02em;
@@ -152,13 +240,22 @@
   --ui-p3-size: 0.9375rem;                                       /* 15 px, Small / Detail */
   --ui-p3-lh: 1.5;        --ui-p3-weight: 400;  --ui-p3-tracking: 0.005em;
 
+  /* Produktová škála (aplikace, portály, dashboardy) */
+  --ui-app-h1-size: 1.75rem;      --ui-app-h1-lh: 2.25rem;     --ui-app-h1-weight: var(--brand-heading-weight);
+  --ui-app-h2-size: 1.25rem;      --ui-app-h2-lh: 1.75rem;     --ui-app-h2-weight: 600;
+  --ui-app-h3-size: 1rem;         --ui-app-h3-lh: 1.5rem;      --ui-app-h3-weight: 600;
+  --ui-app-body-size: 1rem;       --ui-app-body-lh: 1.5rem;    --ui-app-body-weight: 400;
+  --ui-app-label-size: 0.875rem;  --ui-app-label-lh: 1.25rem;  --ui-app-label-weight: 600;
+  --ui-app-caption-size: 0.75rem; --ui-app-caption-lh: 1rem;   --ui-app-caption-weight: 600;
+  --ui-app-numeric: tabular-nums;
+
   /* --- 4c. Geometry: radius --- */
   --ui-radius-none: 0px;
+  --ui-radius-xs:   2px;
   --ui-radius-sm:   4px;
   --ui-radius-md:   8px;
   --ui-radius-lg:   16px;
   --ui-radius-full: 9999px;
-  /* Role: který radius dostane která komponenta */
   --ui-radius-button: var(--ui-radius-md);
   --ui-radius-input:  var(--ui-radius-md);
   --ui-radius-card:   var(--ui-radius-lg);
@@ -174,43 +271,199 @@
   --ui-shadow-card:   var(--ui-shadow-md);
   --ui-shadow-modal:  var(--ui-shadow-lg);
 
-  /* --- 4e. Spacing a pohyb --- */
-  --ui-space:          0.5rem;   /* základní jednotka 8 px; násobky 1–12 */
+  /* --- 4e. Spacing, vrstvy, pohyb, ovládací prvky --- */
+  --ui-space-0:  0rem;
+  --ui-space-1:  calc(var(--brand-space-unit) * 1);
+  --ui-space-2:  calc(var(--brand-space-unit) * 2);
+  --ui-space-3:  calc(var(--brand-space-unit) * 3);
+  --ui-space-4:  calc(var(--brand-space-unit) * 4);
+  --ui-space-5:  calc(var(--brand-space-unit) * 5);
+  --ui-space-6:  calc(var(--brand-space-unit) * 6);
+  --ui-space-8:  calc(var(--brand-space-unit) * 8);
+  --ui-space-10: calc(var(--brand-space-unit) * 10);
+  --ui-space-12: calc(var(--brand-space-unit) * 12);
+  --ui-space-16: calc(var(--brand-space-unit) * 16);
+  --ui-space-20: calc(var(--brand-space-unit) * 20);
+  --ui-space-24: calc(var(--brand-space-unit) * 24);
+  --ui-space:    var(--ui-space-2);     /* 8 px, zpětná kompatibilita */
+
+  --ui-border-width: 1px;
+  --ui-focus-width:  2px;
+  --ui-focus-offset: 2px;
+
+  --ui-z-base: 0;  --ui-z-dropdown: 1000;  --ui-z-sticky: 1100;  --ui-z-overlay: 1300;
+  --ui-z-modal: 1400;  --ui-z-toast: 1500;  --ui-z-tooltip: 1600;
+
   --ui-duration-fast:  120ms;    /* hover, focus */
   --ui-duration-base:  240ms;    /* otevření panelu, přechod stavu */
   --ui-duration-slow:  480ms;    /* modal, přechod stránky */
   --ui-ease:           cubic-bezier(0.2, 0, 0, 1);
+  --ui-ease-menu:      cubic-bezier(0.2, 0, 0, 1);
+
+  --ui-control-h-sm: 2rem;   --ui-control-h-md: 2.5rem;   --ui-control-h-lg: 3rem;
+  --ui-icon-sm: 1rem;        --ui-icon-md: 1.25rem;       --ui-icon-lg: 1.5rem;
 }
 
-/* --- 4f. Dark mode ---
-   Stejné názvy tokenů, jiné hodnoty. Hodnoty zde piš napřímo
-   (odvozené tokeny se v tmavém režimu znovu nepřepočítají). */
+/* ==========================================================================
+   ÚROVEŇ 3 — COMPONENT (aliasy na úroveň 2; hustota je přepisuje)
+   ========================================================================== */
+:root, [data-brand], [data-theme], [data-density] {
+  --ui-button-h-sm: var(--ui-control-h-sm);   --ui-button-px-sm: var(--ui-space-3);
+  --ui-button-h-md: var(--ui-control-h-md);   --ui-button-px-md: var(--ui-space-5);
+  --ui-button-h-lg: var(--ui-control-h-lg);   --ui-button-px-lg: var(--ui-space-6);
+  --ui-button-gap:  var(--ui-space-2);
+  --ui-button-radius: var(--ui-radius-button);
+
+  --ui-input-h:            var(--ui-control-h-md);
+  --ui-input-px:           var(--ui-space-3);
+  --ui-input-bg:           var(--ui-surface);
+  --ui-input-border:       var(--ui-border-strong);
+  --ui-input-border-focus: var(--ui-ring);
+  --ui-input-radius:       var(--ui-radius-input);
+
+  --ui-table-row-h:        3rem;
+  --ui-table-cell-px:      var(--ui-space-4);
+  --ui-table-header-bg:    var(--ui-surface-subtle);
+  --ui-table-row-hover:    var(--ui-surface-subtle);
+  --ui-table-row-selected: var(--ui-selected);
+  --ui-table-border:       var(--ui-border);
+
+  --ui-card-bg:      var(--ui-surface);
+  --ui-card-border:  var(--ui-border);
+  --ui-card-padding: var(--ui-space-6);
+  --ui-card-radius:  var(--ui-radius-card);
+  --ui-card-gap:     var(--ui-space-4);
+
+  --ui-badge-h:      1.5rem;
+  --ui-badge-px:     var(--ui-space-2);
+  --ui-badge-radius: var(--ui-radius-full);
+
+  --ui-toast-bg:       var(--ui-inverted);
+  --ui-toast-fg:       var(--ui-inverted-foreground);
+  --ui-tooltip-bg:     var(--ui-foreground);
+  --ui-tooltip-fg:     var(--ui-background);
+  --ui-tooltip-radius: var(--ui-radius-xs);
+
+  --ui-sidebar-w:  16rem;
+  --ui-sidebar-bg: var(--ui-surface-subtle);
+  --ui-topbar-h:   4rem;
+  --ui-page-gap:   var(--ui-space-8);
+}
+
+/* --- 4f. Tmavý režim: neutrální „noc“, primární barva z role primary-on-dark --- */
 [data-theme="dark"] {
-  --ui-primary:              color-mix(in oklch, var(--brand-primary) 45%, white);
-  --ui-primary-hover:        color-mix(in oklch, var(--brand-primary) 32%, white);
-  --ui-primary-foreground:   var(--brand-neutral-dark);
-  --ui-secondary:            color-mix(in oklch, var(--brand-neutral-dark) 78%, white);
+  --ui-primary:              var(--brand-primary-on-dark);
+  --ui-primary-hover:        var(--brand-primary-on-dark-hover);
+  --ui-primary-foreground:   var(--brand-on-primary-on-dark);
+  --ui-secondary:            var(--brand-night-700);
   --ui-secondary-foreground: var(--brand-neutral-light);
-  --ui-background:           var(--brand-neutral-dark);
+  --ui-secondary-hover:      var(--brand-night-650);
+  --ui-background:           var(--brand-night-950);
   --ui-foreground:           var(--brand-neutral-light);
-  --ui-muted:                color-mix(in oklch, var(--brand-neutral-dark) 88%, white);
-  --ui-muted-foreground:     color-mix(in oklch, var(--brand-neutral-light) 68%, var(--brand-neutral-dark));
-  --ui-border:               color-mix(in oklch, var(--brand-neutral-dark) 76%, white);
+  --ui-muted:                var(--brand-night-800);
+  --ui-muted-foreground:     var(--brand-night-300);
+  --ui-border:               var(--brand-night-700);
   --ui-inverted:             var(--brand-neutral-light);
   --ui-inverted-foreground:  var(--brand-neutral-dark);
-  --ui-accent:               var(--brand-primary-2);
-  --ui-accent-foreground:    var(--brand-neutral-dark);
-  --ui-destructive:          color-mix(in oklch, var(--brand-error) 55%, white);
+  --ui-accent:               var(--brand-primary-on-dark);
+  --ui-accent-foreground:    var(--brand-on-primary-on-dark);
+  --ui-destructive:          color-mix(in oklch, var(--brand-error) 45%, white);
   --ui-destructive-foreground: var(--brand-neutral-dark);
-  --ui-success:              color-mix(in oklch, var(--brand-success) 55%, white);
+  --ui-success:              color-mix(in oklch, var(--brand-success) 45%, white);
   --ui-success-foreground:   var(--brand-neutral-dark);
-  --ui-ring:                 color-mix(in oklch, var(--brand-primary) 45%, white);
+  --ui-ring:                 var(--brand-primary-on-dark);
+
+  --ui-surface:              var(--brand-night-900);
+  --ui-surface-subtle:       var(--brand-night-850);
+  --ui-border-strong:        var(--brand-night-500);
+  --ui-foreground-subtle:    var(--brand-night-350);
+  --ui-accent-subtle:        var(--brand-night-accent);
+  --ui-selected:             var(--brand-night-accent);
+  --ui-selected-foreground:  var(--brand-neutral-light);
+  --ui-disabled:             var(--brand-night-800);
+  --ui-disabled-foreground:  var(--brand-night-500);
+  --ui-overlay:              color-mix(in srgb, black 64%, transparent);
+
+  --ui-warning:              color-mix(in oklch, var(--brand-warning) 45%, white);
+  --ui-warning-foreground:   var(--brand-neutral-dark);
+  --ui-info:                 color-mix(in oklch, var(--brand-info) 45%, white);
+  --ui-info-foreground:      var(--brand-neutral-dark);
+  --ui-success-subtle:            color-mix(in oklch, var(--brand-success) 22%, var(--brand-night-950));
+  --ui-success-subtle-foreground: color-mix(in oklch, var(--brand-success) 30%, white);
+  --ui-success-border:            color-mix(in oklch, var(--brand-success) 50%, var(--brand-night-950));
+  --ui-warning-subtle:            color-mix(in oklch, var(--brand-warning) 22%, var(--brand-night-950));
+  --ui-warning-subtle-foreground: color-mix(in oklch, var(--brand-warning) 30%, white);
+  --ui-warning-border:            color-mix(in oklch, var(--brand-warning) 50%, var(--brand-night-950));
+  --ui-info-subtle:               color-mix(in oklch, var(--brand-info) 22%, var(--brand-night-950));
+  --ui-info-subtle-foreground:    color-mix(in oklch, var(--brand-info) 30%, white);
+  --ui-info-border:               color-mix(in oklch, var(--brand-info) 50%, var(--brand-night-950));
+  --ui-destructive-subtle:            color-mix(in oklch, var(--brand-error) 22%, var(--brand-night-950));
+  --ui-destructive-subtle-foreground: color-mix(in oklch, var(--brand-error) 30%, white);
+  --ui-destructive-border:            color-mix(in oklch, var(--brand-error) 50%, var(--brand-night-950));
+
+  --ui-chart-1: var(--brand-primary-on-dark);
+  --ui-chart-2: color-mix(in oklch, var(--brand-chart-2) 55%, white);
+  --ui-chart-3: color-mix(in oklch, var(--brand-chart-3) 55%, white);
+  --ui-chart-4: color-mix(in oklch, var(--brand-chart-4) 55%, white);
+  --ui-chart-5: color-mix(in oklch, var(--brand-chart-5) 55%, white);
+  --ui-chart-6: var(--brand-night-400);
+  --ui-chart-1-subtle: color-mix(in oklch, var(--brand-primary-on-dark) 30%, var(--brand-night-950));
+  --ui-chart-2-subtle: color-mix(in oklch, var(--brand-chart-2) 30%, var(--brand-night-950));
+  --ui-chart-3-subtle: color-mix(in oklch, var(--brand-chart-3) 30%, var(--brand-night-950));
+  --ui-chart-4-subtle: color-mix(in oklch, var(--brand-chart-4) 30%, var(--brand-night-950));
+  --ui-chart-5-subtle: color-mix(in oklch, var(--brand-chart-5) 30%, var(--brand-night-950));
+  --ui-chart-6-subtle: var(--brand-night-700);
+  --ui-chart-seq-1: color-mix(in oklch, var(--brand-primary-on-dark) 15%, var(--brand-night-950));
+  --ui-chart-seq-2: color-mix(in oklch, var(--brand-primary-on-dark) 35%, var(--brand-night-950));
+  --ui-chart-seq-3: color-mix(in oklch, var(--brand-primary-on-dark) 55%, var(--brand-night-950));
+  --ui-chart-seq-4: color-mix(in oklch, var(--brand-primary-on-dark) 78%, var(--brand-night-950));
+  --ui-chart-seq-5: var(--brand-primary-on-dark);
+  --ui-chart-div-neg: color-mix(in oklch, var(--brand-chart-5) 55%, white);
+  --ui-chart-div-mid: var(--brand-night-700);
+  --ui-chart-div-pos: color-mix(in oklch, var(--brand-success) 45%, white);
+  --ui-chart-grid:  var(--brand-night-700);
+  --ui-chart-axis:  var(--brand-night-300);
+
   --ui-shadow-sm: 0 1px 2px rgb(0 0 0 / 0.4);
   --ui-shadow-md: 0 4px 14px rgb(0 0 0 / 0.45);
   --ui-shadow-lg: 0 18px 44px rgb(0 0 0 / 0.55);
   --ui-shadow-button: var(--ui-shadow-sm);
   --ui-shadow-card:   var(--ui-shadow-md);
   --ui-shadow-modal:  var(--ui-shadow-lg);
+}
+
+/* --- 4h. Hustota: přepisuje jen rozměry --- */
+[data-density="compact"] {
+  --ui-control-h-sm: 1.75rem;  --ui-control-h-md: 2rem;  --ui-control-h-lg: 2.5rem;
+  --ui-app-body-size: 0.875rem; --ui-app-body-lh: 1.25rem;
+  --ui-table-row-h: 2.25rem;   --ui-table-cell-px: var(--ui-space-3);
+  --ui-card-padding: var(--ui-space-4);  --ui-card-gap: var(--ui-space-3);
+  --ui-badge-h: 1.25rem;       --ui-button-px-md: var(--ui-space-4);
+  --ui-input-px: var(--ui-space-2);      --ui-page-gap: var(--ui-space-6);
+}
+[data-density="comfortable"] {
+  --ui-control-h-sm: 2.25rem;  --ui-control-h-md: 3rem;  --ui-control-h-lg: 3.5rem;
+  --ui-table-row-h: 3.5rem;    --ui-table-cell-px: var(--ui-space-5);
+  --ui-card-padding: var(--ui-space-8);  --ui-button-px-md: var(--ui-space-6);
+  --ui-input-px: var(--ui-space-4);
+}
+
+/* --- 4j. White-label téma (ukázka): přepisuje JEN primitiva úrovně 1 --- */
+[data-brand="klient"] {
+  --brand-primary:        #1f5fd6;
+  --brand-on-primary:     #ffffff;
+  --brand-primary-hover:  #1a50b5;
+  --brand-primary-2:      #0a2540;
+  --brand-primary-2-hover:#16375c;
+  --brand-secondary-1:    #c9d8f5;
+  --brand-secondary-2:    #e3ecff;
+  --brand-neutral-dark:   #111827;
+  --brand-neutral-light:  #f1f3f7;
+  --brand-on-primary-2:   #ffffff;
+  --brand-primary-on-dark:       #8db4ff;
+  --brand-primary-on-dark-hover: #a9c6ff;
+  --brand-on-primary-on-dark:    #0a2540;
+  --brand-focus:          #0a2540;
 }
 
 /* Příklad vyplnění (Nine Group) — odkomentuj a uvidíš, jak se web přebarví:

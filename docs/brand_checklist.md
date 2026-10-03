@@ -132,6 +132,19 @@ Fáze 8 (Obaly, prostor a produkt) a položky označené *(modul)* vyplň jen te
 - [ ] Ikona aplikace, splash screen a ikony do obchodů s aplikacemi jsou exportované ve všech požadovaných rozměrech *(modul)*.
 - [ ] Předávka vývojářům je domluvená: Figma odkaz, tokeny, případně Storybook a kontakt na designéra pro dotazy.
 
+### Produktový design systém (v1.2)
+
+- [ ] Tokeny ve třech úrovních (primitive → semantic → component); komponenty neodkazují na `--brand-*` (kontrola v tokens.json).
+- [ ] Role pro tmavý režim vyplněné (`on-primary-2`, `primary-on-dark`, `on-primary-on-dark`), tmavý režim namapovaný.
+- [ ] `docs/tools/contrast-check.html`: 0 chyb ve všech módech (text 4,5 : 1, hranice polí, focus a grafy 3 : 1).
+- [ ] Hustota default / compact / comfortable odpovídá produktu; dotykové cíle 44 px, v compact min. 32 px.
+- [ ] Produktová typografie (app-h1 až app-caption) a tabulkové číslice u čísel.
+- [ ] Stavy warning a info a ke každému stavu subtle / subtle-foreground / border.
+- [ ] Datová vizualizace: kategorická paleta ≥ 3 : 1, sekvenční a divergentní škála (bez páru červená/zelená), popisky u dat, textová alternativa.
+- [ ] Načítání (skeleton), prázdné stavy, chybové stavy a texty v produktu v tónu značky.
+- [ ] Product Preview s reálnými texty značky; přepnutí režimu, hustoty a tématu nic nerozbije (375, 768, 1440 px).
+- [ ] White-label: klientské téma mění jen primitiva, po změně znovu kontrast.
+
 ## 7. Layout, aplikace a šablony
 
 ### Layout

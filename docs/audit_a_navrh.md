@@ -2,6 +2,8 @@
 
 Verze 1.0 · 24. 9. 2026
 
+**Verze šablony 1.2 (3. 10. 2026):** kapitola 09 je produktový design systém podle Aestio Core: tři úrovně tokenů, tmavý režim s rolemi pro white-label, hustota, produktová typografie, stavy warning a info, datová vizualizace, komponenty `css/ds-core.css`, stavy a texty v produktu, Product Preview, nástroje `docs/tools/` a metodika `docs/design_system_saas.md`. PDF má 5 nových slidů.
+
 **Stav:** návrh je zapracovaný do šablony v1.1 (24. 9. 2026): web i PDF mají strukturu 00–14 včetně oprav z části E, nových tokenů v `css/brand.css` a priorit P1–P3. Kapitola 09 navíc obsahuje UI/Web System podle pracovního postupu v `CLAUDE.md` (sémantické tokeny v Tailwind stylu, typescale Display–P3, radius, elevation, Brand Web Preview, export Tailwind v4 a tokens.json).
 
 Tento dokument porovnává šablonu `brand-book-template` (web `index.html` s kapitolami 00–11 a PDF `pdf/manual.html` se 49 slidy) se 26 světovými brand manuály a identitami. Výsledkem je návrh, jak šablonu rozšířit, aby pokryla digitální B2B/B2C produkty, webové aplikace i lifestylové značky.

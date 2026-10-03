@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="cs">
+<head>
+<meta charset="utf-8">
+<title>Kontrola kontrastu tokenů</title>
+<link rel="stylesheet" href="../../css/brand.css">
+<!--
+  Kontrola kontrastu všech párů design systému ve všech módech.
+  Spuštění (bez serveru):
+  msedge --headless --disable-gpu --allow-file-access-from-files --virtual-time-budget=4000 --dump-dom docs/tools/contrast-check.html
+  Výstup: <pre id="out"> s tabulkou a souhrnem FAIL. Text 4,5 : 1, UI a grafika 3 : 1.
+-->
+</head>
+<body>
+<pre id="out"></pre>
+<script>
+(function () {
+  var MODES = [
+    { name: 'znacka-light', attrs: {} },
+    { name: 'znacka-dark', attrs: { 'data-theme': 'dark' } },
+    { name: 'klient-light', attrs: { 'data-brand': 'klient' } },
+    { name: 'klient-dark', attrs: { 'data-brand': 'klient', 'data-theme': 'dark' } }
+  ];
+  // [popředí, pozadí, minimum, popis]
+  var T = 4.5, G = 3;
+  var PAIRS = [
+    ['--ui-foreground', '--ui-background', T, 'text'],
+    ['--ui-foreground', '--ui-surface', T, 'text na kartě'],
+    ['--ui-foreground', '--ui-surface-subtle', T, 'text na plátně'],
+    ['--ui-muted-foreground', '--ui-background', T, 'sekundární text'],
+    ['--ui-muted-foreground', '--ui-muted', T, 'sekundární text na muted'],
+    ['--ui-foreground-subtle', '--ui-surface', T, 'placeholder / metadata'],
+    ['--ui-foreground-subtle', '--ui-surface-subtle', T, 'metadata na plátně'],
+    ['--ui-primary-foreground', '--ui-primary', T, 'primární tlačítko'],
+    ['--ui-primary-foreground', '--ui-primary-hover', T, 'primární hover'],
+    ['--ui-secondary-foreground', '--ui-secondary', T, 'sekundární tlačítko'],
+    ['--ui-secondary-foreground', '--ui-secondary-hover', T, 'sekundární hover'],
+    ['--ui-inverted-foreground', '--ui-inverted', T, 'inverted sekce / toast'],
+    ['--ui-accent', '--ui-background', T, 'odkaz'],
+    ['--ui-accent-foreground', '--ui-accent', T, 'accent plocha'],
+    ['--ui-selected-foreground', '--ui-selected', T, 'vybraný řádek'],
+    ['--ui-foreground', '--ui-accent-subtle', T, 'text na accent-subtle'],
+    ['--ui-destructive-foreground', '--ui-destructive', T, 'destruktivní tlačítko'],
+    ['--ui-destructive', '--ui-surface', T, 'chybový text'],
+    ['--ui-destructive-subtle-foreground', '--ui-destructive-subtle', T, 'chybová hláška'],
+    ['--ui-success-foreground', '--ui-success', T, 'success solid'],
+    ['--ui-success', '--ui-surface', T, 'success text'],
+    ['--ui-success-subtle-foreground', '--ui-success-subtle', T, 'success hláška'],
+    ['--ui-warning-foreground', '--ui-warning', T, 'warning solid'],
+    ['--ui-warning', '--ui-surface', T, 'warning text'],
+    ['--ui-warning-subtle-foreground', '--ui-warning-subtle', T, 'warning hláška'],
+    ['--ui-info-foreground', '--ui-info', T, 'info solid'],
+    ['--ui-info', '--ui-surface', T, 'info text'],
+    ['--ui-info-subtle-foreground', '--ui-info-subtle', T, 'info hláška'],
+    ['--ui-tooltip-fg', '--ui-tooltip-bg', T, 'tooltip'],
+    ['--ui-toast-fg', '--ui-toast-bg', T, 'toast'],
+    ['--ui-foreground', '--ui-table-header-bg', T, 'hlavička tabulky'],
+    ['--ui-border-strong', '--ui-surface', G, 'hranice pole'],
+    ['--ui-ring', '--ui-surface', G, 'focus ring'],
+    ['--ui-ring', '--ui-background', G, 'focus ring na pozadí'],
+    ['--ui-chart-1', '--ui-surface', G, 'graf 1'],
+    ['--ui-chart-2', '--ui-surface', G, 'graf 2'],
+    ['--ui-chart-3', '--ui-surface', G, 'graf 3'],
+    ['--ui-chart-4', '--ui-surface', G, 'graf 4'],
+    ['--ui-chart-5', '--ui-surface', G, 'graf 5'],
+    ['--ui-chart-6', '--ui-surface', G, 'graf 6'],
+    ['--ui-chart-axis', '--ui-surface', T, 'popisky os'],
+    ['--ui-chart-div-neg', '--ui-surface', G, 'divergentní −'],
+    ['--ui-chart-div-pos', '--ui-surface', G, 'divergentní +'],
+    ['--ui-chart-seq-5', '--ui-surface', G, 'sekvenční max']
+  ];
+
+  var canvas = document.createElement('canvas');
+  canvas.width = canvas.height = 1;
+  var ctx = canvas.getContext('2d', { willReadFrequently: true });
+
+  function rgb(el, name) {
+    var s = el.firstChild;
+    s.style.color = 'var(' + name + ')';
+    var css = getComputedStyle(s).color;
+    ctx.clearRect(0, 0, 1, 1);
+    ctx.fillStyle = '#fff'; ctx.fillRect(0, 0, 1, 1);   // průhledné barvy (overlay) nad bílou
+    ctx.fillStyle = css; ctx.fillRect(0, 0, 1, 1);
+    var d = ctx.getImageData(0, 0, 1, 1).data;
+    return [d[0], d[1], d[2]];
+  }
+  function lum(c) {
+    c = c.map(function (v) { v /= 255; return v <= 0.03928 ? v / 12.92 : Math.pow((v + 0.055) / 1.055, 2.4); });
+    return 0.2126 * c[0] + 0.7152 * c[1] + 0.0722 * c[2];
+  }
+  function ratio(a, b) { var x = lum(a), y = lum(b); return (Math.max(x, y) + 0.05) / (Math.min(x, y) + 0.05); }
+  function hex(c) { return '#' + c.map(function (v) { return v.toString(16).padStart(2, '0'); }).join('').toUpperCase(); }
+
+  var lines = [], fails = [], result = {};
+  MODES.forEach(function (m) {
+    var el = document.createElement('div');
+    Object.keys(m.attrs).forEach(function (k) { el.setAttribute(k, m.attrs[k]); });
+    el.appendChild(document.createElement('span'));
+    document.body.appendChild(el);
+    lines.push('== ' + m.name);
+    result[m.name] = [];
+    PAIRS.forEach(function (p) {
+      var a = rgb(el, p[0]), b = rgb(el, p[1]), r = ratio(a, b);
+      var ok = r >= p[2];
+      var row = (ok ? 'ok  ' : 'FAIL') + '  ' + r.toFixed(2).padStart(5) + ' (min ' + p[2] + ')  ' + p[3] + '  ' + p[0] + ' ' + hex(a) + ' / ' + p[1] + ' ' + hex(b);
+      lines.push(row);
+      result[m.name].push({ fg: p[0], bg: p[1], fgHex: hex(a), bgHex: hex(b), ratio: +r.toFixed(2), min: p[2], label: p[3], ok: ok });
+      if (!ok) fails.push(m.name + ': ' + row);
+    });
+  });
+  lines.push('');
+  lines.push('FAILS: ' + fails.length);
+  fails.forEach(function (f) { lines.push(f); });
+  document.getElementById('out').textContent = lines.join('\n') + '\n\nJSON:' + JSON.stringify(result);
+})();
+</script>
+</body>
+</html>

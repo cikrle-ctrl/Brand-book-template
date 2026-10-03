@@ -670,3 +670,18 @@ code { font-family: inherit; font-size: 1em; color: var(--c-text); background: n
   vertical-align: middle;
 }
 .icon-sprite { position: absolute; width: 0; height: 0; overflow: hidden; }
+
+/* --- Kapitola 09: přepínače módů ukázek, sloupce prostoru, řetězce tokenů (v1.2) --- */
+.preview { grid-template-columns: minmax(0, 1fr); }
+.mode-bar { display: flex; flex-wrap: wrap; align-items: center; gap: var(--sp-3) var(--sp-5); }
+.mode-group { display: inline-flex; flex-wrap: wrap; align-items: center; gap: var(--sp-2); font-size: var(--fs-sm); color: var(--c-text-muted); }
+.mode-group__seg { display: inline-flex; padding: 3px; border: 1px solid var(--c-border); border-radius: 999px; background: var(--c-bg); }
+.mode-group__seg button { min-height: 36px; padding: 6px 14px; font: inherit; font-weight: 600; color: var(--c-text); background: transparent; border: 0; border-radius: 999px; cursor: pointer; }
+.mode-group__seg button:hover { background: var(--c-surface); }
+.mode-group__seg button[aria-pressed="true"] { color: var(--ui-primary-foreground); background: var(--ui-primary); }
+.mode-group__seg button:focus-visible { outline: 2px solid var(--ui-ring); outline-offset: 2px; }
+@media (max-width: 599px) { .mode-group__seg button { padding: 6px 10px; } }
+.space-bar { display: block; height: 12px; background: var(--ui-primary); border-radius: 2px; }
+.token-chain { display: inline-flex; flex-wrap: wrap; align-items: center; gap: 6px; }
+.token-chain .icon { width: 16px; height: 16px; color: var(--c-text-subtle); }
+.preview__stage .ui-app { border-radius: var(--ui-radius-md); }

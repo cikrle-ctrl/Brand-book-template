@@ -693,3 +693,6 @@ td[data-token], td[data-contrast] { white-space: nowrap; }
   .slide:last-child { break-after: auto; page-break-after: auto; }
   .ui-zoom { zoom: 1 !important; }
 }
+
+/* Skrytý text pro čtečky (popisky v ukázkách UI) */
+.visually-hidden { position: absolute !important; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
