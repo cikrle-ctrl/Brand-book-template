@@ -36,11 +36,14 @@
   line-height: var(--ui-app-label-lh);
   font-weight: var(--ui-app-label-weight);
 }
-.ui-btn--sm { min-height: var(--ui-button-h-sm); padding: 0 var(--ui-button-px-sm); }
-.ui-btn--lg { min-height: var(--ui-button-h-lg); padding: 0 var(--ui-button-px-lg); font-size: var(--ui-app-body-size); }
+.ui-btn--sm, .ui-app .ui-btn--sm { min-height: var(--ui-button-h-sm); padding: 0 var(--ui-button-px-sm); }
+.ui-btn--lg, .ui-app .ui-btn--lg { min-height: var(--ui-button-h-lg); padding: 0 var(--ui-button-px-lg); font-size: var(--ui-app-body-size); }
 /* Tichá (subtle primary): „zobrazit vše“ a vedlejší navigační akce, ikona šipky za textem */
 .ui-btn--subtle { color: var(--ui-selected-foreground); background: var(--ui-selected); border-color: var(--ui-selected); }
 .ui-btn--subtle:hover, .ui-btn--subtle.is-hover { color: var(--ui-primary-foreground); background: var(--ui-primary); border-color: var(--ui-primary); }
+/* Info: akce uvnitř informační plochy (info-subtle), např. hypotéza nebo experiment */
+.ui-btn--info { color: var(--ui-info-subtle-foreground); background: var(--ui-info-border); border-color: var(--ui-info-border); }
+.ui-btn--info:hover, .ui-btn--info.is-hover { color: var(--ui-info-foreground); background: var(--ui-info); border-color: var(--ui-info); }
 .ui-btn .icon { width: var(--ui-icon-sm); height: var(--ui-icon-sm); stroke-width: var(--ui-icon-stroke-sm); }
 .ui-btn.is-loading { cursor: progress; }
 .ui-btn.is-loading .icon { animation: ui-spin calc(var(--ui-duration-slow) * 1.5) linear infinite; }
