@@ -312,6 +312,29 @@
 .ui-meta > span { display: inline-flex; align-items: center; gap: var(--ui-space-1); }
 .ui-meta .icon { width: var(--ui-icon-sm); height: var(--ui-icon-sm); stroke-width: var(--ui-icon-stroke-sm); }
 .ui-meta .is-danger { color: var(--ui-destructive); }
+.ui-meta .is-accent { color: var(--ui-accent); }
+.ui-meta .is-warning { color: var(--ui-warning-subtle-foreground); }
+.ui-meta--sm { font-size: var(--ui-app-caption-size); line-height: var(--ui-app-caption-lh); }
+
+/* --- Přepínač pohledů (segmented control, Figma: Core / Přepínač) --- */
+.ui-segment { display: inline-flex; gap: var(--ui-space-1); padding: var(--ui-space-1); background: var(--ui-muted); border-radius: var(--ui-radius-full); }
+.ui-segment button { display: inline-flex; align-items: center; gap: var(--ui-space-2); min-height: var(--ui-control-h-sm); padding: 0 var(--ui-space-4); border: 0; border-radius: var(--ui-radius-full); background: transparent; color: var(--ui-muted-foreground); font: inherit; font-size: var(--ui-app-label-size); line-height: var(--ui-app-label-lh); font-weight: var(--ui-app-label-weight); cursor: pointer; }
+.ui-segment button[aria-pressed="true"] { background: var(--ui-surface); color: var(--ui-foreground); }
+.ui-segment button:focus-visible { outline: var(--ui-focus-width) solid var(--ui-ring); outline-offset: var(--ui-focus-offset); }
+
+/* --- Hlavička sekce (Figma: Core / Hlavička sekce): nadpis, počet, akce Tichá Malé --- */
+.ui-section-head { display: flex; align-items: center; gap: var(--ui-space-2); min-height: var(--ui-control-h-sm); }
+.ui-section-head > :first-child { margin: 0; font-size: var(--ui-app-h3-size); line-height: var(--ui-app-h3-lh); font-weight: var(--ui-app-h3-weight); }
+.ui-section-head > .ui-btn { margin-left: auto; }
+
+/* --- Položka seznamu (Figma: MP / Položka seznamu): ikona nebo datum, název, meta, vpravo štítek --- */
+.ui-list { display: grid; gap: var(--ui-space-1); margin: 0; padding: 0; list-style: none; }
+.ui-list-item { display: flex; align-items: flex-start; gap: var(--ui-space-3); padding: var(--ui-space-2) 0; }
+.ui-list-item > .icon { flex: none; width: var(--ui-icon-md); height: var(--ui-icon-md); stroke-width: var(--ui-icon-stroke-md); margin-top: 2px; }
+.ui-list-item__date { flex: none; width: 2.5rem; font-size: var(--ui-app-caption-size); line-height: var(--ui-app-body-lh); color: var(--ui-foreground-subtle); }
+.ui-list-item__body { flex: 1; min-width: 0; display: grid; gap: var(--ui-space-1); }
+.ui-list-item__body > :first-child { margin: 0; }
+.ui-list-item > .ui-badge { flex: none; }
 
 /* --- Rozbalovací blok (<details>): sekundární vysvětlení --- */
 .ui-disclosure summary { display: inline-flex; align-items: center; gap: var(--ui-space-1); font-size: var(--ui-app-label-size); font-weight: var(--ui-app-label-weight); cursor: pointer; list-style: none; }
