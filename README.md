@@ -1,3 +1,11 @@
+# Archiv
+
+Tento repozitář je archivovaný (13. 10. 2026). Šablona brand booku se dál vyvíjí jen v monorepu **AestioCZ/Brands**, složka `template/brand-book-template` (verze 2 se skládáním podle kategorie produktu).
+
+https://github.com/AestioCZ/Brands/tree/main/template/brand-book-template
+
+---
+
 # Brand Book — šablona (wireframe) v1.2
 
 Čistá HTML/CSS šablona brand manuálu. Nemá žádné závislosti ani build krok. Stačí otevřít `index.html` v prohlížeči (pro kontrolu stahování souborů přes lokální server, viz `.claude/launch.json` → „brand-book“).
